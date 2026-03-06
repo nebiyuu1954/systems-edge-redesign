@@ -82,10 +82,16 @@ const TrustedBySection = ({
 
   const handleTrackTransitionEnd = (event: TransitionEvent<HTMLDivElement>): void => {
     // Ignore bubbled transition events from child cards/images.
-    if (event.target !== event.currentTarget || event.propertyName !== 'transform') return;
+    if (event.target !== event.currentTarget) return;
     if (!isScrollable) return;
 
-    if (trackIndex === n + safeVisibleCount) {
+    // Some browsers report vendor-prefixed names or slightly different property strings.
+    const prop = event.propertyName || '';
+    if (!prop.toLowerCase().includes('transform') && prop !== '') return;
+
+    // If we've advanced past the last real slide window, reset back to the real start.
+    // Use >= to guard against skipped transitionend events that let the index grow past the boundary.
+    if (trackIndex >= n + safeVisibleCount) {
       isResettingRef.current = true;
       clearAutoplay();
       setIsTransitionEnabled(false);
