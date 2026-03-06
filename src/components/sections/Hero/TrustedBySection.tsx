@@ -38,7 +38,8 @@ const TrustedBySection = ({
   transitionEasing = 'cubic-bezier(0.22, 1, 0.36, 1)',
 }: TrustedBySectionProps): ReactElement => {
   const n = partnerLogos.length;
-  const safeVisibleCount = Math.max(1, visibleCount);
+  const [effectiveVisibleCount, setEffectiveVisibleCount] = useState(visibleCount);
+  const safeVisibleCount = Math.max(1, effectiveVisibleCount);
   const [trackIndex, setTrackIndex] = useState(safeVisibleCount); // starts at first real slide window
   const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
@@ -47,6 +48,28 @@ const TrustedBySection = ({
 
   const centerOffset = Math.floor(safeVisibleCount / 2);
   const isScrollable = n > safeVisibleCount;
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        setEffectiveVisibleCount(1);
+        return;
+      }
+
+      if (window.matchMedia('(max-width: 1023px)').matches) {
+        setEffectiveVisibleCount(Math.min(2, visibleCount));
+        return;
+      }
+
+      setEffectiveVisibleCount(visibleCount);
+    };
+
+    updateVisibleCount();
+    window.addEventListener('resize', updateVisibleCount);
+    return () => {
+      window.removeEventListener('resize', updateVisibleCount);
+    };
+  }, [visibleCount]);
 
   const leftClones = n > 0 ? partnerLogos.slice(-safeVisibleCount) : [];
   const rightClones = n > 0 ? partnerLogos.slice(0, safeVisibleCount) : [];
@@ -117,11 +140,11 @@ const TrustedBySection = ({
   const translatePercent = -(trackIndex * translateStepPercent);
 
   return (
-    <section className="w-full px-6 py-16 lg:px-12 lg:py-24" aria-labelledby="trusted-by-heading">
+    <section className="w-full px-4 py-14 sm:px-6 sm:py-16 lg:px-12 lg:py-24" aria-labelledby="trusted-by-heading">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <h3 id="trusted-by-heading" className="mb-6 text-xl font-medium tracking-tight text-primary dark:text-white md:text-2xl">
+            <h3 id="trusted-by-heading" className="mb-6 text-lg font-medium tracking-tight text-primary dark:text-white sm:text-xl md:text-2xl">
               {heading}
             </h3>
 
@@ -147,11 +170,11 @@ const TrustedBySection = ({
                     <div
                       key={`${partner.id}-${i}`}
                       style={{ width: `${trackItemWidthPercent}%` }}
-                      className="flex flex-none items-center justify-center px-3"
+                      className="flex flex-none items-center justify-center px-2 sm:px-3"
                     >
                       <div
                         className={
-                          `transform transition-all duration-500 flex min-h-[132px] w-full items-center justify-center rounded-xl bg-white px-6 py-8 opacity-90 shadow-sm dark:bg-slate-800 ` +
+                          `transform transition-all duration-500 flex min-h-[120px] w-full items-center justify-center rounded-xl bg-white px-4 py-6 opacity-90 shadow-sm dark:bg-slate-800 sm:min-h-[132px] sm:px-6 sm:py-8 ` +
                           (isCentered
                             ? 'z-10 scale-105 border-2 border-secondary ring-4 ring-secondary/40 ring-offset-2 ring-offset-white dark:ring-offset-slate-900'
                             : 'scale-100 border border-slate-100 dark:border-slate-700')
@@ -163,8 +186,8 @@ const TrustedBySection = ({
                           alt={partner.logoAlt}
                           className={
                             isCentered
-                              ? 'h-24 w-auto max-w-[90%] shrink-0 object-contain'
-                              : 'h-20 w-auto max-w-[90%] shrink-0 object-contain'
+                              ? 'h-20 w-auto max-w-[90%] shrink-0 object-contain sm:h-24'
+                              : 'h-16 w-auto max-w-[90%] shrink-0 object-contain sm:h-20'
                           }
                           loading="lazy"
                         />
@@ -177,11 +200,11 @@ const TrustedBySection = ({
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative ml-0 rounded-2xl border-l-4 border-secondary bg-white p-8 shadow-md dark:bg-slate-800 md:ml-4 md:p-12">
+            <div className="relative ml-0 rounded-2xl border-l-4 border-secondary bg-white p-6 shadow-md dark:bg-slate-800 sm:p-8 md:ml-4 md:p-12">
               <div className="absolute -left-[14px] top-1/2 hidden h-0 w-0 -translate-y-1/2 border-y-[12px] border-y-transparent border-r-[12px] border-r-secondary md:block" />
               <div className="absolute -left-[10px] top-1/2 z-10 hidden h-0 w-0 -translate-y-1/2 border-y-[10px] border-y-transparent border-r-[10px] border-r-white dark:border-r-slate-800 md:block" />
 
-              <p className="mb-8 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+              <p className="mb-8 text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
                 "{centered?.message ?? fallbackMessage ?? ''}"
               </p>
 
