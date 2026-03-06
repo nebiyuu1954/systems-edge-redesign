@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { Header } from './components/layout/Header';
-import { HeroSection, OurServicesSection, TrustedBySection } from './components/sections';
+import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection } from './components/sections';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -18,7 +18,7 @@ function App(): ReactElement {
         ]}
         ctaLabel="Get Consultation"
         ctaHref="#contact"
-        logoSizeClass="h-48"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <HeroSection
         badgeText="Enterprise Grade Solutions"
@@ -145,6 +145,61 @@ function App(): ReactElement {
             title: 'Identity & Access Management',
             description:
               'Secure your enterprise perimeter with advanced IAM solutions. We implement multi-factor authentication, single sign-on, and rigorous access control policies to protect your digital assets.',
+          },
+        ]}
+      />
+      <ObjectivesSection
+        blocks={[
+          {
+            id: 'delivery-model',
+            imageSrc:
+              'https://lh3.googleusercontent.com/aida-public/AB6AXuDj1sJwR4nVYH0K59FXCdUdJ3F3D_nTkgstBE2OpxvBKLtlgEePAS_7ecoVQADag2_jOw1ZFrcX6E-Aw_azryJBg-8Nw5FAk2bhIvdL1Zd3gjzrhEYp0FwZwlQc173o8qJt_bQvaAqzeu1ES6YP52JCvxHr9pwhlI8SIYPwxTig6VdtFL52q7FfWqE1RixjO-8GL1Tp6ZzDLjaXg5e9c7wqvNlbNLLyot1YRZJg_OdXmYTntK1BhrIiQzIG1EAx-kYjtoq1l-ylrQQ5',
+            imageAlt: 'Hybrid global team collaborating in a modern office',
+            title: 'A Delivery Model Designed for Reliability and Scale',
+            description:
+              'Our hybrid delivery model combines local domain expertise with globally aligned engineering practices, ensuring high-quality results and seamless scalability for your enterprise projects.',
+            details:
+              'This model blends local program leadership with globally distributed engineering squads to keep delivery predictable while scaling faster across parallel workstreams.',
+            detailPoints: [
+              'Regional engagement leads for domain alignment and stakeholder visibility',
+              'Globally standardized delivery governance and quality controls',
+              'Elastic team scaling based on sprint load and release milestones',
+            ],
+            dataPurpose: 'delivery-model-section',
+          },
+          {
+            id: 'high-performance-software',
+            imageSrc:
+              'https://lh3.googleusercontent.com/aida-public/AB6AXuAqYNdYACn3nn7QopbFidINBYMi1s0yf9gtb9Dwy0Y8lwQOMFrn9QYDvPPDYXe3SBEgnJlGjG0ibMZNT8VRdS3ZeNuy3wJF1Z43K0GgXsHLrP9AAq23SkDetgrNkQYehnzZjvxRfCULPdXCqbrydygQLwMPE6h-YGEEPryjbU-Kyt7oCJbBH_8BHKTOUeYgB2eu-zjhsI-jEcDiyMxlwHFJ744T2O-eOFtTxdvV-iZ0H_uuOD9x4Zgnaw_M0lTyWMKTHRmg5pxDPSCE',
+            imageAlt: 'Modern data center with servers and glowing lights',
+            title: 'High-Performing Software Used by Millions',
+            description:
+              'We build national-scale software that serves millions of users, focusing on performance, security, and the robustness required for mission-critical applications.',
+            details:
+              'Our architecture patterns are optimized for sustained high throughput, low-latency response times, and strong operational observability in production.',
+            detailPoints: [
+              'Performance benchmarking integrated into CI and release gates',
+              'Security-first engineering practices for public-scale platforms',
+              'Resilience patterns for fault isolation and rapid recovery',
+            ],
+            dataPurpose: 'software-performance-section',
+          },
+          {
+            id: 'enterprise-erp',
+            imageSrc:
+              'https://lh3.googleusercontent.com/aida-public/AB6AXuAEjcOzcWA2xL-FZT7uDIJlOUk4vA6AsJigOMZA3vya9mf8mLf22_ypI17D7ZQ2FtcE8rhOxBUQS5leFcGoJd67fY1UyBkyFvOyA5EPooLYztdXFUGdnzuB4O3ux3SBQlfr1Kav4Suh7GeVRCc5DbvsAjTNVJcpFSFTT9A1j1bKwXhk47noiAJB6PvXSQpDKoki5Ae1P2ZWnubXwdE1np1bP85BEN5BPncXc9JpmHUyw1InPkmDJHiu4Z0pGj9AEZRLW-1ri6yvFBVz',
+            imageAlt: 'Professional server room and enterprise hardware',
+            title: 'Enterprise-Grade ERP Implementation, Delivered with Confidence',
+            description:
+              'Systems Edge Solutions provides ERP implementation and enterprise system services in partnership with NTT DATA, delivering industry-leading solutions with technical excellence.',
+            details:
+              'We execute ERP programs from discovery to post-go-live optimization with structured rollout, data migration assurance, and measurable business adoption support.',
+            detailPoints: [
+              'Phased deployment strategy to minimize business disruption',
+              'Integration blueprints for finance, HR, procurement, and operations',
+              'Governance model with risk checkpoints and executive reporting',
+            ],
+            dataPurpose: 'erp-implementation-section',
           },
         ]}
       />
