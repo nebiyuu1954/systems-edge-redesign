@@ -50,6 +50,26 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                 <FadeInOnScroll delayMs={index * 80 + 120}>
                   <p className="text-base leading-relaxed text-slate-500 dark:text-slate-400">{service.description}</p>
                 </FadeInOnScroll>
+
+                <FadeInOnScroll delayMs={index * 80 + 240}>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                      aria-label={`Get started with ${service.title}`}
+                    >
+                      {`Get started`}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="inline-flex items-center rounded-md border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transform transition duration-150 ease-out hover:scale-105 hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:bg-slate-800 dark:text-white"
+                      aria-label={`Learn more about ${service.title}`}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </FadeInOnScroll>
               </div>
             </article>
           ))}
