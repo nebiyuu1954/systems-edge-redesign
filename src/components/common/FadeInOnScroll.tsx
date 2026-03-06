@@ -26,6 +26,15 @@ const FadeInOnScroll = ({ children, delayMs = 0, className = '' }: FadeInOnScrol
 
     observer.observe(node);
 
+    // Fallback: if the element is already within the viewport (above the fold)
+    // some browsers may not trigger the observer immediately. Check its
+    // bounding rect and mark visible if it's reasonably within view.
+    const rect = node.getBoundingClientRect();
+    const viewportThreshold = window.innerHeight * 0.92; // similar to rootMargin
+    if (rect.top <= viewportThreshold) {
+      setIsVisible(true);
+    }
+
     return () => {
       observer.disconnect();
     };
