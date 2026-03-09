@@ -163,8 +163,17 @@ const TestimonialsSection = (): ReactElement => {
           </div>
         </FadeInOnScroll>
 
-        <div className="bg-primary w-full h-[260px] sm:h-[320px] md:h-[400px] flex flex-col-reverse sm:flex-row items-start sm:items-center px-4 sm:px-6 md:px-20 relative z-10 rounded-lg">
+        <div className="bg-primary w-full h-auto sm:h-[320px] md:h-[400px] flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-6 md:px-20 relative z-10 rounded-lg">
           <FadeInOnScroll>
+            {/* Mobile/tablet inline image: portrait above text on small screens */}
+            <FadeInOnScroll delayMs={150} className={"w-full block sm:hidden mb-4 " + imageTransitionClass()}>
+              <img
+                alt={t.imageAlt}
+                className="w-full h-40 sm:h-56 md:h-[260px] object-cover object-center rounded-sm"
+                src={t.imageSrc}
+              />
+            </FadeInOnScroll>
+
             <div className={"w-full sm:max-w-[60%] md:max-w-[50%] text-white " + textTransitionClass()}>
               <blockquote className="text-sm sm:text-base md:text-lg font-medium leading-relaxed mb-4 sm:mb-6 italic">{t.quote}</blockquote>
 
@@ -175,11 +184,6 @@ const TestimonialsSection = (): ReactElement => {
                 </div>
               </div>
             </div>
-
-            {/* Mobile/tablet inline image: visible only below sm breakpoint */}
-            <FadeInOnScroll delayMs={150} className={"w-full block sm:hidden mt-4 " + imageTransitionClass()}>
-              <img alt={t.imageAlt} className="w-full h-[140px] object-cover rounded-sm" src={t.imageSrc} />
-            </FadeInOnScroll>
           </FadeInOnScroll>
         </div>
 
