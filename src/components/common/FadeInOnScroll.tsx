@@ -6,7 +6,7 @@ export interface FadeInOnScrollProps {
   className?: string;
 }
 
-const FadeInOnScroll = ({ children, delayMs = 0, className = '' }: FadeInOnScrollProps): ReactElement => {
+const FadeInOnScroll = ({ children, delayMs = 300, className = '' }: FadeInOnScrollProps): ReactElement => {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
