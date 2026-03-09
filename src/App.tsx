@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { Header } from './components/layout/Header';
-import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection } from './components/sections';
+import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection } from './components/sections';
+import LeadershipSection from './components/sections/Leadership/LeadershipSection';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -203,6 +204,8 @@ function App(): ReactElement {
           },
         ]}
       />
+      <TestimonialsSection />
+      <LeadershipSection />
     </main>
   );
 }
