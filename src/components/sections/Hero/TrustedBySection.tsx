@@ -204,6 +204,18 @@ const TrustedBySection = ({
               <div className="absolute -left-[14px] top-1/2 hidden h-0 w-0 -translate-y-1/2 border-y-[12px] border-y-transparent border-r-[12px] border-r-secondary md:block" />
               <div className="absolute -left-[10px] top-1/2 z-10 hidden h-0 w-0 -translate-y-1/2 border-y-[10px] border-y-transparent border-r-[10px] border-r-white dark:border-r-slate-800 md:block" />
 
+              {/* Mobile-only: show the centered partner logo above the message so content stacks in one column */}
+              {centered ? (
+                <div className="block sm:hidden mb-4">
+                  <img
+                    src={centered.logoSrc}
+                    alt={centered.logoAlt}
+                    loading="lazy"
+                    className="mx-auto h-20 w-auto object-contain"
+                  />
+                </div>
+              ) : null}
+
               <p className="mb-8 text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
                 "{centered?.message ?? fallbackMessage ?? ''}"
               </p>
