@@ -132,12 +132,26 @@ const TestimonialsSection = (): ReactElement => {
   };
 
   return (
-    <section className="w-full bg-background flex items-center justify-center py-12" aria-labelledby="testimonials-heading">
+    <section className="w-full bg-background flex flex-col items-center justify-center py-12" aria-labelledby="testimonials-heading">
+      <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
+        <FadeInOnScroll>
+          <h1 id="testimonials-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
+            Our Testimonials
+          </h1>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delayMs={120}>
+          <p className="mb-20 max-w-[800px] mx-auto text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+            Real-world outcomes from clients who rely on our expertise to deliver secure, scalable systems and measurable business impact.
+          </p>
+        </FadeInOnScroll>
+      </div>
+
       <div className="relative w-[90%] mx-auto flex items-center flex-nowrap">
 
         {/* Controls positioned under the testimonial block */}
         <FadeInOnScroll delayMs={120} className="absolute left-1/2 bottom-[-20px] sm:bottom-[-24px] md:bottom-[-32px] z-30 transform -translate-x-1/2">
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-4">
             <button
               type="button"
               onClick={prev}
@@ -166,7 +180,7 @@ const TestimonialsSection = (): ReactElement => {
         <div className="bg-primary w-full h-auto sm:h-[320px] md:h-[400px] flex flex-col sm:flex-row items-start sm:items-center px-4 sm:px-6 md:px-20 relative z-10 rounded-lg">
           <FadeInOnScroll>
             {/* Mobile/tablet inline image: portrait above text on small screens */}
-            <FadeInOnScroll delayMs={150} className={"w-full block sm:hidden mb-4 " + imageTransitionClass()}>
+            <FadeInOnScroll delayMs={150} className={"w-full block sm:hidden mt-4 mb-4 " + imageTransitionClass()}>
               <img
                 alt={t.imageAlt}
                 className="w-full h-40 sm:h-56 md:h-[260px] object-cover object-center rounded-sm"
@@ -178,7 +192,7 @@ const TestimonialsSection = (): ReactElement => {
               <blockquote className="text-sm sm:text-base md:text-lg font-medium leading-relaxed mb-4 sm:mb-6 italic">{t.quote}</blockquote>
 
               <div className="flex items-center">
-                <div className="flex flex-col">
+                <div className="flex flex-col mb-8 sm:mb-0">
                   <span className="font-black text-xl sm:text-2xl tracking-tight mb-1">{t.name}</span>
                   <span className="text-white/80 text-xs sm:text-sm font-normal uppercase tracking-wider">{t.role}</span>
                 </div>
