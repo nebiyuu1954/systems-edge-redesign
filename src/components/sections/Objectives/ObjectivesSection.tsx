@@ -28,6 +28,19 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
   return (
     <section id={sectionId} className="w-full py-[72px] sm:py-[100px]" aria-label="Objectives section">
       <div className="relative w-full">
+        <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
+          <FadeInOnScroll>
+            <h1 id="why-us-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
+              Why us
+            </h1>
+          </FadeInOnScroll>
+
+          <FadeInOnScroll delayMs={120} className="mx-auto">
+            <p className="mb-20 mx-auto max-w-[800px] text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              We translate strategic objectives into scalable, measurable solutions that reduce risk and accelerate business value.
+            </p>
+          </FadeInOnScroll>
+        </div>
         {blocks.map((block, index) => {
           const isExpanded = Boolean(expandedById[block.id]);
           const detailsId = `${block.id}-details`;
@@ -72,14 +85,14 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
 
                 <div
                   id={detailsId}
-                  className={`mt-6 w-full max-w-3xl overflow-hidden rounded-xl border border-white/25 bg-black/75 text-left !text-white transition-all duration-700 ${
+                  className={`mt-6 w-full max-w-3xl overflow-hidden rounded-xl border border-white/25 bg-black/75 text-center !text-white transition-all duration-700 ${
                     isExpanded ? 'max-h-72 translate-y-0 opacity-100' : 'max-h-0 translate-y-2 opacity-0'
                   }`}
                 >
                   <div className="px-6 py-5">
-                    <p className="text-base leading-relaxed !text-white">{block.details ?? block.description}</p>
+                    <p className="text-base leading-relaxed !text-white text-center">{block.details ?? block.description}</p>
                     {block.detailPoints && block.detailPoints.length > 0 ? (
-                      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed !text-white marker:text-white">
+                      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed !text-white marker:text-white mx-auto text-left">
                         {block.detailPoints.map((point) => (
                           <li key={`${block.id}-${point}`} className="!text-white">
                             {point}
