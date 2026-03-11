@@ -183,7 +183,7 @@ const TestimonialsSection = (): ReactElement => {
             <FadeInOnScroll delayMs={150} className={"w-full block sm:hidden mt-4 mb-4 " + imageTransitionClass()}>
               <img
                 alt={t.imageAlt}
-                className="w-full h-40 sm:h-56 md:h-[260px] object-cover object-center rounded-sm"
+                className="w-full h-[320px] sm:h-[320px] md:h-[400px] object-cover object-center rounded-sm"
                 src={t.imageSrc}
               />
             </FadeInOnScroll>
