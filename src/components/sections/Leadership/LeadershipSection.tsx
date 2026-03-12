@@ -36,7 +36,7 @@ const leaders = [
 
 const LeadershipSection = (): ReactElement => {
   return (
-    <section className="w-full bg-background flex items-center justify-center py-12 mt-12" aria-labelledby="leadership-heading">
+    <section id="leadership" className="w-full bg-background flex items-center justify-center py-12 mt-12" aria-labelledby="leadership-heading">
       <div className="w-[90%] max-w-7xl mx-auto">
         <header className="mb-8 text-center">
           <FadeInOnScroll>
