@@ -132,7 +132,7 @@ const TestimonialsSection = (): ReactElement => {
   };
 
   return (
-    <section className="w-full bg-background flex flex-col items-center justify-center py-12" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="w-full bg-background flex flex-col items-center justify-center py-12" aria-labelledby="testimonials-heading">
       <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
         <FadeInOnScroll>
           <h1 id="testimonials-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
