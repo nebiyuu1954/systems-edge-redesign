@@ -2,6 +2,9 @@ import type { ReactElement } from 'react';
 import { Header } from './components/layout/Header';
 import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection } from './components/sections';
 import LeadershipSection from './components/sections/Leadership/LeadershipSection';
+import GlobalLocationsSection from './components/sections/Global-Locations/GlobalLocationsSection';
+import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
+import Footer from './components/layout/Footer/Footer';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -13,9 +16,12 @@ function App(): ReactElement {
       <Header
         navItems={[
           { id: 'services', label: 'Services', href: '#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '#erp-solutions' },
-          { id: 'industries', label: 'Industries', href: '#industries' },
-          { id: 'about', label: 'About Us', href: '#about' },
+          { id: 'erp', label: 'ERP Solutions', href: '#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '#leadership' },
+          { id: 'locations', label: 'Locations', href: '#locations' },
+          { id: 'about', label: 'About Us', href: '#why-us-heading' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="#contact"
@@ -206,6 +212,9 @@ function App(): ReactElement {
       />
       <TestimonialsSection />
       <LeadershipSection />
+      <FinalCTASection />
+      <GlobalLocationsSection />
+      <Footer />
     </main>
   );
 }
