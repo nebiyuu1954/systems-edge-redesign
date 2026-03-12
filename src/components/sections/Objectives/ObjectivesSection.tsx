@@ -47,6 +47,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
           return (
             <section
               key={block.id}
+              id={block.id}
               className="relative isolate h-[560px] w-full overflow-hidden bg-black md:h-[640px] lg:sticky lg:top-0 lg:h-screen lg:min-h-[600px]"
               style={{ zIndex: index + 1 }}
               data-purpose={block.dataPurpose}
