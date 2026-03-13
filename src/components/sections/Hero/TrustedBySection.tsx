@@ -143,7 +143,7 @@ const TrustedBySection = ({
     <section className="w-full px-4 py-14 sm:px-6 sm:py-16 lg:px-12 lg:py-24" aria-labelledby="trusted-by-heading">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+          <div className="hidden sm:block lg:col-span-7">
             <h3 id="trusted-by-heading" className="mb-6 text-lg font-medium tracking-tight text-primary dark:text-white sm:text-xl md:text-2xl">
               {heading}
             </h3>
