@@ -39,6 +39,20 @@
 		margin: 0;
 	}
 
+	/* Dark mode overrides when the `dark` class is present on the root */
+	.dark body {
+		@apply bg-slate-900 text-white;
+	}
+
+	.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+		@apply text-white;
+	}
+
+	/* Make the light `bg-background` utility use a darker color in dark mode */
+	.dark .bg-background {
+		@apply bg-slate-900;
+	}
+
 	/* Body copy defaults without overriding interactive/text utility classes */
 	p,
 	li {
