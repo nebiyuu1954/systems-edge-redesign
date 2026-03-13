@@ -11,11 +11,11 @@ const GlobalLocationsSection = (): ReactElement => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16" data-purpose="section-header">
           <FadeInOnScroll>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6">Global Locations</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6 dark:text-white">Global Locations</h2>
           </FadeInOnScroll>
 
           <FadeInOnScroll delayMs={120}>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed dark:text-slate-400">
               Connecting industries across continents with a robust mesh of high-performance data centers.
             </p>
           </FadeInOnScroll>
@@ -63,8 +63,8 @@ const GlobalLocationsSection = (): ReactElement => {
             </div>
 
             <div className="p-8">
-              <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2">United Arab Emirates</span>
-              <h3 className="text-2xl font-bold text-primary mb-2">Dubai</h3>
+              <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2 dark:text-white">United Arab Emirates</span>
+              <h3 className="text-2xl font-bold text-primary mb-2 dark:text-white">Dubai</h3>
               <p className="text-gray-500 text-sm">Regional Business &amp; Connectivity Hub</p>
             </div>
           </article>
@@ -110,8 +110,8 @@ const GlobalLocationsSection = (): ReactElement => {
             </div>
 
             <div className="p-10">
-              <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2">Ethiopia</span>
-              <h3 className="text-3xl font-bold text-primary mb-2">Addis Ababa</h3>
+              <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2 dark:text-white">Ethiopia</span>
+              <h3 className="text-3xl font-bold text-primary mb-2 dark:text-white">Addis Ababa</h3>
               <p className="text-gray-500 text-base">East Africa Regional Hub</p>
             </div>
           </article>
@@ -157,8 +157,8 @@ const GlobalLocationsSection = (): ReactElement => {
             </div>
 
             <div className="p-8">
-              <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2">United States of America</span>
-              <h3 className="text-2xl font-bold text-primary mb-2">Arlington, VA</h3>
+              <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2 dark:text-white">United States of America</span>
+              <h3 className="text-2xl font-bold text-primary mb-2 dark:text-white">Arlington, VA</h3>
               <p className="text-gray-500 text-sm">Government &amp; Federal Technology Corridor</p>
             </div>
           </article>
