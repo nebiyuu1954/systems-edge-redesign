@@ -40,13 +40,13 @@ const LeadershipSection = (): ReactElement => {
       <div className="w-[90%] max-w-7xl mx-auto">
         <header className="mb-8 text-center">
           <FadeInOnScroll>
-            <h2 id="leadership-heading" className="text-deep-blue text-2xl md:text-3xl font-bold uppercase tracking-widest">
+            <h2 id="leadership-heading" className="text-deep-blue text-2xl md:text-3xl font-bold uppercase tracking-widest dark:text-white">
               Our Leadership
             </h2>
           </FadeInOnScroll>
 
           <FadeInOnScroll delayMs={120}>
-            <p className="mt-4 mb-8 max-w-[800px] mx-auto text-center text-lg leading-relaxed text-slate-600">
+            <p className="mt-4 mb-8 max-w-[800px] mx-auto text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
               Our leadership team combines deep domain expertise with global delivery experience to help organizations transform with confidence.
             </p>
           </FadeInOnScroll>
