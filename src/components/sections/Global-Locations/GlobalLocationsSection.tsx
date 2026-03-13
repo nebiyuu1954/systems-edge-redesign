@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import type { ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
 
 import dubaiImg from '../../../assets/city images/dubai.jpg';
@@ -24,13 +23,13 @@ const GlobalLocationsSection = (): ReactElement => {
     const grid = document.querySelector('[data-purpose="locations-grid"]');
     if (!grid) return;
 
-    const cards = Array.from(grid.querySelectorAll('article'));
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('article'));
     if (!cards.length) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const idx = cards.indexOf(entry.target as Element);
+          const idx = cards.indexOf(entry.target as HTMLElement);
           if (idx === -1) return;
           // Only expand when the card is fully visible (or very close to it)
           const ratio = entry.intersectionRatio ?? 0;

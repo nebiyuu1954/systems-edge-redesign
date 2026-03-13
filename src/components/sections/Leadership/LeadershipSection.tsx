@@ -111,7 +111,7 @@ const LeadershipSection = (): ReactElement => {
               <article
                 key={l.id}
                 data-id={l.id}
-                ref={(el) => (cardRefs.current[idx] = el)}
+                      ref={(el) => { cardRefs.current[idx] = el; }}
                 onClick={() => toggleExpand(l.id)}
                 className="group relative w-[360px] md:w-[380px] bg-white leadership-card rounded-lg shadow-md overflow-hidden h-[600px]"
               >
