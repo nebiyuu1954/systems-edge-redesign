@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
 
@@ -6,6 +7,71 @@ import addisImg from '../../../assets/city images/Addis abeba.jpeg';
 import arlingtonImg from '../../../assets/city images/Arlington, VA.jpg';
 
 const GlobalLocationsSection = (): ReactElement => {
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+
+  const toggleExpand = (idx: number) => {
+    if (typeof window === 'undefined') return;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (!isMobile) return;
+    setExpandedId((prev) => (prev === idx ? null : idx));
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(max-width: 767px)');
+    if (!mq.matches) return; // only active on small screens
+
+    const grid = document.querySelector('[data-purpose="locations-grid"]');
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('article'));
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = cards.indexOf(entry.target as Element);
+          if (idx === -1) return;
+          // Only expand when the card is fully visible (or very close to it)
+          const ratio = entry.intersectionRatio ?? 0;
+          if (entry.isIntersecting && ratio >= 0.99) {
+            setExpandedId(idx);
+          }
+        });
+      },
+      { threshold: 1.0 }
+    );
+
+    cards.forEach((c) => observer.observe(c));
+
+    // Collapse overlays while the user is actively scrolling on mobile.
+    let scrollTimeout: number | null = null;
+    const onScroll = () => {
+      // collapse immediately while scrolling
+      setExpandedId(null);
+
+      if (scrollTimeout) window.clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        // scrolling stopped; pick a fully-visible card (if any)
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        let found: number | null = null;
+        cards.forEach((c, idx) => {
+          const rect = (c as Element).getBoundingClientRect();
+          if (rect.top >= 0 && rect.bottom <= vh) found = idx;
+        });
+        if (found !== null) setExpandedId(found);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      if (scrollTimeout) window.clearTimeout(scrollTimeout);
+    };
+  }, []);
+
   return (
     <section id="locations" className="py-24 px-4 sm:px-6 lg:px-8 bg-background text-primary">
       <div className="max-w-7xl mx-auto">
@@ -23,11 +89,17 @@ const GlobalLocationsSection = (): ReactElement => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end" data-purpose="locations-grid">
           {/* Dubai */}
-          <article className="group bg-white rounded-2xl overflow-hidden shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+          <article
+            onClick={() => toggleExpand(0)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleExpand(0); } }}
+            tabIndex={0}
+            aria-expanded={expandedId === 0}
+            className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl cursor-pointer md:cursor-auto"
+          >
             <div className="h-64 overflow-hidden relative">
               <img alt="Dubai skyline" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src={dubaiImg} />
 
-              <div className="absolute inset-0 flex items-start justify-start p-6 text-left text-white opacity-0 bg-black/0 transition-all duration-300 group-hover:bg-black/60 group-hover:opacity-100">
+              <div className={`absolute inset-0 flex items-start justify-start p-6 text-left text-white transition-all duration-300 ${expandedId === 0 ? 'bg-black/60 opacity-100' : 'bg-black/0 opacity-0'} group-hover:bg-black/60 group-hover:opacity-100`}>
                 <div className="max-w-[420px] space-y-3">
                   <div className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-white flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -65,16 +137,22 @@ const GlobalLocationsSection = (): ReactElement => {
             <div className="p-8">
               <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2 dark:text-white">United Arab Emirates</span>
               <h3 className="text-2xl font-bold text-primary mb-2 dark:text-white">Dubai</h3>
-              <p className="text-gray-500 text-sm">Regional Business &amp; Connectivity Hub</p>
+              <p className="text-gray-500 text-sm dark:text-slate-400">Regional Business &amp; Connectivity Hub</p>
             </div>
           </article>
 
           {/* Addis Ababa (Featured/Center) */}
-          <article className="group bg-white rounded-2xl overflow-hidden shadow-2xl transform md:scale-105 z-10 transition-transform hover:-translate-y-3">
+          <article
+            onClick={() => toggleExpand(1)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleExpand(1); } }}
+            tabIndex={0}
+            aria-expanded={expandedId === 1}
+            className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-2xl transform md:scale-105 z-10 transition-transform hover:-translate-y-3 cursor-pointer md:cursor-auto"
+          >
             <div className="h-72 overflow-hidden relative">
               <img alt="Addis Ababa skyline" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src={addisImg} />
 
-              <div className="absolute inset-0 flex items-start justify-start p-6 text-left text-white opacity-0 bg-black/0 transition-all duration-300 group-hover:bg-black/60 group-hover:opacity-100">
+              <div className={`absolute inset-0 flex items-start justify-start p-6 text-left text-white transition-all duration-300 ${expandedId === 1 ? 'bg-black/60 opacity-100' : 'bg-black/0 opacity-0'} group-hover:bg-black/60 group-hover:opacity-100`}>
                 <div className="max-w-[480px] space-y-3">
                   <div className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-white flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -112,16 +190,22 @@ const GlobalLocationsSection = (): ReactElement => {
             <div className="p-10">
               <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2 dark:text-white">Ethiopia</span>
               <h3 className="text-3xl font-bold text-primary mb-2 dark:text-white">Addis Ababa</h3>
-              <p className="text-gray-500 text-base">East Africa Regional Hub</p>
+              <p className="text-gray-500 text-base dark:text-slate-400">East Africa Regional Hub</p>
             </div>
           </article>
 
           {/* Arlington, VA */}
-          <article className="group bg-white rounded-2xl overflow-hidden shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+          <article
+            onClick={() => toggleExpand(2)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleExpand(2); } }}
+            tabIndex={0}
+            aria-expanded={expandedId === 2}
+            className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl cursor-pointer md:cursor-auto"
+          >
             <div className="h-64 overflow-hidden relative">
               <img alt="Arlington skyline" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src={arlingtonImg} />
 
-              <div className="absolute inset-0 flex items-start justify-start p-6 text-left text-white opacity-0 bg-black/0 transition-all duration-300 group-hover:bg-black/60 group-hover:opacity-100">
+              <div className={`absolute inset-0 flex items-start justify-start p-6 text-left text-white transition-all duration-300 ${expandedId === 2 ? 'bg-black/60 opacity-100' : 'bg-black/0 opacity-0'} group-hover:bg-black/60 group-hover:opacity-100`}>
                 <div className="max-w-[420px] space-y-3">
                   <div className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-white flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -159,7 +243,7 @@ const GlobalLocationsSection = (): ReactElement => {
             <div className="p-8">
               <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2 dark:text-white">United States of America</span>
               <h3 className="text-2xl font-bold text-primary mb-2 dark:text-white">Arlington, VA</h3>
-              <p className="text-gray-500 text-sm">Government &amp; Federal Technology Corridor</p>
+              <p className="text-gray-500 text-sm dark:text-slate-400">Government &amp; Federal Technology Corridor</p>
             </div>
           </article>
         </div>
