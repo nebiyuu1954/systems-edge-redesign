@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { useEffect, useRef, useState, type ReactElement } from 'react';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
 
 const leaders = [
@@ -35,6 +35,55 @@ const leaders = [
 ];
 
 const LeadershipSection = (): ReactElement => {
+  // Heights (tweak these values to control mobile rendering)
+  const COLLAPSED_HEIGHT = '120px'; // collapsed overlay height
+  const EXPANDED_HEIGHT = '35%'; // expanded overlay height (can be px or %)
+  const EXPANDED_TEXT_MAXHEIGHT = '200px'; // max height for hidden description when expanded
+  const cardRefs = useRef<Array<HTMLElement | null>>([]);
+  const [expandedById, setExpandedById] = useState<Record<string, boolean>>({});
+
+  const isMobile = (): boolean => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute('data-id');
+          if (!id) return;
+          // only auto-expand on small screens
+          if (isMobile()) {
+            setExpandedById((prev) => ({ ...prev, [id]: entry.isIntersecting }));
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    // observe current refs
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    const onResize = () => {
+      // collapse all when switching to desktop
+      if (!isMobile()) setExpandedById({});
+    };
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  const toggleExpand = (id: string) => {
+    if (!isMobile()) return; // keep desktop hover behavior
+    setExpandedById((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
   return (
     <section id="leadership" className="w-full bg-background flex items-center justify-center py-12 mt-12" aria-labelledby="leadership-heading">
       <div className="w-[90%] max-w-7xl mx-auto">
@@ -53,31 +102,46 @@ const LeadershipSection = (): ReactElement => {
         </header>
 
         <div className="flex flex-wrap justify-center gap-6">
-          {leaders.map((l) => (
-            <article
-              key={l.id}
-              className="group relative w-[360px] md:w-[380px] bg-white leadership-card rounded-lg shadow-md overflow-hidden h-[600px]"
-            >
-              <div className="absolute inset-0 h-full w-full bg-gray-100 portrait-container">
-                <img alt={l.imageAlt} src={l.imageSrc} className="w-full h-full object-cover" />
-              </div>
-
-              {/* Info overlay: absolute, expands on hover to 50% (h-1/2) without pushing image */}
-              <div className="absolute left-0 right-0 bottom-0 h-[120px] bg-primary text-white flex flex-col items-center px-4 transition-all duration-300 ease-out overflow-hidden group-hover:h-1/2 group-focus-within:h-1/2">
-                <div className="w-full flex flex-col items-center justify-center pt-6 transition-all duration-300">
-                  <span className="text-[20px] md:text-[22px] font-bold leading-tight text-center transition-all duration-200 group-hover:text-[22px] md:group-hover:text-[24px]">
-                    {l.name}
-                  </span>
-                  <span className="text-[13px] md:text-[14px] opacity-90 text-center mt-1 transition-all duration-200 group-hover:text-[14px] md:group-hover:text-[15px]">
-                    {l.position}
-                  </span>
-                  <p className="mt-3 text-sm md:text-base text-white/95 max-w-[88%] text-center opacity-0 max-h-0 overflow-hidden transition-all duration-300 group-hover:opacity-100 group-hover:max-h-[200px] group-hover:mt-3 group-hover:text-base md:group-hover:text-lg">
-                    {l.description}
-                  </p>
+          {leaders.map((l, idx) => {
+            const expanded = Boolean(expandedById[l.id]);
+            return (
+              <article
+                key={l.id}
+                data-id={l.id}
+                ref={(el) => (cardRefs.current[idx] = el)}
+                onClick={() => toggleExpand(l.id)}
+                className="group relative w-[360px] md:w-[380px] bg-white leadership-card rounded-lg shadow-md overflow-hidden h-[600px]"
+              >
+                <div className="absolute inset-0 h-full w-full bg-gray-100 portrait-container">
+                  <img alt={l.imageAlt} src={l.imageSrc} className="w-full h-full object-cover" />
                 </div>
-              </div>
-            </article>
-          ))}
+
+                {/* Info overlay: absolute, expands on hover to 50% (h-1/2) without pushing image */}
+                <div
+                  className={`absolute left-0 right-0 bottom-0 transition-all duration-300 ease-out overflow-hidden flex flex-col items-center px-4 bg-primary text-white group-hover:h-1/2 group-focus-within:h-1/2`}
+                  style={{ height: expanded ? EXPANDED_HEIGHT : COLLAPSED_HEIGHT }}
+                >
+                  <div className="w-full flex flex-col items-center justify-center pt-6 transition-all duration-300">
+                    <span className="text-[20px] md:text-[22px] font-bold leading-tight text-center transition-all duration-200 group-hover:text-[22px] md:group-hover:text-[24px]">
+                      {l.name}
+                    </span>
+                    <span className="text-[13px] md:text-[14px] opacity-90 text-center mt-1 transition-all duration-200 group-hover:text-[14px] md:group-hover:text-[15px]">
+                      {l.position}
+                    </span>
+                    <p
+                      className={`mt-3 text-sm md:text-base text-white/95 max-w-[88%] text-center transition-all duration-300 overflow-hidden group-hover:opacity-100 group-hover:mt-3 group-hover:text-base md:group-hover:text-lg`}
+                      style={{
+                        opacity: expanded ? 1 : undefined,
+                        maxHeight: expanded ? EXPANDED_TEXT_MAXHEIGHT : 0,
+                      }}
+                    >
+                      {l.description}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
