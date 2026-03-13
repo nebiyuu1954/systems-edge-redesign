@@ -1,4 +1,4 @@
-import { useState, type ReactElement } from 'react';
+import { useState, useEffect, type ReactElement } from 'react';
 import systemEdgeLogo from '../../../assets/logos/system edge logo.png';
 
 export interface HeaderNavItem {
@@ -16,6 +16,26 @@ export interface HeaderProps {
 
 const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderProps): ReactElement => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    try {
+      if (typeof window === 'undefined') return false;
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      if (isDark) document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch {
+      /* ignore */
+    }
+  }, [isDark]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-solid border-slate-200 bg-white/90 px-4 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90 sm:px-6 lg:px-12">
@@ -40,6 +60,26 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
               </a>
             ))}
           </nav>
+
+          {/* Theme toggle */}
+          <button
+            type="button"
+            onClick={() => setIsDark((v) => !v)}
+            aria-pressed={isDark}
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="ml-2 mr-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary shadow-sm transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+          >
+            {isDark ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36-6.36l-1.42 1.42M7.05 16.95l-1.42 1.42m12.02 0l-1.42-1.42M7.05 7.05L5.63 5.63" />
+                <circle cx="12" cy="12" r="3" strokeWidth="1.5" />
+              </svg>
+            )}
+          </button>
 
           <a
             href={ctaHref}
@@ -78,6 +118,35 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
               </a>
             ))}
           </nav>
+
+          <div className="mt-4 flex items-center gap-3 px-2">
+            <button
+              type="button"
+              onClick={() => setIsDark((v) => !v)}
+              aria-pressed={isDark}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary shadow-sm transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+            >
+              {isDark ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36-6.36l-1.42 1.42M7.05 16.95l-1.42 1.42m12.02 0l-1.42-1.42M7.05 7.05L5.63 5.63" />
+                  <circle cx="12" cy="12" r="3" strokeWidth="1.5" />
+                </svg>
+              )}
+            </button>
+
+            <a
+              href={ctaHref}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-[#3d3e91]"
+            >
+              {ctaLabel}
+            </a>
+          </div>
 
           <a
             href={ctaHref}
