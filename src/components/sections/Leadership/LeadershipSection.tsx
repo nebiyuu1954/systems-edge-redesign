@@ -39,6 +39,9 @@ const LeadershipSection = (): ReactElement => {
   const COLLAPSED_HEIGHT = '120px'; // collapsed overlay height
   const EXPANDED_HEIGHT = '35%'; // expanded overlay height (can be px or %)
   const EXPANDED_TEXT_MAXHEIGHT = '200px'; // max height for hidden description when expanded
+    // Transition control (tweak to change reveal speed/easing)
+    const TRANSITION_MS = 800; // duration in milliseconds
+    const TRANSITION_EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
   const [expandedById, setExpandedById] = useState<Record<string, boolean>>({});
 
@@ -118,8 +121,11 @@ const LeadershipSection = (): ReactElement => {
 
                 {/* Info overlay: absolute, expands on hover to 50% (h-1/2) without pushing image */}
                 <div
-                  className={`absolute left-0 right-0 bottom-0 transition-all duration-300 ease-out overflow-hidden flex flex-col items-center px-4 bg-primary text-white group-hover:h-1/2 group-focus-within:h-1/2`}
-                  style={{ height: expanded ? EXPANDED_HEIGHT : COLLAPSED_HEIGHT }}
+                  className={`absolute left-0 right-0 bottom-0 ease-out overflow-hidden flex flex-col items-center px-4 bg-primary text-white group-hover:h-1/2 group-focus-within:h-1/2`}
+                  style={{
+                    height: expanded ? EXPANDED_HEIGHT : COLLAPSED_HEIGHT,
+                    transition: `height ${TRANSITION_MS}ms ${TRANSITION_EASING}, opacity ${TRANSITION_MS}ms ${TRANSITION_EASING}`,
+                  }}
                 >
                   <div className="w-full flex flex-col items-center justify-center pt-6 transition-all duration-300">
                     <span className="text-[20px] md:text-[22px] font-bold leading-tight text-center transition-all duration-200 group-hover:text-[22px] md:group-hover:text-[24px]">
@@ -131,8 +137,9 @@ const LeadershipSection = (): ReactElement => {
                     <p
                       className={`mt-3 text-sm md:text-base text-white/95 max-w-[88%] text-center transition-all duration-300 overflow-hidden group-hover:opacity-100 group-hover:mt-3 group-hover:text-base md:group-hover:text-lg`}
                       style={{
-                        opacity: expanded ? 1 : undefined,
+                          opacity: expanded ? 1 : 0,
                         maxHeight: expanded ? EXPANDED_TEXT_MAXHEIGHT : 0,
+                          transition: `max-height ${TRANSITION_MS}ms ${TRANSITION_EASING}, opacity ${TRANSITION_MS}ms ${TRANSITION_EASING}`,
                       }}
                     >
                       {l.description}
