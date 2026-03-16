@@ -1,5 +1,6 @@
 export { HeroSection } from './Hero';
 export { TrustedBySection } from './Hero';
+export { default as NumbersSection } from './Numbers/NumbersSection';
 export { OurServicesSection } from './Services';
 export { ObjectivesSection } from './Objectives';
 export { default as TestimonialsSection } from './Testimonials/TestimonialsSection';
