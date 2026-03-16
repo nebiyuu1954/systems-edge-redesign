@@ -1,5 +1,7 @@
 import type { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
+import SectionHeading from '../../common/SectionHeading';
 
 export interface ServiceItem {
   id: string;
@@ -8,6 +10,7 @@ export interface ServiceItem {
   title: string;
   description: string;
   reversedOnDesktop?: boolean;
+  learnMoreHref?: string;
 }
 
 export interface OurServicesSectionProps {
@@ -20,17 +23,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
   return (
     <section id="services" className="w-full bg-background px-6 py-16 lg:px-12 lg:py-24" aria-labelledby="our-services-heading">
       <div className="mx-auto flex max-w-7xl flex-col items-center">
-        <FadeInOnScroll>
-          <h2 id="our-services-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
-            {heading}
-          </h2>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delayMs={120}>
-          <p className="mb-20 max-w-[800px] text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-            {description}
-          </p>
-        </FadeInOnScroll>
+        <SectionHeading id="our-services-heading" heading={heading} description={description} />
 
         <div className="flex w-full max-w-6xl flex-col gap-8">
           {services.map((service, index) => (
@@ -61,13 +54,33 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                       {`Get started`}
                     </button>
 
-                    <button
-                      type="button"
-                      className="inline-flex items-center rounded-md border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transform transition duration-150 ease-out hover:scale-105 hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:bg-slate-800 dark:text-white"
-                      aria-label={`Learn more about ${service.title}`}
-                    >
-                      Learn More
-                    </button>
+                    {service.learnMoreHref ? (
+                      service.learnMoreHref.startsWith('/') ? (
+                        <Link
+                          to={service.learnMoreHref}
+                          className="inline-flex items-center rounded-md border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transform transition duration-150 ease-out hover:scale-105 hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:bg-slate-800 dark:text-white"
+                          aria-label={`Learn more about ${service.title}`}
+                        >
+                          Learn More
+                        </Link>
+                      ) : (
+                        <a
+                          href={service.learnMoreHref}
+                          className="inline-flex items-center rounded-md border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transform transition duration-150 ease-out hover:scale-105 hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:bg-slate-800 dark:text-white"
+                          aria-label={`Learn more about ${service.title}`}
+                        >
+                          Learn More
+                        </a>
+                      )
+                    ) : (
+                      <button
+                        type="button"
+                        className="inline-flex items-center rounded-md border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transform transition duration-150 ease-out hover:scale-105 hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:bg-slate-800 dark:text-white"
+                        aria-label={`Learn more about ${service.title}`}
+                      >
+                        Learn More
+                      </button>
+                    )}
                   </div>
                 </FadeInOnScroll>
               </div>
