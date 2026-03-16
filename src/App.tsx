@@ -1,16 +1,21 @@
 import type { ReactElement } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './components/layout/Header';
-import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection } from './components/sections';
-import LeadershipSection from './components/sections/Leadership/LeadershipSection';
+import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection, NumbersSection } from './components/sections';
 import GlobalLocationsSection from './components/sections/Global-Locations/GlobalLocationsSection';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
 import Footer from './components/layout/Footer/Footer';
+import ERPSection from './components/sections/Services/ERP/ERPSection';
+import OutsourcingSection from './components/sections/Services/Outsourcing/OutsourcingSection';
+import SupportedSection from './components/sections/Services/Supported/SupportedSection';
+import SoftwareDevelopmentSection from './components/sections/Services/Software-Development/SoftwareDevelopmentSection';
+import ScrollToTop from './components/common/ScrollToTop';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
 import pssaLogo from './assets/logos/pssa.webp';
 
-function App(): ReactElement {
+function HomePage(): ReactElement {
   return (
     <main>
       <Header
@@ -150,6 +155,7 @@ function App(): ReactElement {
             title: 'ERP Implementation & Enterprise Systems',
             description:
               'End-to-end ERP implementation and enterprise system integration for global organizations. We ensure seamless data flow across your entire business architecture with industry-leading platforms.',
+            learnMoreHref: '/services/erp',
           },
           {
             id: 'service-outsourcing-staffing',
@@ -160,6 +166,7 @@ function App(): ReactElement {
             description:
               'Access top-tier technical talent and strategic outsourcing solutions. We bridge the talent gap by providing expert engineers and project managers tailored to your specific organizational goals.',
             reversedOnDesktop: true,
+            learnMoreHref: '/services/outsourcing',
           },
           {
             id: 'service-managed-devops',
@@ -169,6 +176,7 @@ function App(): ReactElement {
             title: 'Support, Managed Services and DevOps',
             description:
               'Continuous support and automated infrastructure management. Our DevOps specialists optimize your deployment pipelines and ensure 24/7 reliability for your mission-critical applications.',
+            learnMoreHref: '/services/supported',
           },
           {
             id: 'service-software-integration',
@@ -179,6 +187,7 @@ function App(): ReactElement {
             description:
               'Custom software solutions designed for scalability and performance. We build robust web and mobile applications that integrate perfectly with your existing legacy systems and modern APIs.',
             reversedOnDesktop: true,
+            learnMoreHref: '/services/software-development',
           },
           {
             id: 'service-ux-ui',
@@ -211,11 +220,119 @@ function App(): ReactElement {
         ]}
       />
       <TestimonialsSection />
-      <LeadershipSection />
+      <NumbersSection />
       <FinalCTASection />
       <GlobalLocationsSection />
       <Footer />
     </main>
+  );
+}
+
+function ERPPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <ERPSection />
+      <Footer />
+    </main>
+  );
+}
+
+function OutsourcingPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <OutsourcingSection />
+      <Footer />
+    </main>
+  );
+}
+
+function SupportedPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <SupportedSection />
+      <Footer />
+    </main>
+  );
+}
+
+function SoftwareDevPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <SoftwareDevelopmentSection />
+      <Footer />
+    </main>
+  );
+}
+
+function App(): ReactElement {
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/services/erp" element={<ERPPage />} />
+      <Route path="/services/outsourcing" element={<OutsourcingPage />} />
+      <Route path="/services/software-development" element={<SoftwareDevPage />} />
+      <Route path="/services/supported" element={<SupportedPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
 
