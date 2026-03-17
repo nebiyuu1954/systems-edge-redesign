@@ -226,42 +226,40 @@ const SoftwareDevelopmentSection = (): ReactElement => {
 
           <div className="tech-marquee">
             <div className="tech-track animate">
-              {[
-                { name: '.NET', Icon: DotNetLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Microsoft_.NET_logo.svg' },
-                { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
-                { name: 'Java', src: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
-                { name: 'React', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
-                { name: 'Angular', Icon: AngularLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg' },
-                { name: 'Flutter', src: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png' },
-                { name: 'AWS', src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
-                { name: 'Azure', Icon: AzureLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Microsoft_Azure_Logo.svg' },
-                { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-              ,].concat([
-                { name: '.NET', Icon: DotNetLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Microsoft_.NET_logo.svg' },
-                { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
-                { name: 'Java', src: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
-                { name: 'React', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
-                { name: 'Angular', Icon: AngularLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg' },
-                { name: 'Flutter', src: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png' },
-                { name: 'AWS', src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
-                { name: 'Azure', Icon: AzureLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Microsoft_Azure_Logo.svg' },
-                { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-              ]).map((tech, idx) => (
-                <div key={`${tech.name}-${idx}`} className="tech-item flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm transition border border-slate-100 group">
-                  <div className="w-20 h-20 flex items-center justify-center bg-slate-50 rounded-xl mb-2 overflow-hidden">
-                    {tech.Icon ? (
-                      tech.name === '.NET' ? (
-                        <tech.Icon className="w-24 h-16" />
-                      ) : (
-                        <tech.Icon className="w-12 h-12" />
-                      )
-                    ) : (
-                      <img src={tech.src} alt={`${tech.name} logo`} className="max-h-12 max-w-full object-contain" loading="lazy" />
-                    )}
-                  </div>
-                  <span className="font-semibold text-sm text-primary">{tech.name}</span>
-                </div>
-              ))}
+              {
+                (() => {
+                  const baseTechs: { name: string; src?: string; Icon?: (p: SVGProps<SVGSVGElement>) => ReactElement }[] = [
+                    { name: '.NET', Icon: DotNetLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Microsoft_.NET_logo.svg' },
+                    { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
+                    { name: 'Java', src: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
+                    { name: 'React', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
+                    { name: 'Angular', Icon: AngularLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg' },
+                    { name: 'Flutter', src: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png' },
+                    { name: 'AWS', src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+                    { name: 'Azure', Icon: AzureLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Microsoft_Azure_Logo.svg' },
+                    { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
+                  ];
+
+                  const techs = baseTechs.concat(baseTechs);
+
+                  return techs.map((tech, idx) => (
+                    <div key={`${tech.name}-${idx}`} className="tech-item flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm transition border border-slate-100 group">
+                      <div className="w-20 h-20 flex items-center justify-center bg-slate-50 rounded-xl mb-2 overflow-hidden">
+                        {tech.Icon ? (
+                          tech.name === '.NET' ? (
+                            <tech.Icon className="w-24 h-16" />
+                          ) : (
+                            <tech.Icon className="w-12 h-12" />
+                          )
+                        ) : (
+                          <img src={tech.src} alt={`${tech.name} logo`} className="max-h-12 max-w-full object-contain" loading="lazy" />
+                        )}
+                      </div>
+                      <span className="font-semibold text-sm text-primary">{tech.name}</span>
+                    </div>
+                  ));
+                })()
+              }
             </div>
           </div>
         </div>
