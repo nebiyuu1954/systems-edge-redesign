@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection, NumbersSection } from './components/sections';
 import GlobalLocationsSection from './components/sections/Global-Locations/GlobalLocationsSection';
+import GlobalLocationsSections2 from './components/sections/Global-Locations/GlobalLocationsSections2';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
 import Footer from './components/layout/Footer/Footer';
 import ERPSection from './components/sections/Services/ERP/ERPSection';
@@ -222,7 +223,8 @@ function HomePage(): ReactElement {
       <TestimonialsSection />
       <NumbersSection />
       <FinalCTASection />
-      <GlobalLocationsSection />
+      {/* <GlobalLocationsSection /> */}
+      <GlobalLocationsSections2 />
       <Footer />
     </main>
   );
