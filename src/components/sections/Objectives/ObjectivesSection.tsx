@@ -19,14 +19,23 @@ export interface ObjectivesSectionProps {
 }
 
 const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSectionProps): ReactElement => {
+  // Change this value to increase/decrease the gap between
+  // the first and second line of the title (line-height).
+  // Example: '1.0' = tight, '1.25' = more space.
+  const TITLE_LINE_HEIGHT = '1.35';
+
   const [expandedById, setExpandedById] = useState<Record<string, boolean>>({});
 
   const toggleExpanded = (blockId: string): void => {
-    setExpandedById((prev) => ({ ...prev, [blockId]: !prev[blockId] }));
+    setExpandedById((prev) => {
+      const isOpen = Boolean(prev[blockId]);
+      // If already open, close it. Otherwise open this one and close others.
+      return isOpen ? {} : { [blockId]: true };
+    });
   };
 
   return (
-    <section id={sectionId} className="w-full py-[72px] sm:py-[100px]" aria-label="Objectives section">
+    <section id={sectionId} className="w-full py-[72px] sm:py-[100px] dark:bg-backgroundDark" aria-label="Objectives section">
       <div className="relative w-full">
         <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
           <FadeInOnScroll>
@@ -48,7 +57,9 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
             <section
               key={block.id}
               id={block.id}
-              className="relative isolate h-[560px] w-full overflow-hidden bg-black md:h-[640px] lg:sticky lg:top-0 lg:h-screen lg:min-h-[600px]"
+              className={`relative isolate ${isExpanded ? 'h-auto' : 'h-[560px]'} w-full ${
+                isExpanded ? '' : 'overflow-hidden'
+              } bg-black md:h-[640px] lg:sticky lg:top-0 lg:h-screen lg:min-h-[600px] py-8 md:py-12 lg:py-0 mb-8 lg:mb-0`}
               style={{ zIndex: index + 1 }}
               data-purpose={block.dataPurpose}
               aria-labelledby={`${block.id}-heading`}
@@ -64,7 +75,11 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
               </div>
 
               <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-4 text-center text-white sm:px-6">
-                <h2 id={`${block.id}-heading`} className="mb-5 text-3xl font-bold leading-tight text-white sm:mb-6 sm:text-4xl lg:text-[48px]">
+                <h2
+                  id={`${block.id}-heading`}
+                  style={{ lineHeight: TITLE_LINE_HEIGHT }}
+                  className="mb-5 text-3xl font-bold text-white sm:mb-6 sm:text-4xl lg:text-[48px]"
+                >
                   {block.title}
                 </h2>
 
@@ -78,7 +93,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                     onClick={() => toggleExpanded(block.id)}
                     aria-expanded={isExpanded}
                     aria-controls={detailsId}
-                    className="mt-8 inline-flex items-center justify-center rounded-lg border border-white/50 bg-black/40 px-7 py-3 text-sm font-bold tracking-wide !text-white transition-all duration-300 hover:bg-black/60 hover:!text-white"
+                    className="mt-8 inline-flex items-center justify-center rounded-lg bg-secondary px-7 py-3 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-secondary dark:text-white"
                   >
                     {isExpanded ? 'Hide Details' : block.learnMoreLabel ?? 'Learn More'}
                   </button>
@@ -87,8 +102,9 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                 <div
                   id={detailsId}
                   className={`mt-6 w-full max-w-3xl overflow-hidden rounded-xl border border-white/25 bg-black/75 text-center !text-white transition-all duration-700 ${
-                    isExpanded ? 'max-h-72 translate-y-0 opacity-100' : 'max-h-0 translate-y-2 opacity-0'
+                    isExpanded ? 'max-h-[1000px] sm:max-h-72 translate-y-0 opacity-100' : 'max-h-0 translate-y-2 opacity-0'
                   }`}
+                  aria-hidden={!isExpanded}
                 >
                   <div className="px-6 py-5">
                     <p className="text-base leading-relaxed !text-white text-center">{block.details ?? block.description}</p>
