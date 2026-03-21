@@ -36,7 +36,7 @@ const ShieldIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
 const SupportedSection = (): ReactElement => {
   return (
     <main>
-      <section id="overview" className="bg-background dark:bg-slate-900 px-6 py-20 lg:px-12">
+      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
@@ -94,7 +94,7 @@ const SupportedSection = (): ReactElement => {
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_4PFq2_6HGZta1VEKTYtJXTkvXJ5prqWVKBy2N7-D7pt83q6bxJH-cfZInbSk1S-xOdA04eJ4U0ga-U0mAMOeKXfpLw5s2is4HBXfgoXDMsGQvmioYLn9gUwTws0LXH3L4k_Hsvhdcj76Czkp8bAFg3X-gXY75IjGXw6eOZdRSxGNHMcNcMndktlOritA0AIPAVWBOqnlo_LghNj7XoZBN0fIeOb5jryoeA-aO8Fk9pqxJ2nd5cpZgPwCAKoAhS9PBuXLq17IyV_f"
                 alt="Engineers collaborating on high-tech cloud infrastructure"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-white dark:border-slate-700 object-cover shadow-2xl"
+                className="relative h-[500px] w-full rounded-2xl border-4 border-slate-100 dark:border-slate-700 object-cover shadow-2xl"
                 loading="lazy"
               />
             </div>
@@ -102,7 +102,7 @@ const SupportedSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-16 bg-white/50 dark:bg-slate-900/60">
+      <section className="py-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <SectionHeading
             id="supported-capabilities"
@@ -165,7 +165,7 @@ const SupportedSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-20 px-6 overflow-hidden">
+      <section className="py-20 px-6 bg-background dark:bg-backgroundDark overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-primary">Methodology</h2>
@@ -238,7 +238,7 @@ const SupportedSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="p-6 md:p-12 lg:p-24">
+      <section className="p-6 md:p-12 lg:p-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Scale your infrastructure with expert management.</h2>
