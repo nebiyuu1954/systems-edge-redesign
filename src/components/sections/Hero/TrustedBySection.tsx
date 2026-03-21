@@ -140,7 +140,7 @@ const TrustedBySection = ({
   const translatePercent = -(trackIndex * translateStepPercent);
 
   return (
-    <section className="w-full px-4 py-14 sm:px-6 sm:py-16 lg:px-12 lg:py-24" aria-labelledby="trusted-by-heading">
+    <section className="w-full px-4 py-14 sm:px-6 sm:py-16 lg:px-12 lg:py-24 bg-backgroundOne dark:bg-backgroundDarkOne" aria-labelledby="trusted-by-heading">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="hidden sm:block lg:col-span-7">
@@ -174,7 +174,7 @@ const TrustedBySection = ({
                     >
                       <div
                         className={
-                          `transform transition-all duration-500 flex min-h-[120px] w-full items-center justify-center rounded-xl bg-white px-4 py-6 opacity-90 shadow-sm dark:bg-slate-800 sm:min-h-[132px] sm:px-6 sm:py-8 ` +
+                          `transform transition-all duration-500 flex min-h-[120px] w-full items-center justify-center rounded-xl bg-white px-4 py-6 opacity-90 shadow-sm dark:bg-backgroundDark sm:min-h-[132px] sm:px-6 sm:py-8 ` +
                           (isCentered
                             ? 'z-10 scale-105 border-2 border-secondary ring-4 ring-secondary/40 ring-offset-2 ring-offset-white dark:ring-offset-slate-900'
                             : 'scale-100 border border-slate-100 dark:border-slate-700')
@@ -200,7 +200,7 @@ const TrustedBySection = ({
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative ml-0 rounded-2xl border-l-4 border-secondary bg-white p-6 shadow-md dark:bg-slate-800 sm:p-8 md:ml-4 md:p-12">
+            <div className="relative ml-0 rounded-2xl border-l-4 border-secondary bg-white p-6 shadow-md dark:bg-backgroundDark sm:p-8 md:ml-4 md:p-12">
               <div className="absolute -left-[14px] top-1/2 hidden h-0 w-0 -translate-y-1/2 border-y-[12px] border-y-transparent border-r-[12px] border-r-secondary md:block" />
               <div className="absolute -left-[10px] top-1/2 z-10 hidden h-0 w-0 -translate-y-1/2 border-y-[10px] border-y-transparent border-r-[10px] border-r-white dark:border-r-slate-800 md:block" />
 
