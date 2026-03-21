@@ -51,7 +51,7 @@ const OutsourcingSection = (): ReactElement => {
   );
   return (
     <main>
-      <section id="outsourcing-overview" className="py-12 px-6 bg-background dark:bg-slate-900">
+      <section id="outsourcing-overview" className="py-12 px-6 bg-background dark:bg-backgroundDark">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
@@ -107,7 +107,7 @@ const OutsourcingSection = (): ReactElement => {
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbZxHRpd9SEGymsKlqZiOkEZOZ1egvDMMho3FhUjwNLaJLIcNatu9OR98rn1ZxbzQCyUHcc3QNUswbyATZlB12cBCKvWegpKMU3xa9LNZmHrFn__2REbAEnRrXtNVcwe6mzEPNvDxf3rOCdo_Fr-XLC88BIVIzyioOiaxfPCgCx-vc2B9chkEUfA2AG1xUtb5iKGbwdMqxdIIcUu3LtF3aIZtXnnZiKRI-AvbMV-74iq8th_Z7KOykqc6Ps-YbPcY_06gSZxJa3Yb5"
                 alt="A diverse, professional engineering team collaborating in a modern tech office environment"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-white dark:border-slate-700 object-cover shadow-2xl"
+                className="relative h-[500px] w-full rounded-2xl border-4 border-slate-100 dark:border-slate-700 object-cover shadow-2xl"
                 loading="lazy"
               />
             </div>
@@ -116,7 +116,7 @@ const OutsourcingSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="bg-white/50 dark:bg-slate-900/60 py-6">
+      <section className="bg-backgroundOne dark:bg-backgroundDarkOne py-24">
         <div className="mx-auto max-w-7xl px-6 text-center lg:px-12">
           <div className="text-center mb-8">
             <SectionHeading
@@ -131,7 +131,7 @@ const OutsourcingSection = (): ReactElement => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServicesDescriptionCard
-              title="Full-Stack Development"
+              title={"Full-Stack\nDevelopment"}
               description="End-to-end web and mobile application development using modern frameworks like React, Node.js, and Python."
               imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuDwc72JpDcpd-H1G1AO6YEO9oiExRHQpWCXpMph2g4I6FJzytAW7BNDhK7b4a_1lq20cP930Mh5h-lgMinVtj7bpOqYh6phzj2Fc46bS8iBZD5F4mfrjsfcSqTK_7amWr8twNi_myicBRNzWsJFQ6Q6gcNb9I9M9uT_rRFFFwuRgzcjfwYq_MRuRvqo12C10yGg_IH9BIUORWOXtsVRhJQXOQzl0OphFcReah3HNuItpZkR_dnEJnbvb2peLTdpbuSGNMQke3O1yTgk"
               delayMs={0}
@@ -180,7 +180,7 @@ const OutsourcingSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-20 px-6">
+      <section className="bg-background dark:bg-backgroundDark py-24 px-6">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-20">
             <SectionHeading
@@ -240,7 +240,7 @@ const OutsourcingSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="p-6 md:p-12 lg:p-24">
+      <section className="p-6 md:p-12 lg:p-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to scale your engineering capacity?</h2>
