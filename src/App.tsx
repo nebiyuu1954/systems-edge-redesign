@@ -2,8 +2,7 @@ import type { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection, NumbersSection } from './components/sections';
-import GlobalLocationsSection from './components/sections/Global-Locations/GlobalLocationsSection';
-import GlobalLocationsSections2 from './components/sections/Global-Locations/GlobalLocationsSections2';
+import GlobalLocationsSections from './components/sections/Global-Locations/GlobalLocationsSections';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
 import Footer from './components/layout/Footer/Footer';
 import ERPSection from './components/sections/Services/ERP/ERPSection';
@@ -22,10 +21,7 @@ function HomePage(): ReactElement {
       <Header
         navItems={[
           { id: 'services', label: 'Services', href: '#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '#services' },
           { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '#leadership' },
           { id: 'locations', label: 'Locations', href: '#locations' },
           { id: 'about', label: 'About Us', href: '#why-us-heading' },
         ]}
@@ -223,8 +219,7 @@ function HomePage(): ReactElement {
       <TestimonialsSection />
       <NumbersSection />
       <FinalCTASection />
-      {/* <GlobalLocationsSection /> */}
-      <GlobalLocationsSections2 />
+      <GlobalLocationsSections />
       <Footer />
     </main>
   );
