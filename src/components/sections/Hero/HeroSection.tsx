@@ -25,7 +25,7 @@ const HeroSection = ({
   actions,
 }: HeroSectionProps): ReactElement => {
   return (
-    <section className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-12" aria-labelledby="hero-heading">
+    <section className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-12 dark:bg-backgroundDark" aria-labelledby="hero-heading">
       <div className="relative flex min-h-[500px] items-center overflow-hidden rounded-2xl bg-[#282971] sm:min-h-[560px] xl:min-h-[620px]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#282971] via-[#282971]/90 to-transparent mix-blend-multiply" />
@@ -54,8 +54,8 @@ const HeroSection = ({
                 key={action.id}
                 href={action.href}
                 className={
-                  action.variant === 'primary'
-                    ? 'flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-bold text-[#282971] shadow-lg transition-colors hover:bg-slate-100 sm:h-12 sm:px-8 sm:text-base'
+                    action.variant === 'primary'
+                      ? 'flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-bold text-[#282971] shadow-lg ring-1 ring-white/10 transition-colors hover:bg-slate-100 sm:h-12 sm:px-8 sm:text-base'
                     : 'flex h-11 items-center justify-center rounded-lg border border-white/30 bg-white/10 px-6 text-sm font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20 sm:h-12 sm:px-8 sm:text-base'
                 }
               >
