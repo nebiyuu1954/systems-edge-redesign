@@ -67,7 +67,7 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
             onClick={() => setIsDark((v) => !v)}
             aria-pressed={isDark}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="ml-2 mr-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary shadow-sm transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+            className="ml-2 mr-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary shadow-sm transition-colors hover:bg-slate-200 dark:bg-backgroundDarkOne dark:text-white dark:hover:bg-slate-700"
           >
             {isDark ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -125,7 +125,7 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
               onClick={() => setIsDark((v) => !v)}
               aria-pressed={isDark}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary shadow-sm transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-primary shadow-sm transition-colors hover:bg-slate-200 dark:bg-backgroundDarkOne dark:text-white dark:hover:bg-slate-700"
             >
               {isDark ? (
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
