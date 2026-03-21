@@ -130,7 +130,7 @@ const valuePoints: ERPValuePoint[] = [
 const capabilities: ERPCapability[] = [
   {
     id: 'system-design',
-    title: 'System Design & Architecture',
+    title: 'System Design\n& Architecture',
     description:
       'Scaling infrastructure with precision blueprints that align technology with your specific business goals. We produce integration-ready architectures, module-level specifications, and API contracts to keep future development predictable and maintainable. Architecture reviews, capacity planning and CI/CD readiness are part of our standard deliverables.',
     bgIconLabel: 'architecture',
@@ -138,7 +138,7 @@ const capabilities: ERPCapability[] = [
   },
   {
     id: 'migration-integration',
-    title: 'Data Migration & Integration',
+    title: 'Data Migration\n& Integration',
     description:
       'Seamlessly transition legacy data and connect siloed systems into a unified source of truth. We design ETL pipelines, validation routines and reconciliations to ensure data fidelity during cutover, and build secure connectors to common ERP, CRM, and financial systems. Post-migration verification and monitoring are included to reduce risk.',
     bgIconLabel: 'sync_alt',
@@ -146,7 +146,7 @@ const capabilities: ERPCapability[] = [
   },
   {
     id: 'change-management',
-    title: 'Change Management & Training',
+    title: 'Change Management\n& Training',
     description:
       'Ensuring organizational adoption through tailored training programs and ongoing technical support. We craft role-based curricula, hands-on workshops, and documentation to accelerate user proficiency, plus metrics to measure adoption and targeted remediation where needed. Ongoing support and knowledge transfer are embedded in our delivery model.',
     bgIconLabel: 'groups',
@@ -154,7 +154,7 @@ const capabilities: ERPCapability[] = [
   },
   {
     id: 'security-compliance',
-    title: 'Security & Compliance',
+    title: 'Security\n& Compliance',
     description:
       'Hardening your enterprise infrastructure with robust protocols and ensuring alignment with industry regulatory standards. We perform security assessments, threat modelling, and implement controls such as encryption-at-rest/in-transit, RBAC/IAM, and audit logging. Our teams help map controls to standards like ISO, SOC2 or sector-specific regulations as required.',
     bgIconLabel: 'admin_panel_settings',
@@ -162,7 +162,7 @@ const capabilities: ERPCapability[] = [
   },
   {
     id: 'optimization',
-    title: 'Performance Optimization',
+    title: 'Performance\nOptimization',
     description:
       'Enhancing system speed and resource allocation through advanced analytics and continuous database fine-tuning. We profile bottlenecks, recommend indexing and caching strategies, and tune query plans and infrastructure to meet SLAs. Observability and automated alerts help keep performance stable as usage grows.',
     bgIconLabel: 'speed',
@@ -170,7 +170,7 @@ const capabilities: ERPCapability[] = [
   },
   {
     id: 'custom-development',
-    title: 'Custom Software Development',
+    title: 'Custom Software\nDevelopment',
     description:
       'Building bespoke modules and features that bridge the gap between standard ERP functionality and your unique processes. We deliver well-tested, API-first components, automated test suites, and CI/CD pipelines so customizations remain maintainable. Modular design keeps upgrades easier while preserving critical business logic.',
     bgIconLabel: 'terminal',
@@ -298,7 +298,7 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
   }, []);
   return (
     <>
-      <section id="overview" className="bg-background dark:bg-slate-900 px-6 py-20 lg:px-12">
+      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
@@ -339,7 +339,7 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
         </div>
       </section>
 
-      <section className="bg-white/50 dark:bg-slate-900/60 py-24">
+      <section className="bg-backgroundOne dark:bg-backgroundDarkOne py-24">
         <div className="mx-auto max-w-7xl px-6 text-center lg:px-12">
           <SectionHeading
             id="erp-services"
@@ -365,7 +365,7 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
         </div>
       </section>
 
-      <section id="methodology" className="bg-background dark:bg-slate-900 py-24">
+      <section id="methodology" className="bg-background dark:bg-backgroundDark py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-16 text-center">
             <SectionHeading
@@ -432,7 +432,7 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
         </div>
       </section>
 
-      <section className="p-6 md:p-12 lg:p-24">
+      <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to Scale Your Enterprise?</h2>
