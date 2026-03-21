@@ -132,7 +132,7 @@ const TestimonialsSection = (): ReactElement => {
   };
 
   return (
-    <section id="testimonials" className="w-full bg-background flex flex-col items-center justify-center py-12" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="w-full bg-background dark:bg-backgroundDark flex flex-col items-center justify-center py-12" aria-labelledby="testimonials-heading">
       <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
         <FadeInOnScroll>
           <h1 id="testimonials-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
@@ -157,7 +157,7 @@ const TestimonialsSection = (): ReactElement => {
               onClick={prev}
               aria-label="Previous testimonial"
               className={
-                `h-12 w-12 rounded-full bg-white text-primary border border-primary flex items-center justify-center shadow-sm transition-colors transform duration-150 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/40 ${animating ? 'opacity-50 cursor-not-allowed' : ''}`
+                `h-12 w-12 rounded-full bg-white dark:bg-backgroundDark text-primary dark:text-white border border-primary flex items-center justify-center shadow-sm transition-colors transform duration-150 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/40 ${animating ? 'opacity-50 cursor-not-allowed' : ''}`
               }
               disabled={animating}
             >
@@ -168,7 +168,7 @@ const TestimonialsSection = (): ReactElement => {
               onClick={next}
               aria-label="Next testimonial"
               className={
-                `h-12 w-12 rounded-full bg-white text-primary border border-primary flex items-center justify-center shadow-sm transition-colors transform duration-150 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/40 ${animating ? 'opacity-50 cursor-not-allowed' : ''}`
+                `h-12 w-12 rounded-full bg-white dark:bg-backgroundDark text-primary dark:text-white border border-primary flex items-center justify-center shadow-sm transition-colors transform duration-150 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/40 ${animating ? 'opacity-50 cursor-not-allowed' : ''}`
               }
               disabled={animating}
             >
