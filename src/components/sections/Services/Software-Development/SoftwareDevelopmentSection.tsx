@@ -72,38 +72,38 @@ const AngularLogo = (props: SVGProps<SVGSVGElement>): ReactElement => (
 const capabilities = [
   {
     id: 'custom-web-apps',
-    title: 'Custom Web Apps',
+    title: 'Custom\nWeb Apps',
     description:
       'Dynamic, responsive, and secure web applications built with modern frameworks and scalable architecture.',
     Icon: GlobeIcon,
   },
   {
     id: 'mobile-solutions',
-    title: 'Mobile Solutions',
+    title: 'Mobile\nSolutions',
     description: 'Native and cross-platform mobile apps that provide a seamless user experience across iOS and Android devices.',
     Icon: MobileIcon,
   },
   {
     id: 'api-development',
-    title: 'API Development',
+    title: 'API\nDevelopment',
     description: 'Robust and scalable APIs that allow your systems to communicate efficiently and securely with the world.',
     Icon: ApiIcon,
   },
   {
     id: 'legacy-modernization',
-    title: 'Legacy Modernization',
+    title: 'Legacy\nModernization',
     description: 'Transforming outdated systems into modern, high-performance assets without disrupting your operations.',
     Icon: SyncIcon,
   },
   {
     id: 'cloud-native',
-    title: 'Cloud-Native Apps',
+    title: 'Cloud-Native\nApps',
     description: 'Scalable applications built specifically for the cloud, leveraging microservices and containerization.',
     Icon: CloudIcon,
   },
   {
     id: 'enterprise-integration',
-    title: 'Enterprise Integration',
+    title: 'Enterprise\nIntegration',
     description: 'Connecting CRM, ERP, and BI tools into a unified ecosystem to streamline your entire business workflow.',
     Icon: IntegrationIcon,
   },
@@ -130,7 +130,7 @@ const valuePoints = [
 const SoftwareDevelopmentSection = (): ReactElement => {
   return (
     <>
-      <section id="overview" className="bg-background dark:bg-slate-900 px-6 py-20 lg:px-12">
+      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
@@ -165,7 +165,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
               <img
                 src={images[0]}
                 alt="Developers collaborating"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-white dark:border-slate-700 object-cover shadow-2xl"
+                className="relative h-[500px] w-full rounded-2xl border-4 border-slate-100 dark:border-slate-700 object-cover shadow-2xl"
                 loading="lazy"
               />
             </div>
@@ -173,7 +173,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
             <SectionHeading
@@ -201,7 +201,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background dark:bg-backgroundDark">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
             <SectionHeading
@@ -243,7 +243,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
                   const techs = baseTechs.concat(baseTechs);
 
                   return techs.map((tech, idx) => (
-                    <div key={`${tech.name}-${idx}`} className="tech-item flex flex-col items-center p-3 bg-white rounded-2xl shadow-sm transition border border-slate-100 group">
+                    <div key={`${tech.name}-${idx}`} className="tech-item flex flex-col items-center p-3 bg-a rounded-2xl shadow-sm transition border border-slate-100 group">
                       <div className="w-20 h-20 flex items-center justify-center bg-slate-50 rounded-xl mb-2 overflow-hidden">
                         {tech.Icon ? (
                           tech.name === '.NET' ? (
@@ -265,11 +265,11 @@ const SoftwareDevelopmentSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-24 mesh-bg">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 mesh-bg dark:bg-backgroundDarkOne bg-backgroundOne">
+        <div className="max-w-7xl mx-auto px-6 ">
           <div className="text-center mb-8">
             <SectionHeading
-              heading="Our Methodical Approach"
+              heading="Methodical Approach"
               description="A structured engineering process that ensures precision, quality, and timely delivery for every project."
               headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
               descriptionClassName="max-w-2xl mx-auto mb-4"
@@ -277,7 +277,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
           </div>
 
           <div className="relative flex flex-col md:flex-row justify-between gap-8 md:gap-4">
-            <div className="hidden md:block absolute top-[2.25rem] left-0 w-full h-0.5 bg-slate-200 -z-10" />
+            <div className="hidden md:block absolute top-[2.25rem] left-0 w-full h-0.5 bg-background dark:bg-slate-700/30 z-0" />
 
             {[
               { id: 'discovery', title: 'Discovery & Architecture', desc: 'Analyzing requirements and mapping the blueprint for a scalable system.', Icon: TerminalIcon },
@@ -287,7 +287,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
             ].map((step, idx) => (
               <div key={step.id} className="flex-1 flex flex-col items-center text-center px-4">
                 <FadeInOnScroll delayMs={idx * 80} className="w-full">
-                  <div className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center mb-6 shadow-xl shadow-secondary/20 ring-4 ring-white">
+                  <div className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center mb-6 shadow-xl shadow-secondary/20 ring-4 ring-white z-10">
                     <step.Icon className="w-6 h-6 text-white" />
                   </div>
                   <h4 className="text-lg font-bold text-primary mb-2">{step.title}</h4>
@@ -299,14 +299,16 @@ const SoftwareDevelopmentSection = (): ReactElement => {
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-primary rounded-2xl overflow-hidden p-8 text-center shadow-xl">
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4">Ready to build something extraordinary?</h2>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">Partner with Systems Edge Solutions to transform your complex requirements into elegant, powerful software.</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="bg-secondary text-white px-8 py-3 rounded-lg font-bold">Discuss Your Project</button>
-              <button className="bg-white/10 text-white border border-white/20 px-8 py-3 rounded-lg font-bold">View Tech Stack</button>
+      <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDark">
+        <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
+          <div className="px-8 py-16 md:py-20 text-center relative z-10">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to Scale Your Enterprise?</h2>
+            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let's build your future today.</p>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="/#contact">
+                Schedule a Consultation
+              </a>
             </div>
           </div>
         </div>
