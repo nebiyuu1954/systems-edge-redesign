@@ -7,4 +7,6 @@ export { default as TestimonialsSection } from './Testimonials/TestimonialsSecti
 export type { HeroAction, HeroSectionProps, TrustedBySectionProps, TrustedPartnerLogo } from './Hero';
 export type { OurServicesSectionProps, ServiceItem } from './Services';
 export type { ObjectiveBlock, ObjectivesSectionProps } from './Objectives';
+export { TestingSection } from './Services/Testing';
+export type { TestingSectionProps } from './Services/Testing';
  
