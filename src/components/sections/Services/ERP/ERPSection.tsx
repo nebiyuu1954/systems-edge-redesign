@@ -3,6 +3,7 @@ import type { ReactElement, SVGProps } from 'react';
 import SectionHeading from '../../../common/SectionHeading';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
+import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 export interface ERPValuePoint {
   id: string;
@@ -231,6 +232,8 @@ const methodologyPhases: ERPMethodologyPhase[] = [
 ];
 
 const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactElement => {
+  const overview = erpOverviewLayoutConfig;
+
   const [methodVisible, setMethodVisible] = useState<boolean[]>(() => methodologyPhases.map(() => false));
   const containerRef = useRef<HTMLDivElement | null>(null);
   const prevTopRef = useRef<number | null>(null);
@@ -298,40 +301,43 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
   }, []);
   return (
     <>
-      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <span className="mb-6 inline-block rounded-full border border-secondary px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-secondary dark:text-secondary">
+      <section id="overview" className={overview.section}>
+        <div className={overview.container}>
+          <div className={overview.grid}>
+            <div className={overview.textColumn}>
+              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
                 {badgeText}
               </span>
-              <h1 className="mb-8 text-4xl font-extrabold leading-tight text-primary lg:text-6xl">
+
+              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
                 Next-Generation <br />
-                <span className="text-secondary">ERP Implementation</span> &amp; Enterprise Systems
+                <span className={overview.titleAccent}>ERP &amp; Enterprise</span> Systems
               </h1>
-              <p className="mb-8 text-lg leading-relaxed text-slate-600 dark:text-slate-300 lg:text-xl">
+
+              <p className={overview.description} data-slot={overviewSlotIds.description}>
                 Revolutionize your organizational workflow with end-to-end ERP solutions. Systems Edge Solutions bridges the gap between complex data silos and seamless business operations, ensuring your enterprise scales with precision and clarity.
               </p>
-              <ul className="mb-10 space-y-4">
+
+              <ul className={overview.list} data-slot={overviewSlotIds.list}>
                 {valuePoints.map((point, idx) => (
                   <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
-                    <li className="flex items-start">
-                      <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
+                    <li className={overview.listItem}>
+                      <span className={overview.listBullet}>
                         <CheckIcon className="h-4 w-4" />
                       </span>
-                      <span className="font-medium text-slate-700  dark:text-white">{point.text}</span>
+                      <span className={overview.listText}>{point.text}</span>
                     </li>
                   </FadeInOnScroll>
                 ))}
               </ul>
             </div>
 
-            <div className="relative hidden md:block lg:col-span-5">
-              <div className="absolute -inset-4 rounded-3xl bg-secondary/10 blur-2xl" aria-hidden="true" />
+            <div className={overview.imageColumn} data-slot={overviewSlotIds.image}>
+              <div className={overview.imageGlow} aria-hidden="true" />
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsEaKdXk97T98RRXtdcPPkj1rJoe9eIDB1463S7QSKn08yrVGrqGbzbE2rHrJRe4ub0gRmppOXKBSLFcZoKrzrZnM4-_nDHtqOzz0YvYJB1uOWsZTB3c7DAZ-OjlKMU7F8eLFdkttr1fEnxrgr8TvP3C3Yv_wUPVeysvtq25i81cLCg0pkDe4-rQZVEtG8qErCeqpT1QxSm4QDUuFQy5qaxExurVY_9qxMb9fayAMiBVYRLZ5Xv3ZL99sY6Ep3tFAYkkxslc2y8vfx"
                 alt="High-impact enterprise command center visual"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-white dark:border-slate-700 object-cover shadow-2xl"
+                className={overview.image}
                 loading="lazy"
               />
             </div>
