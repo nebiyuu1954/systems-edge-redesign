@@ -9,6 +9,8 @@ import ERPSection from './components/sections/Services/ERP/ERPSection';
 import OutsourcingSection from './components/sections/Services/Outsourcing/OutsourcingSection';
 import SupportedSection from './components/sections/Services/Supported/SupportedSection';
 import SoftwareDevelopmentSection from './components/sections/Services/Software-Development/SoftwareDevelopmentSection';
+import { TestingSection } from './components/sections/Services/Testing';
+import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
@@ -194,6 +196,7 @@ function HomePage(): ReactElement {
             title: 'UX/UI Design',
             description:
               "Human-centric design that drives engagement and productivity. Our design team focuses on creating intuitive interfaces and seamless user journeys that reflect your brand's enterprise excellence.",
+            learnMoreHref: '/services/ui-ux',
           },
           {
             id: 'service-testing',
@@ -204,6 +207,7 @@ function HomePage(): ReactElement {
             description:
               'Rigorous quality assurance to ensure zero-defect deployments. From automated regression tests to manual penetration testing, we ensure your software is secure, fast, and reliable.',
             reversedOnDesktop: true,
+            learnMoreHref: '/services/testing',
           },
           {
             id: 'service-iam',
@@ -317,6 +321,52 @@ function SoftwareDevPage(): ReactElement {
   );
 }
 
+function UIUXPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <UIUXSection />
+      <Footer />
+    </main>
+  );
+}
+
+function TestingPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <TestingSection />
+      <Footer />
+    </main>
+  );
+}
+
 function App(): ReactElement {
   return (
     <>
@@ -326,6 +376,8 @@ function App(): ReactElement {
       <Route path="/services/erp" element={<ERPPage />} />
       <Route path="/services/outsourcing" element={<OutsourcingPage />} />
       <Route path="/services/software-development" element={<SoftwareDevPage />} />
+      <Route path="/services/ui-ux" element={<UIUXPage />} />
+      <Route path="/services/testing" element={<TestingPage />} />
       <Route path="/services/supported" element={<SupportedPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
