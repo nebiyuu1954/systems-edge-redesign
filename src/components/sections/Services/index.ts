@@ -1,2 +1,6 @@
 export { default as OurServicesSection } from './OurServicesSection';
 export type { OurServicesSectionProps, ServiceItem } from './OurServicesSection';
+export { default as UIUXSection } from './ui-ux/UIUXSection';
+export type { UIUXSectionProps } from './ui-ux/UIUXSection';
+export { TestingSection } from './Testing';
+export type { TestingSectionProps } from './Testing';
