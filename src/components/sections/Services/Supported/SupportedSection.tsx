@@ -2,6 +2,7 @@ import type { ReactElement, SVGProps } from 'react';
 import SectionHeading from '../../../common/SectionHeading';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
+import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 const TerminalIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden {...props}>
@@ -33,68 +34,60 @@ const ShieldIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
   </svg>
 );
 
+const CheckIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden {...props}>
+    <path d="M5 13l4 4L19 7" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const SupportedSection = (): ReactElement => {
+  const overview = erpOverviewLayoutConfig;
+
+  const supportedPoints = [
+    { id: 'uptime-sla', text: '99.99% Uptime SLA for critical infrastructure' },
+    { id: 'cd-pipelines', text: 'Zero-downtime deployment pipelines (CI/CD)' },
+    { id: 'security-patching', text: 'Proactive security patching and vulnerability monitoring' },
+  ];
+
   return (
     <main>
-      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <span className="mb-6 inline-block rounded-full border border-secondary px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-secondary dark:text-secondary">
+      <section id="overview" className={overview.section}>
+        <div className={overview.container}>
+          <div className={overview.grid}>
+            <div className={overview.textColumn}>
+              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
                 Support, Managed Services &amp; DevOps
               </span>
-              <h1 className="mb-8 text-4xl font-extrabold leading-tight text-primary dark:text-white lg:text-6xl">
-                24/7 reliability, automated infrastructure, and
-                <br />
-                <span className="text-secondary">continuous optimization</span>
+
+              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+                                <span className={overview.titleAccent}>24/7 reliability &amp;</span> automation
               </h1>
-              <p className="mb-8 text-lg leading-relaxed text-slate-600 dark:text-slate-300 lg:text-xl lg:max-w-none">
+
+              <p className={overview.description} data-slot={overviewSlotIds.description}>
                 At Systems Edge Solutions, we bridge the gap between development and operations. Our managed services ensure your mission-critical applications remain online, secure, and
                 performing at peak efficiency while our DevOps culture accelerates your release cycles.
               </p>
 
-              <ul className="mb-10 space-y-4">
-                <FadeInOnScroll key="supported-point-1" delayMs={0} className="block">
-                  <li className="flex items-start">
-                    <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" className="h-4 w-4">
-                        <path d="M5 13l4 4L19 7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-white">99.99% Uptime SLA for critical infrastructure</span>
-                  </li>
-                </FadeInOnScroll>
-
-                <FadeInOnScroll key="supported-point-2" delayMs={80} className="block">
-                  <li className="flex items-start">
-                    <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" className="h-4 w-4">
-                        <path d="M5 13l4 4L19 7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-white">Zero-downtime deployment pipelines (CI/CD)</span>
-                  </li>
-                </FadeInOnScroll>
-
-                <FadeInOnScroll key="supported-point-3" delayMs={160} className="block">
-                  <li className="flex items-start">
-                    <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" className="h-4 w-4">
-                        <path d="M5 13l4 4L19 7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-white">Proactive security patching and vulnerability monitoring</span>
-                  </li>
-                </FadeInOnScroll>
+              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+                {supportedPoints.map((point, idx) => (
+                  <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
+                    <li className={overview.listItem}>
+                      <span className={overview.listBullet}>
+                        <CheckIcon className="h-4 w-4" />
+                      </span>
+                      <span className={overview.listText}>{point.text}</span>
+                    </li>
+                  </FadeInOnScroll>
+                ))}
               </ul>
             </div>
 
-            <div className="relative hidden md:block lg:col-span-5 self-start">
-              <div className="absolute -inset-4 rounded-3xl bg-secondary/10 blur-2xl" aria-hidden="true" />
+            <div className={overview.imageColumn} data-slot={overviewSlotIds.image}>
+              <div className={overview.imageGlow} aria-hidden="true" />
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_4PFq2_6HGZta1VEKTYtJXTkvXJ5prqWVKBy2N7-D7pt83q6bxJH-cfZInbSk1S-xOdA04eJ4U0ga-U0mAMOeKXfpLw5s2is4HBXfgoXDMsGQvmioYLn9gUwTws0LXH3L4k_Hsvhdcj76Czkp8bAFg3X-gXY75IjGXw6eOZdRSxGNHMcNcMndktlOritA0AIPAVWBOqnlo_LghNj7XoZBN0fIeOb5jryoeA-aO8Fk9pqxJ2nd5cpZgPwCAKoAhS9PBuXLq17IyV_f"
                 alt="Engineers collaborating on high-tech cloud infrastructure"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-slate-100 dark:border-slate-700 object-cover shadow-2xl"
+                className={overview.image}
                 loading="lazy"
               />
             </div>
