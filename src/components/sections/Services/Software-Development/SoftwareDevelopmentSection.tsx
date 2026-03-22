@@ -2,6 +2,7 @@ import type { ReactElement, SVGProps } from 'react';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import SectionHeading from '../../../common/SectionHeading';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
+import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 const TerminalIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" {...props}>
@@ -52,8 +53,6 @@ const DotNetLogo = (props: SVGProps<SVGSVGElement>): ReactElement => (
   </svg>
 );
 
-// Angular will use the official SVG image URL fallback; no inline icon required.
-
 const AzureLogo = (props: SVGProps<SVGSVGElement>): ReactElement => (
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" {...props}>
     <path d="M10 80 L40 20 L70 80 Z" fill="#0078D4" />
@@ -73,8 +72,7 @@ const capabilities = [
   {
     id: 'custom-web-apps',
     title: 'Custom\nWeb Apps',
-    description:
-      'Dynamic, responsive, and secure web applications built with modern frameworks and scalable architecture.',
+    description: 'Dynamic, responsive, and secure web applications built with modern frameworks and scalable architecture.',
     Icon: GlobeIcon,
   },
   {
@@ -121,53 +119,52 @@ const CheckIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
   </svg>
 );
 
-const valuePoints = [
+const softwareDevelopmentPoints = [
   { id: 'custom-architecture', text: 'Fully customized enterprise-grade architecture' },
   { id: 'integration', text: 'Seamless integration with legacy and 3rd-party APIs' },
   { id: 'cloud-ready', text: 'High-performance, secure, and cloud-ready deployments' },
 ];
 
 const SoftwareDevelopmentSection = (): ReactElement => {
+  const overview = erpOverviewLayoutConfig;
+
   return (
     <>
-      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <span className="mb-6 inline-block rounded-full border border-secondary px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-secondary dark:text-secondary">
+      <section id="overview" className={overview.section}>
+        <div className={overview.container}>
+          <div className={overview.grid}>
+            <div className={overview.textColumn}>
+              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
                 Software Development
               </span>
-              <h1 className="mb-8 text-4xl font-extrabold leading-tight text-primary lg:text-6xl">
-                Custom software that <br />
-                <span className="text-secondary">scales</span>, integrates, and performs
+
+              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+                Custom software that 
+                <span className={overview.titleAccent}> scales, integrates & performs</span>
               </h1>
-              <p className="mb-8 text-lg leading-relaxed text-slate-600 dark:text-slate-300 lg:text-xl">
-                Unlock operational excellence with bespoke software solutions tailored to your unique business logic. We bridge the gap
-                between disparate systems and build future-proof platforms that drive growth.
+
+              <p className={overview.description} data-slot={overviewSlotIds.description}>
+                Unlock operational excellence with bespoke software solutions tailored to your unique business logic. We bridge the gap between disparate systems and build future-proof
+                platforms that drive growth.
               </p>
 
-              <ul className="mb-10 space-y-4">
-                {valuePoints.map((point, idx) => (
+              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+                {softwareDevelopmentPoints.map((point, idx) => (
                   <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
-                    <li className="flex items-start">
-                      <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
+                    <li className={overview.listItem}>
+                      <span className={overview.listBullet}>
                         <CheckIcon className="h-4 w-4" />
                       </span>
-                      <span className="font-medium text-slate-700 dark:text-white">{point.text}</span>
+                      <span className={overview.listText}>{point.text}</span>
                     </li>
                   </FadeInOnScroll>
                 ))}
               </ul>
             </div>
 
-            <div className="relative hidden md:block lg:col-span-5">
-              <div className="absolute -inset-4 rounded-3xl bg-secondary/10 blur-2xl" aria-hidden="true" />
-              <img
-                src={images[0]}
-                alt="Developers collaborating"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-slate-100 dark:border-slate-700 object-cover shadow-2xl"
-                loading="lazy"
-              />
+            <div className={overview.imageColumn} data-slot={overviewSlotIds.image}>
+              <div className={overview.imageGlow} aria-hidden="true" />
+              <img src={images[0]} alt="Developers collaborating" className={overview.image} loading="lazy" />
             </div>
           </div>
         </div>
@@ -218,7 +215,6 @@ const SoftwareDevelopmentSection = (): ReactElement => {
             .tech-track { display: flex; gap: 1.25rem; align-items: center; }
             .tech-item { flex: 0 0 auto; min-width: 140px; transition: transform 180ms ease, box-shadow 180ms ease; }
             .tech-item:hover { transform: scale(1.06); z-index: 20; box-shadow: 0 10px 20px rgba(2,6,23,0.12); }
-            /* pause the scrolling when hovering any card (hovering child triggers parent :hover) */
             .tech-marquee:hover .tech-track { animation-play-state: paused; }
             .tech-track.animate { animation: scroll-left 28s linear infinite; animation-play-state: running; }
             @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -226,40 +222,38 @@ const SoftwareDevelopmentSection = (): ReactElement => {
 
           <div className="tech-marquee">
             <div className="tech-track animate">
-              {
-                (() => {
-                  const baseTechs: { name: string; src?: string; Icon?: (p: SVGProps<SVGSVGElement>) => ReactElement }[] = [
-                    { name: '.NET', Icon: DotNetLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Microsoft_.NET_logo.svg' },
-                    { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
-                    { name: 'Java', src: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
-                    { name: 'React', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
-                    { name: 'Angular', Icon: AngularLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg' },
-                    { name: 'Flutter', src: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png' },
-                    { name: 'AWS', src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
-                    { name: 'Azure', Icon: AzureLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Microsoft_Azure_Logo.svg' },
-                    { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-                  ];
+              {(() => {
+                const baseTechs: { name: string; src?: string; Icon?: (p: SVGProps<SVGSVGElement>) => ReactElement }[] = [
+                  { name: '.NET', Icon: DotNetLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Microsoft_.NET_logo.svg' },
+                  { name: 'Node.js', src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
+                  { name: 'Java', src: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
+                  { name: 'React', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
+                  { name: 'Angular', Icon: AngularLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg' },
+                  { name: 'Flutter', src: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png' },
+                  { name: 'AWS', src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+                  { name: 'Azure', Icon: AzureLogo, src: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Microsoft_Azure_Logo.svg' },
+                  { name: 'Figma', src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
+                ];
 
-                  const techs = baseTechs.concat(baseTechs);
+                const techs = baseTechs.concat(baseTechs);
 
-                  return techs.map((tech, idx) => (
-                    <div key={`${tech.name}-${idx}`} className="tech-item flex flex-col items-center p-3 bg-a rounded-2xl shadow-sm transition border border-slate-100 group">
-                      <div className="w-20 h-20 flex items-center justify-center bg-slate-50 rounded-xl mb-2 overflow-hidden">
-                        {tech.Icon ? (
-                          tech.name === '.NET' ? (
-                            <tech.Icon className="w-24 h-16" />
-                          ) : (
-                            <tech.Icon className="w-12 h-12" />
-                          )
+                return techs.map((tech, idx) => (
+                  <div key={`${tech.name}-${idx}`} className="tech-item flex flex-col items-center p-3 bg-a rounded-2xl shadow-sm transition border border-slate-100 group">
+                    <div className="w-20 h-20 flex items-center justify-center bg-slate-50 rounded-xl mb-2 overflow-hidden">
+                      {tech.Icon ? (
+                        tech.name === '.NET' ? (
+                          <tech.Icon className="w-24 h-16" />
                         ) : (
-                          <img src={tech.src} alt={`${tech.name} logo`} className="max-h-12 max-w-full object-contain" loading="lazy" />
-                        )}
-                      </div>
-                      <span className="font-semibold text-sm text-primary">{tech.name}</span>
+                          <tech.Icon className="w-12 h-12" />
+                        )
+                      ) : (
+                        <img src={tech.src} alt={`${tech.name} logo`} className="max-h-12 max-w-full object-contain" loading="lazy" />
+                      )}
                     </div>
-                  ));
-                })()
-              }
+                    <span className="font-semibold text-sm text-primary">{tech.name}</span>
+                  </div>
+                ));
+              })()}
             </div>
           </div>
         </div>
@@ -303,7 +297,7 @@ const SoftwareDevelopmentSection = (): ReactElement => {
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to Scale Your Enterprise?</h2>
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let's build your future today.</p>
+            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let&apos;s build your future today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="/#contact">
