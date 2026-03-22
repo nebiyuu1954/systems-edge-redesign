@@ -2,8 +2,11 @@ import type { ReactElement, SVGProps } from 'react';
 import SectionHeading from '../../../common/SectionHeading';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
+import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 const OutsourcingSection = (): ReactElement => {
+  const overview = erpOverviewLayoutConfig;
+
   const TerminalIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden {...props}>
       <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
@@ -49,69 +52,57 @@ const OutsourcingSection = (): ReactElement => {
       />
     </svg>
   );
+
+  const overviewPoints: string[] = [
+    'Rapid deployment of pre-vetted senior developers',
+    'Flexible engagement models: Project-based or T&M',
+    'Rigorous technical screening and cultural alignment',
+  ];
+
   return (
     <main>
-      <section id="outsourcing-overview" className="py-12 px-6 bg-background dark:bg-backgroundDark">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7">
-              <span className="mb-6 inline-block rounded-full border border-secondary px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-secondary dark:text-secondary">
+      <section id="outsourcing-overview" className={overview.section}>
+        <div className={overview.container}>
+          <div className={overview.grid}>
+            <div className={overview.textColumn}>
+              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
                 IT Outsourcing &amp; Staffing
               </span>
-              <h1 className="text-primary text-4xl lg:text-6xl font-extrabold leading-tight mb-8">
-                Access top-tier technical talent, <span className="text-secondary">scaled</span> to your needs
+
+              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+                Access top-tier technical talent, <br />
+                <span className={overview.titleAccent}>scaled</span> to your needs
               </h1>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-10 max-w-2xl">
-                Bridge the talent gap with Systems Edge Solutions. We provide high-impact engineering teams and specialized
-                professionals that integrate seamlessly into your existing workflows, accelerating product delivery and
-                technological innovation.
+
+              <p className={overview.description} data-slot={overviewSlotIds.description}>
+                Bridge the talent gap with Systems Edge Solutions through high-impact engineering teams and specialized professionals who integrate seamlessly into your workflows and accelerate product delivery.
               </p>
-              <ul className="space-y-4">
-                <FadeInOnScroll key="outsourcing-point-1" delayMs={0} className="block">
-                  <li className="flex items-start">
-                    <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden className="h-4 w-4">
-                        <path d="M5 13l4 4L19 7" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-white">Rapid deployment of pre-vetted senior developers</span>
-                  </li>
-                </FadeInOnScroll>
 
-                <FadeInOnScroll key="outsourcing-point-2" delayMs={80} className="block">
-                  <li className="flex items-start">
-                    <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden className="h-4 w-4">
-                        <path d="M5 13l4 4L19 7" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-white">Flexible engagement models: Project-based or T&amp;M</span>
-                  </li>
-                </FadeInOnScroll>
-
-                <FadeInOnScroll key="outsourcing-point-3" delayMs={160} className="block">
-                  <li className="flex items-start">
-                    <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden className="h-4 w-4">
-                        <path d="M5 13l4 4L19 7" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="font-medium text-slate-700 dark:text-white">Rigorous technical screening and cultural alignment</span>
-                  </li>
-                </FadeInOnScroll>
+              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+                {overviewPoints.map((point, index) => (
+                  <FadeInOnScroll key={point} delayMs={index * 80} className="block">
+                    <li className={overview.listItem}>
+                      <span className={overview.listBullet}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden className="h-4 w-4">
+                          <path d="M5 13l4 4L19 7" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className={overview.listText}>{point}</span>
+                    </li>
+                  </FadeInOnScroll>
+                ))}
               </ul>
             </div>
 
-            <div className="relative hidden md:block lg:col-span-5">
-              <div className="absolute -inset-4 rounded-3xl bg-secondary/10 blur-2xl" aria-hidden="true" />
+            <div className={overview.imageColumn} data-slot={overviewSlotIds.image}>
+              <div className={overview.imageGlow} aria-hidden="true" />
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbZxHRpd9SEGymsKlqZiOkEZOZ1egvDMMho3FhUjwNLaJLIcNatu9OR98rn1ZxbzQCyUHcc3QNUswbyATZlB12cBCKvWegpKMU3xa9LNZmHrFn__2REbAEnRrXtNVcwe6mzEPNvDxf3rOCdo_Fr-XLC88BIVIzyioOiaxfPCgCx-vc2B9chkEUfA2AG1xUtb5iKGbwdMqxdIIcUu3LtF3aIZtXnnZiKRI-AvbMV-74iq8th_Z7KOykqc6Ps-YbPcY_06gSZxJa3Yb5"
                 alt="A diverse, professional engineering team collaborating in a modern tech office environment"
-                className="relative h-[500px] w-full rounded-2xl border-4 border-slate-100 dark:border-slate-700 object-cover shadow-2xl"
+                className={overview.image}
                 loading="lazy"
               />
             </div>
-            <div className="-mt-6 -ml-6 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" aria-hidden />
           </div>
         </div>
       </section>
