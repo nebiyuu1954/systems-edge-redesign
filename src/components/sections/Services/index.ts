@@ -4,3 +4,5 @@ export { default as UIUXSection } from './ui-ux/UIUXSection';
 export type { UIUXSectionProps } from './ui-ux/UIUXSection';
 export { TestingSection } from './Testing';
 export type { TestingSectionProps } from './Testing';
+export { default as IdentitySection } from './Identity';
+export type { IdentitySectionProps } from './Identity';
