@@ -13,6 +13,7 @@ import { TestingSection } from './components/sections/Services/Testing';
 import IdentitySection from './components/sections/Services/Identity';
 import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
+import AboutUsPage from './components/pages/About-us';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -26,7 +27,7 @@ function HomePage(): ReactElement {
           { id: 'services', label: 'Services', href: '#services' },
           { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
           { id: 'locations', label: 'Locations', href: '#locations' },
-          { id: 'about', label: 'About Us', href: '#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="#contact"
@@ -242,7 +243,7 @@ function ERPPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="/#contact"
@@ -265,7 +266,7 @@ function OutsourcingPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="/#contact"
@@ -288,7 +289,7 @@ function SupportedPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="/#contact"
@@ -311,7 +312,7 @@ function SoftwareDevPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="/#contact"
@@ -334,7 +335,7 @@ function UIUXPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="/#contact"
@@ -357,7 +358,7 @@ function TestingPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
         ctaHref="/#contact"
@@ -405,6 +406,7 @@ function App(): ReactElement {
       <Route path="/services/testing" element={<TestingPage />} />
       <Route path="/services/identity" element={<IdentityPage />} />
       <Route path="/services/supported" element={<SupportedPage />} />
+      <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
