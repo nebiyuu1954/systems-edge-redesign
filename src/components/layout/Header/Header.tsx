@@ -1,4 +1,5 @@
-import { useState, useEffect, type ReactElement } from 'react';
+import { useState, useEffect, type ReactElement, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import systemEdgeLogo from '../../../assets/logos/system edge logo.png';
 
 export interface HeaderNavItem {
@@ -37,27 +38,45 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
     }
   }, [isDark]);
 
+  const isRouteLink = (href: string): boolean => href.startsWith('/') && !href.includes('#');
+
+  const renderNavLink = (href: string, className: string, children: ReactNode): ReactElement => {
+    if (isRouteLink(href)) {
+      return (
+        <Link className={className} to={href}>
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <a className={className} href={href}>
+        {children}
+      </a>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-solid border-slate-200 bg-white/90 px-4 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90 sm:px-6 lg:px-12">
       <div className="flex h-20 items-center justify-between">
         <div className="flex h-full items-center text-primary dark:text-white">
           <div className="flex h-full items-center overflow-visible">
-            <a href="/" aria-label="Home" className="block">
+            <Link to="/" aria-label="Home" className="block">
               <img src={systemEdgeLogo} alt="Systems Edge logo" className={`${logoSizeClass} w-auto object-contain`} />
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className="hidden flex-1 items-center justify-end gap-8 md:flex">
           <nav className="flex items-center gap-8" aria-label="Primary">
             {navItems.map((item) => (
-              <a
-                key={item.id}
-                className="text-sm font-medium leading-normal text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-white"
-                href={item.href}
-              >
-                {item.label}
-              </a>
+              <span key={item.id}>
+                {renderNavLink(
+                  item.href,
+                  'text-sm font-medium leading-normal text-slate-700 transition-colors hover:text-primary dark:text-slate-300 dark:hover:text-white',
+                  item.label,
+                )}
+              </span>
             ))}
           </nav>
 
@@ -108,14 +127,25 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
         <div className="border-t border-slate-200 py-4 dark:border-slate-800 md:hidden">
           <nav className="flex flex-col gap-3" aria-label="Mobile primary">
             {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className="rounded-md px-2 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-primary dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-white"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
+              <span key={item.id}>
+                {isRouteLink(item.href) ? (
+                  <Link
+                    to={item.href}
+                    className="rounded-md px-2 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-primary dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-white"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="rounded-md px-2 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-primary dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-white"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </span>
             ))}
           </nav>
 
