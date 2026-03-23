@@ -80,7 +80,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
               })}
             </div>
           </FadeInOnScroll>
-
+          
           {activeService ? (
             <FadeInOnScroll key={activeService.id} delayMs={120}>
               <article
