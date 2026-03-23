@@ -10,6 +10,7 @@ import OutsourcingSection from './components/sections/Services/Outsourcing/Outso
 import SupportedSection from './components/sections/Services/Supported/SupportedSection';
 import SoftwareDevelopmentSection from './components/sections/Services/Software-Development/SoftwareDevelopmentSection';
 import { TestingSection } from './components/sections/Services/Testing';
+import IdentitySection from './components/sections/Services/Identity';
 import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
 import insaLogo from './assets/logos/Insa.webp';
@@ -217,6 +218,7 @@ function HomePage(): ReactElement {
             title: 'Identity & Access Management',
             description:
               'Secure your enterprise perimeter with advanced IAM solutions. We implement multi-factor authentication, single sign-on, and rigorous access control policies to protect your digital assets.',
+            learnMoreHref: '/services/identity',
           },
         ]}
       />
@@ -367,6 +369,29 @@ function TestingPage(): ReactElement {
   );
 }
 
+function IdentityPage(): ReactElement {
+  return (
+    <main>
+      <Header
+        navItems={[
+          { id: 'services', label: 'Services', href: '/#services' },
+          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
+          { id: 'industries', label: 'Industries', href: '/#services' },
+          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
+          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
+          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+        ]}
+        ctaLabel="Get Consultation"
+        ctaHref="/#contact"
+        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
+      />
+      <IdentitySection />
+      <Footer />
+    </main>
+  );
+}
+
 function App(): ReactElement {
   return (
     <>
@@ -378,6 +403,7 @@ function App(): ReactElement {
       <Route path="/services/software-development" element={<SoftwareDevPage />} />
       <Route path="/services/ui-ux" element={<UIUXPage />} />
       <Route path="/services/testing" element={<TestingPage />} />
+      <Route path="/services/identity" element={<IdentityPage />} />
       <Route path="/services/supported" element={<SupportedPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
