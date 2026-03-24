@@ -20,6 +20,7 @@ interface LocationItem {
 
 export interface GlobalLocationsSections2Props {
   autoSwitchMs?: number;
+  className?: string;
 }
 
 /*
@@ -86,7 +87,7 @@ const LOCATIONS: (LocationItem & { nx: number; ny: number })[] = [
 const WORLD_MAP_IMAGE_URL =
   'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png';
 
-const GlobalLocationsSections2 = ({ autoSwitchMs = 4200 }: GlobalLocationsSections2Props): ReactElement => {
+const GlobalLocationsSections2 = ({ autoSwitchMs = 4200, className }: GlobalLocationsSections2Props): ReactElement => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -101,8 +102,9 @@ const GlobalLocationsSections2 = ({ autoSwitchMs = 4200 }: GlobalLocationsSectio
   const activeLocation = LOCATIONS[activeIndex];
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto dark:bg-backgroundDark" data-purpose="locations-section-variant-two">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className={`w-full dark:bg-backgroundDark ${className ?? ''}`} data-purpose="locations-section-variant-two">
+      <div className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="bg-servicesCardLight relative order-1 lg:order-1" data-purpose="map-visualization">
           <div className="relative w-full min-h-[440px] overflow-hidden rounded-3xl border border-slate-200">
             <img
@@ -199,6 +201,7 @@ const GlobalLocationsSections2 = ({ autoSwitchMs = 4200 }: GlobalLocationsSectio
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
