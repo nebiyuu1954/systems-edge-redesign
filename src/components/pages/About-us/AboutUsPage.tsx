@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type ReactElement, type SVGProps } from 'react';
+import { useState, type ReactElement, type SVGProps } from 'react';
 import { Header, type HeaderNavItem } from '../../layout/Header';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
 import CountUp from '../../common/CountUp';
@@ -355,44 +355,6 @@ function AboutUsPage(): ReactElement {
     contentMs: 700,
   };
 
-  const cardRefs = useRef<Array<HTMLElement | null>>([]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // Only enable auto-hover-on-visible for touch devices / non-hover environments
-    const prefersHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
-    if (prefersHover) return;
-
-    if (!('IntersectionObserver' in window)) return;
-
-    // Use multiple thresholds and a slight negative bottom rootMargin so minor layout/scroll differences
-    // (or lazily-loaded images) don't prevent the "fully visible" detection in production.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const idxAttr = entry.target.getAttribute('data-approach-index');
-          if (!idxAttr) return;
-          const idx = Number(idxAttr);
-
-          // Consider visible when mostly in view; pick the best threshold hit
-          if (entry.intersectionRatio >= 0.9) {
-            setHoveredApproachIndex(idx);
-          } else {
-            setHoveredApproachIndex((prev) => (prev === idx ? null : prev));
-          }
-        });
-      },
-      { threshold: [0.6, 0.9, 0.99], rootMargin: '0px 0px -10px 0px' }
-    );
-
-    // Query DOM elements to avoid timing issues with refs or wrapper components
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-approach-index]'));
-    els.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <main className="bg-background text-black dark:bg-backgroundDark dark:text-white">
       <Header
@@ -507,24 +469,22 @@ function AboutUsPage(): ReactElement {
                 }}
               >
                 <article
-                  ref={(el) => { cardRefs.current[i] = el; }}
-                    data-approach-index={i}
-                    className={`group flex h-full flex-col overflow-hidden rounded-xl border-b-4 border-transparent bg-surface-container-lowest dark:bg-backgroundDarkOne transition-all duration-500 hover:border-secondary ${
-                      hoveredApproachIndex === i
-                        ? 'md:scale-[1.01] md:shadow-2xl md:shadow-black/10'
-                        : hoveredApproachIndex !== null
-                          ? i < hoveredApproachIndex
-                            ? 'md:-translate-x-2 md:scale-95 md:opacity-95'
-                            : 'md:translate-x-2 md:scale-95 md:opacity-95'
-                          : ''
-                    }`}
-                    style={{ transitionDuration: `${approachAnimation.layoutMs}ms` }}
-                    onMouseEnter={() => setHoveredApproachIndex(i)}
-                    onMouseLeave={() => setHoveredApproachIndex(null)}
-                    onFocus={() => setHoveredApproachIndex(i)}
-                    onBlur={() => setHoveredApproachIndex(null)}
-                    tabIndex={0}
-                  >
+                  className={`group flex h-full flex-col overflow-hidden rounded-xl border-b-4 border-transparent bg-surface-container-lowest dark:bg-backgroundDarkOne transition-all duration-500 hover:border-secondary ${
+                    hoveredApproachIndex === i
+                      ? 'md:scale-[1.01] md:shadow-2xl md:shadow-black/10'
+                      : hoveredApproachIndex !== null
+                        ? i < hoveredApproachIndex
+                          ? 'md:-translate-x-2 md:scale-95 md:opacity-95'
+                          : 'md:translate-x-2 md:scale-95 md:opacity-95'
+                      : ''
+                  }`}
+                  style={{ transitionDuration: `${approachAnimation.layoutMs}ms` }}
+                  onMouseEnter={() => setHoveredApproachIndex(i)}
+                  onMouseLeave={() => setHoveredApproachIndex(null)}
+                  onFocus={() => setHoveredApproachIndex(i)}
+                  onBlur={() => setHoveredApproachIndex(null)}
+                  tabIndex={0}
+                >
                   <div
                     className={`overflow-hidden transition-all duration-500 ${hoveredApproachIndex === i ? 'h-56' : 'h-48'}`}
                     style={{ transitionDuration: `${approachAnimation.mediaMs}ms` }}
