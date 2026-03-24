@@ -4,6 +4,7 @@ import FadeInOnScroll from './FadeInOnScroll';
 export interface SectionHeadingProps {
   id?: string;
   heading: ReactNode;
+  label?: ReactNode;
   description?: ReactNode;
   center?: boolean;
   headingClassName?: string;
@@ -30,6 +31,15 @@ export default function SectionHeading({
 
   return (
     <div className="w-full">
+      {/** Optional small label above the heading (e.g., "Methodology") */}
+      {('label' in arguments[0] || undefined) && (
+        <FadeInOnScroll delayMs={0}>
+          <p className={`mb-4 block text-sm font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300 ${center ? 'text-center' : 'text-left'}`}>
+            {arguments[0].label}
+          </p>
+        </FadeInOnScroll>
+      )}
+
       <FadeInOnScroll delayMs={delayMsHeading}>
         <h2
           id={id}
