@@ -366,6 +366,8 @@ function AboutUsPage(): ReactElement {
 
     if (!('IntersectionObserver' in window)) return;
 
+    // Use multiple thresholds and a slight negative bottom rootMargin so minor layout/scroll differences
+    // (or lazily-loaded images) don't prevent the "fully visible" detection in production.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -373,20 +375,20 @@ function AboutUsPage(): ReactElement {
           if (!idxAttr) return;
           const idx = Number(idxAttr);
 
-          // Treat fully visible (almost) as the trigger
-          if (entry.intersectionRatio >= 0.99) {
+          // Consider visible when mostly in view; pick the best threshold hit
+          if (entry.intersectionRatio >= 0.9) {
             setHoveredApproachIndex(idx);
           } else {
             setHoveredApproachIndex((prev) => (prev === idx ? null : prev));
           }
         });
       },
-      { threshold: [0.99] }
+      { threshold: [0.6, 0.9, 0.99], rootMargin: '0px 0px -10px 0px' }
     );
 
-    cardRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
+    // Query DOM elements to avoid timing issues with refs or wrapper components
+    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-approach-index]'));
+    els.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
