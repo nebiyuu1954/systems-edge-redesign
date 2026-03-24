@@ -1,15 +1,48 @@
-import type { ReactElement } from 'react';
+import { useState, type ReactElement, type SVGProps } from 'react';
 import { Header, type HeaderNavItem } from '../../layout/Header';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
+import CountUp from '../../common/CountUp';
+import AnimatedImageMarquee, { type MarqueeRow } from '../../common/AnimatedImageMarquee';
+import SectionHeading from '../../common/SectionHeading';
 import Footer from '../../layout/Footer/Footer';
+import ServicesDescriptionCard from '../../sections/Services/components/ServicesDescriptionCard';
+import GlobalLocationsSections from '../../sections/Global-Locations/GlobalLocationsSections';
+
+const DotNetLogo = (): ReactElement => (
+  <svg viewBox="0 0 256 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="h-full w-full">
+    <rect width="256" height="96" rx="12" fill="#512BD4" />
+    <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="800" fontSize="44" fill="white">
+      .NET
+    </text>
+  </svg>
+);
+
+const AzureLogo = (): ReactElement => (
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="h-full w-full">
+    <path d="M10 80 L40 20 L70 80 Z" fill="#0078D4" />
+    <path d="M40 20 L70 80 L90 60 L60 20 Z" fill="#00A4EF" opacity="0.9" />
+  </svg>
+);
+
+const AngularLogo = (): ReactElement => (
+  <svg viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="h-full w-full">
+    <path d="M125 12 L236 66 L205 208 L125 238 L45 208 L14 66 Z" fill="#DD0031" />
+    <path d="M80 170 L100 80 L125 102 L150 80 L170 170" stroke="#ffffff" strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    <path d="M110 140 L140 140" stroke="#ffffff" strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 type ApproachStep = {
   id: string;
   imageSrc: string;
   imageAlt: string;
+  expandedImageSrc: string;
+  expandedImageAlt: string;
   number: string;
   title: string;
   description: string;
+  expandedTitle: string;
+  expandedDescription: string;
 };
 
 type ExpertiseCard = {
@@ -38,36 +71,60 @@ const approachSteps: ApproachStep[] = [
     imageSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDhEoQKiAv9T7RQtB_CMPRMwyt30sOWt1zyKooCMnywgh6oOSOGgKoOxVwk-zbGU5eU8hXjiLXIqcXzfAtoWFp-KYscmvwb59etBzByo5y-xnFC3SRS_yiRNGLL17eEaB2jztkYpBQXm0_xLno1xfb32eFXAdoGBMS2VwRLKj0zb0PJ34SKv0fNStfC_oMmgdfw12jRR5Ov29-i5wlJbszTkS9tD0K0oOwNTaCBlR-iy50eQKBIGYvrNjv-VDEzCoHBVP_-S2V_jpPE',
     imageAlt: 'Abstract black and white architectural detail of high-contrast skyscraper glass and steel',
+    expandedImageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAon45KFe9Y69TGNanuDSQIwKXtRluiEX-7wYwmwqDCjg7zk72E3xmwMIVKNjFGWN_QGbm4wV1ehX4NBdDKfuzGDMvQl6RXAYmgidc0icZR1fDJJuCBbddAhNlmpa4eeHy4f0iAN8flXuoIn-sVb4M0rDjj7bRzt0dBPH5Y7lsrVnH7L5KBxs8oOWxGu4FkJxImCFET0mtuDPVuWahhTEUmjBfs2LvV5zQ31GmW1NIl-nR2sX_k1bGcnjae4v0eqIymc99xPlJcv4MS',
+    expandedImageAlt: 'Ideation Phase - Team brainstorming with sticky notes and whiteboards',
     number: '01',
     title: 'Ideate',
     description: 'Comprehensive strategy sessions to align technical roadmaps with business vision.',
+    expandedTitle: 'Ideate & Align',
+    expandedDescription:
+      'Deep discovery workshops define constraints, KPIs, and target architecture so every downstream decision maps to measurable business value.',
   },
   {
     id: 'design',
     imageSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDTDuQbzIedZE9atQdWOsyIrb3KfyOyqU2ZBJQY1QIam24e3TYWorwNgfW64kVVzqLF8_-76iwl-JzgS_Us0Hj9mAXKeZcvm5mAse_fouDUiJ41mTM_tiQUugAB7Dd-v6cghUt8cgw5vDqQJuxDHS9dSwugmLnhBDjd9D2vwHKHqXJlbykx4wQN8crkul9k--dFhnWSd--JysHZgFp3rEk8XwaS02XYmF1lqPVdOIIPSaE2lfkpOi-P1IN9IGinR819pdEUx49kza1H',
     imageAlt: 'High-contrast geometric pattern of concrete architectural structures with sharp shadows',
+    expandedImageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuB-JHBFqmKmUMuff7pvBTNMvYjqaIjlOIIPceII16HJ7w80f_aiRfxluNCbeGXe8Xs4MoLbh6HOqGXGpXlkgwvDfKYwuYTUJhCBvD7yfdAZpE2mb_rvbypN-_XmPMLf4mcVSzQdYHdGjZ6KCDSEwNk1z4BwVtiJY2vwIjPkBQl145OsogwxbasTlXt-gC5TBj-j5hDsA-TqLt7BBid1Jdz9RZ1WaEDsjPj43OMQW7IHiQONx0QhCVZzKKu80ggdRIJjDKbj6X5xDWKE',
+    expandedImageAlt: 'Design Phase - Designers collaborating on digital wireframes',
     number: '02',
     title: 'Design',
     description: 'Architecting robust frameworks and intuitive interfaces focused on scalability.',
+    expandedTitle: 'Design & Simulate',
+    expandedDescription:
+      'Reference architectures, interface contracts, and failure scenarios are modeled early to reduce rework and accelerate delivery confidence.',
   },
   {
     id: 'develop',
     imageSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuA3UB8v8VF398PFhgI0OOiaIU_qwTqdUJXJfSeb-BCTd8MsN0jWmyinXsVLecM5sBMBxlFrVy6k6Z1diVtIe0ddKzgYxn49xiIbmBd7mYzdfE157iE9GgoKR4ZMsy1CDBN-6M57gYrW_jaScfMjNOjviQ3x1FLpJ_QnmFQm4ZoP-fNR4tF2XJqOSz6yUGq68z9lPGrd11ooO6ilXV8p3AaUYLO-CwS1OXgglwl_cSjJbjJHLsfgZWaUVZ1NWEUBrAE2EuxJM-Iu5yUj',
     imageAlt: 'Abstract technical grid-like architectural structure with high contrast lighting',
+    expandedImageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCPySkFogv5Wx9CfSTiicIjEFfjZ30TQxfn-cDlHsOdBZWV_pq_kqp-oKItDJ_T26OVfXj9pAeTGUbTxMwlZFNbQM0ipB7IUoC6U9EHSpbys3GjWLLVsT7jlxf9Oet_tVxk312xfMIAkmQr1x7wtteslnsSbDzaFltW73H-s6GBavfkljuwKw-UjZ6ym7M7V6DqOPDmywCAPRCOIoe9JCCfORJmFzOKpKww5E5FUupmGgmrRGRSpQWj3wW74m_ZhYxpSJ_Sxc76yAzN',
+    expandedImageAlt: 'Develop Phase - Developers engrossed in coding on large screens',
     number: '03',
     title: 'Develop',
     description: 'Clean-code implementation using cutting-edge tech stacks and agile principles.',
+    expandedTitle: 'Develop & Iterate',
+    expandedDescription:
+      'Cross-functional squads deliver in short cycles with architecture guardrails, automated quality gates, and rapid stakeholder feedback.',
   },
   {
     id: 'deploy',
     imageSrc:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAgHEciCTwPXiyjCHdr1EZaysc1GSvExdOmd-m3Hq1K0QPIKlrDb4uydW9twQh-89QaR_6CcZcExAX5ZfTef1DEzPexUtsJC7VSAd-CTzPvnnuVw__YfCmjjjkZcYSqB0L3DdcAkZhVg0P-0AiTmGMp8VEDxnWJaLD83SeaJVLSNJUNntm0Iqwc3KHjaJne-kaUL2_It4QeaJiZCxuC7BvdcV_Edb_Y4Cr8z0T6eWSlQJVwF_bSUBWKjsxL0AYb6XqP6vhAzk-Mbrv1',
     imageAlt: 'Modern architectural lines of an office atrium with dramatic high-contrast perspectives',
+    expandedImageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBlG9SY_v0S8mvTKJ9AL-lnImh-pYISDYoBMOz1uFF1VWQNr5qOoEWEa5JFRc_Fl3Vj1xnfGV4W0axlPW2KFyTx5r7Iacuz1DbHh7geE7OTmv4ELSl_2lnxCGOzoAFxVaEI13hh460iVTLq3ldnU02HusPW8O-mMeO-IsBkxNEE3ZRe2RT8vsrv6jQU-F5r4a9K9f8ZUnf6fQ594LpHrMFG4yuD0BwfVAyupO1I81QngNM6hThxdTIVDdM4Vy96yy6gPu02f0oz6ZFp',
+    expandedImageAlt: 'Deploy Phase - Project team successfully monitoring a live system',
     number: '04',
     title: 'Deploy',
     description: 'Seamless integration and continuous monitoring for peak operational performance.',
+    expandedTitle: 'Deploy & Optimize',
+    expandedDescription:
+      'Production rollouts, observability dashboards, and iterative optimizations keep systems resilient while continuously improving throughput.',
   },
 ];
 
@@ -218,7 +275,86 @@ const expertiseCards: ExpertiseCard[] = [
   },
 ];
 
+const marqueeRows: MarqueeRow[] = [
+  {
+    id: 'marquee-row-1',
+    direction: 'right',
+    speedSeconds: 34,
+    images: [
+      {
+        alt: '.NET logo',
+        icon: <DotNetLogo />,
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+        alt: 'Node.js logo',
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg',
+        alt: 'Java logo',
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+        alt: 'React logo',
+      },
+    ],
+  },
+  {
+    id: 'marquee-row-2',
+    direction: 'left',
+    speedSeconds: 38,
+    images: [
+      {
+        alt: 'Angular logo',
+        icon: <AngularLogo />,
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png',
+        alt: 'Flutter logo',
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+        alt: 'AWS logo',
+      },
+      {
+        alt: 'Azure logo',
+        icon: <AzureLogo />,
+      },
+    ],
+  },
+  {
+    id: 'marquee-row-3',
+    direction: 'right',
+    speedSeconds: 36,
+    images: [
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg',
+        alt: 'Figma logo',
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+        alt: 'Node.js logo',
+      },
+      {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+        alt: 'React logo',
+      },
+          {
+            alt: 'Angular logo',
+            icon: <AngularLogo />,
+          },
+    ],
+  },
+];
+
 function AboutUsPage(): ReactElement {
+  const [hoveredApproachIndex, setHoveredApproachIndex] = useState<number | null>(null);
+  const approachAnimation = {
+    layoutMs: 750,
+    mediaMs: 850,
+    contentMs: 700,
+  };
+
   return (
     <main className="bg-background text-black dark:bg-backgroundDark dark:text-white">
       <Header
@@ -244,13 +380,6 @@ function AboutUsPage(): ReactElement {
               Architectural Precision in Engineering.
             </h1>
           </FadeInOnScroll>
-
-          <FadeInOnScroll delayMs={150}>
-            <p className="mx-auto mb-10 max-w-2xl text-xl font-light leading-relaxed text-white/90 md:text-2xl">
-              We redefine enterprise systems through intentional design and structural integrity.
-            </p>
-          </FadeInOnScroll>
-
           <FadeInOnScroll delayMs={300}>
             <a
               href="/#contact"
@@ -262,12 +391,12 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
 
-      <section className="w-full bg-backgroundOne py-24 dark:bg-backgroundDarkOne">
+      <section className="w-full bg-background py-24 dark:bg-backgroundDarkOne">
         <div className="mx-auto max-w-7xl px-8">
           <div className="grid gap-12 md:grid-cols-2">
-            <div className="group relative overflow-hidden rounded-xl bg-transparent p-12">
+              <div className="group relative overflow-hidden rounded-xl bg-background p-12 border border-slate-100 dark:bg-backgroundDark dark:border-slate-700 shadow-sm">
               <div className="absolute right-0 top-0 p-8 opacity-60 transition-opacity group-hover:opacity-100">
-                <span aria-hidden="true" className="material-symbols-outlined text-9xl text-primary dark:text-slate-300">
+                <span aria-hidden="true" className="material-symbols-outlined text-9xl text-primary dark:text-secondary">
                   handshake
                 </span>
               </div>
@@ -286,9 +415,9 @@ function AboutUsPage(): ReactElement {
               </FadeInOnScroll>
             </div>
 
-            <div className="group relative overflow-hidden rounded-xl bg-transparent p-12 text-black dark:text-white">
+            <div className="group relative overflow-hidden rounded-xl bg-backgroundOne p-12 border border-slate-200 dark:bg-backgroundDarkOne dark:border-slate-700 shadow-sm text-black dark:text-white">
               <div className="absolute right-0 top-0 p-8 opacity-60 transition-opacity group-hover:opacity-100">
-                <span aria-hidden="true" className="material-symbols-outlined text-9xl text-primary dark:text-slate-300">
+                <span aria-hidden="true" className="material-symbols-outlined text-9xl text-primary dark:text-secondary">
                   rocket_launch
                 </span>
               </div>
@@ -310,29 +439,75 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
 
-      <section className="bg-surface-container-low py-24">
+      <section className="bg-backgroundOne py-24 dark:bg-backgroundDark">
         <div className="mx-auto max-w-7xl px-8">
           <div className="mb-16">
-            <FadeInOnScroll>
-              <p className="mb-4 block text-sm font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">Methodology</p>
-            </FadeInOnScroll>
-
-            <FadeInOnScroll delayMs={120}>
-              <h2 className="text-5xl font-black tracking-tight text-black dark:text-white">Our Strategic Approach</h2>
-            </FadeInOnScroll>
+            <SectionHeading
+              label={"Methodology"}
+              heading={"Our Strategic Approach"}
+              center={false}
+              headingClassName={"text-5xl font-black tracking-tight text-black dark:text-white"}
+              delayMsHeading={120}
+            />
+            <div className="w-80 h-1.5 bg-secondary mt-2 rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 md:flex md:gap-4">
             {approachSteps.map((step, i) => (
-              <FadeInOnScroll key={step.id} delayMs={i * 80}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-xl border-b-4 border-transparent bg-surface-container-lowest transition-all hover:border-secondary">
-                  <div className="h-48 overflow-hidden">
-                    <img alt={step.imageAlt} className="h-full w-full object-cover transition-all duration-500" loading="lazy" src={step.imageSrc} />
+              <FadeInOnScroll
+                key={step.id}
+                delayMs={i * 80}
+                className="transition-all duration-500 md:min-w-0"
+                style={{
+                  transitionDuration: `${approachAnimation.layoutMs}ms`,
+                  flex:
+                    hoveredApproachIndex === null
+                      ? '1 1 0%'
+                      : hoveredApproachIndex === i
+                        ? '2.4 1 0%'
+                        : '0.8 1 0%',
+                }}
+              >
+                <article
+                  className={`group flex h-full flex-col overflow-hidden rounded-xl border-b-4 border-transparent bg-surface-container-lowest dark:bg-backgroundDarkOne transition-all duration-500 hover:border-secondary ${
+                    hoveredApproachIndex === i
+                      ? 'md:scale-[1.01] md:shadow-2xl md:shadow-black/10'
+                      : hoveredApproachIndex !== null
+                        ? i < hoveredApproachIndex
+                          ? 'md:-translate-x-2 md:scale-95 md:opacity-95'
+                          : 'md:translate-x-2 md:scale-95 md:opacity-95'
+                      : ''
+                  }`}
+                  style={{ transitionDuration: `${approachAnimation.layoutMs}ms` }}
+                  onMouseEnter={() => setHoveredApproachIndex(i)}
+                  onMouseLeave={() => setHoveredApproachIndex(null)}
+                  onFocus={() => setHoveredApproachIndex(i)}
+                  onBlur={() => setHoveredApproachIndex(null)}
+                  tabIndex={0}
+                >
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ${hoveredApproachIndex === i ? 'h-56' : 'h-48'}`}
+                    style={{ transitionDuration: `${approachAnimation.mediaMs}ms` }}
+                  >
+                    <img
+                      alt={hoveredApproachIndex === i ? step.expandedImageAlt : step.imageAlt}
+                      className={`h-full w-full object-cover transition-all duration-500 ${hoveredApproachIndex === i ? 'scale-105' : 'scale-100'}`}
+                      style={{ transitionDuration: `${approachAnimation.mediaMs}ms` }}
+                      loading="lazy"
+                      src={hoveredApproachIndex === i ? step.expandedImageSrc : step.imageSrc}
+                    />
                   </div>
                   <div className="p-8">
-                    <div className="mb-6 text-5xl font-black text-slate-700/20 dark:text-slate-300/20">{step.number}</div>
-                    <h3 className="mb-4 text-2xl font-bold text-black dark:text-white">{step.title}</h3>
-                    <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{step.description}</p>
+                    <div className="mb-4 text-5xl font-black text-black dark:text-white">{step.number}</div>
+                    <h3 className="mb-4 text-2xl font-bold text-black dark:text-white">
+                      {hoveredApproachIndex === i ? step.expandedTitle : step.title}
+                    </h3>
+                    <p
+                      className={`text-sm leading-relaxed text-slate-600 dark:text-white transition-all duration-500 ${hoveredApproachIndex === i ? 'max-w-2xl' : 'line-clamp-3 md:line-clamp-4'}`}
+                      style={{ transitionDuration: `${approachAnimation.contentMs}ms` }}
+                    >
+                      {hoveredApproachIndex === i ? step.expandedDescription : step.description}
+                    </p>
                   </div>
                 </article>
               </FadeInOnScroll>
@@ -341,7 +516,7 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
 
-      <section className="overflow-hidden py-32">
+      <section className="overflow-hidden py-32 bg-background dark:bg-backgroundDarkOne">
         <div className="mx-auto max-w-7xl px-8">
           <div className="flex flex-col items-center gap-16 md:flex-row">
             <div className="md:w-3/5">
@@ -350,37 +525,52 @@ function AboutUsPage(): ReactElement {
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={120}>
-                <h2 className="mb-8 text-5xl font-black tracking-tight text-black dark:text-white">Executive &amp; Technical Orchestration</h2>
+                <h2 className="mb-8 text-5xl font-black tracking-tight text-primary dark:text-secondary">Executive &amp; Technical Orchestration</h2>
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={240}>
-                <div className="space-y-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-                  <p>
+                <div className="space-y-6 text-lg leading-relaxed">
+                    <p className="text-slate-700 dark:text-background">
                     At Systems Edge, leadership isn&apos;t just about oversight; it&apos;s about setting the standard for technical precision. Our executive team brings decades of global engineering experience.
-                  </p>
-                  <p>
+                    </p>
+                    <p className="text-slate-700 dark:text-background">
                     Our tech leads are active contributors to the developer community, ensuring that our internal standards always reflect the frontier of modern software architecture.
                   </p>
                 </div>
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={360}>
+                {/* Mobile-only image: shown above the numbers on small screens */}
+                <div className="block md:hidden">
+                  <div className="overflow-hidden rounded-2xl shadow-2xl shadow-primary/20 aspect-[4/5] mb-6">
+                    <img
+                      alt="Strategic executive meeting happening in a glass-walled boardroom"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpjHRR-cjU9JBcr6EJxnTgI60sPKReqAVL_mXKkiGxx_NPHXyE8VZK9XdC75fxNQ-VzLqgxRGIxSM6usWndkBH2lDIaoZ9X6Q_MHnlHaQ-7nC1wPFrxCk1SOYU2u6MMnJx8Hy1squs9uTjh2TQ5fMsjT3bcHlZKQFWZJTSlcvseDwhsrUTZLFSg_aj3hkRNCmpyEdy8_f23rm0L6hOwLtpTCcZiqLUwAnyo-bbvvprhx8Jmf_8ucAHZx4G2ttLnqebzhGsfi631QA3"
+                    />
+                  </div>
+                </div>
                 <div className="mt-12 flex gap-12">
                   <div>
-                    <div className="mb-1 text-4xl font-bold text-black dark:text-white">250+</div>
+                      <div className="mb-1 text-4xl font-bold text-primary dark:text-secondary">
+                        <CountUp to={15} durationMs={1600} className="inline-block" />+
+                      </div>
                     <div className="text-sm font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">Engineers</div>
-                    <div className="mt-2 h-1 w-8 bg-secondary" />
+                    <div className="mt-2 h-1 w-8 bg-primary dark:bg-secondary" />
                   </div>
                   <div>
-                    <div className="mb-1 text-4xl font-bold text-black dark:text-white">15+</div>
+                    <div className="mb-1 text-4xl font-bold text-primary dark:text-secondary">
+                      <CountUp to={3} durationMs={1600} className="inline-block" />+
+                    </div>
                     <div className="text-sm font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">Global Offices</div>
-                    <div className="mt-2 h-1 w-8 bg-secondary" />
+                    <div className="mt-2 h-1 w-8 bg-primary dark:bg-secondary" />
                   </div>
                 </div>
               </FadeInOnScroll>
             </div>
 
-            <div className="relative md:w-2/5">
+            <div className="relative md:w-2/5 hidden md:block">
               <div className="overflow-hidden rounded-2xl shadow-2xl shadow-primary/20 aspect-[4/5]">
                 <img
                   alt="Strategic executive meeting happening in a glass-walled boardroom"
@@ -390,11 +580,11 @@ function AboutUsPage(): ReactElement {
                 />
               </div>
 
-              <div className="absolute -bottom-6 -left-6 hidden rounded-xl bg-secondary p-8 text-white lg:block">
+              <div className="absolute -bottom-6 -left-6 hidden rounded-xl bg-primary dark:bg-secondary p-8 text-white lg:block">
                 <span aria-hidden="true" className="material-symbols-outlined mb-4 text-4xl">
                   military_tech
                 </span>
-                <p className="text-xl font-bold leading-tight">
+                <p className="text-xl text-white font-bold leading-tight">
                   Architectural
                   <br />
                   Excellence
@@ -405,7 +595,7 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
 
-      <section className="bg-surface-container py-24">
+      <section className="bg-backgroundOne dark:bg-backgroundDark py-24">
         <div className="mx-auto max-w-7xl px-8">
           <div className="mb-20 text-center">
             <FadeInOnScroll>
@@ -419,24 +609,28 @@ function AboutUsPage(): ReactElement {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {expertiseCards.map((card, i) => (
-              <FadeInOnScroll key={card.id} delayMs={i * 90}>
-                <article className="group rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-10 transition-all hover:shadow-xl">
-                  <div className="mb-6 flex items-start justify-between">
-                    <span aria-hidden="true" className="material-symbols-outlined text-4xl text-slate-700 dark:text-slate-300">
+                <ServicesDescriptionCard
+                  key={card.id}
+                  title={card.title}
+                  description={card.description}
+                  delayMs={i * 90}
+                  Icon={(props: SVGProps<SVGSVGElement>) => (
+                    <span
+                      aria-hidden="true"
+                      className={`material-symbols-outlined text-4xl leading-none text-slate-700 dark:text-slate-300 ${props.className ?? ''}`}
+                    >
                       {card.icon}
                     </span>
-
-                    <div className="flex gap-2">
-                      {card.technologies.map((technology) => (
-                        <div key={technology.alt} className={`tech-badge ${technology.bgClassName} rounded-lg border p-1.5 shadow-sm`}>
-                          <img alt={technology.alt} className="h-6 w-6 object-contain" loading="lazy" src={technology.src} />
-                        </div>
-                      ))}
-                    </div>
+                  )}
+                >
+                  <div className="mb-6 flex items-start justify-end gap-2">
+                    {card.technologies.map((technology) => (
+                      <div key={technology.alt} className={`tech-badge ${technology.bgClassName} rounded-lg border p-1.5 shadow-sm`}>
+                        <img alt={technology.alt} className="h-6 w-6 object-contain" loading="lazy" src={technology.src} />
+                      </div>
+                    ))}
                   </div>
 
-                  <h3 className="mb-4 text-xl font-bold text-black dark:text-white">{card.title}</h3>
-                  <p className="mb-6 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{card.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {card.tags.map((tag) => (
                       <span key={tag} className="rounded-full bg-surface-container-high px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
@@ -444,33 +638,32 @@ function AboutUsPage(): ReactElement {
                       </span>
                     ))}
                   </div>
-                </article>
-              </FadeInOnScroll>
+                </ServicesDescriptionCard>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-surface py-32 text-center">
+      <section className="bg-background dark:bg-backgroundDarkOne py-32 text-center">
         <div className="mx-auto max-w-4xl px-8">
-          <h2 className="text-5xl font-black italic leading-tight tracking-tighter text-black dark:text-white md:text-7xl">A Symphony of Tech Expertise</h2>
+          <SectionHeading
+            heading={"A Symphony of Tech Expertise"}
+            center={true}
+            headingClassName={"text-3xl font-extrabold italic leading-tight tracking-tighter text-black dark:text-white lg:text-5xl"}
+          />
+
           <div className="mx-auto mt-12 h-1 w-24 bg-secondary" />
+
+          <div className="mt-14 text-left">
+            <AnimatedImageMarquee rows={marqueeRows} />
+          </div>
         </div>
       </section>
+      
+      <GlobalLocationsSections className="bg-backgroundOne dark:bg-backgroundDark"/>
 
-      <section className="px-8 py-24">
+      <section className="px-8 py-24 bg-background dark:bg-backgroundDarkOne">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-primary p-16 md:p-24">
-          <div className="absolute inset-0 pointer-events-none opacity-10">
-            <div className="grid h-full grid-cols-12">
-              <div className="border-r border-white" />
-              <div className="border-r border-white" />
-              <div className="border-r border-white" />
-              <div className="border-r border-white" />
-              <div className="border-r border-white" />
-              <div className="border-r border-white" />
-            </div>
-          </div>
-
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <FadeInOnScroll>
               <h2 className="mb-10 text-4xl font-black leading-tight text-white md:text-6xl">Ready to build something extraordinary together?</h2>
