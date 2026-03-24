@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState, type ReactElement, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactElement, type ReactNode } from 'react';
 
 export interface FadeInOnScrollProps {
   children: ReactNode;
   delayMs?: number;
   className?: string;
+  style?: CSSProperties;
 }
 
-const FadeInOnScroll = ({ children, delayMs = 300, className = '' }: FadeInOnScrollProps): ReactElement => {
+const FadeInOnScroll = ({ children, delayMs = 300, className = '', style }: FadeInOnScrollProps): ReactElement => {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -43,7 +44,7 @@ const FadeInOnScroll = ({ children, delayMs = 300, className = '' }: FadeInOnScr
   return (
     <div
       ref={elementRef}
-      style={{ transitionDelay: `${delayMs}ms` }}
+      style={{ transitionDelay: `${delayMs}ms`, ...style }}
       className={`transform transition-all duration-700 ease-out will-change-transform ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       } ${className}`}
