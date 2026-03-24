@@ -505,7 +505,7 @@ function AboutUsPage(): ReactElement {
                 }}
               >
                 <article
-                    ref={(el) => (cardRefs.current[i] = el)}
+                  ref={(el) => { cardRefs.current[i] = el; }}
                     data-approach-index={i}
                     className={`group flex h-full flex-col overflow-hidden rounded-xl border-b-4 border-transparent bg-surface-container-lowest dark:bg-backgroundDarkOne transition-all duration-500 hover:border-secondary ${
                       hoveredApproachIndex === i
