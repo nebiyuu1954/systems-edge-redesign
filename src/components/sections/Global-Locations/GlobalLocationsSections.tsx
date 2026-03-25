@@ -1,4 +1,5 @@
-import { useEffect, useState, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement, type ReactNode } from 'react';
+import SectionHeading from '../../common/SectionHeading';
 
 import dubaiImg from '../../../assets/city images/dubai.jpg';
 import addisImg from '../../../assets/city images/Addis abeba.jpeg';
@@ -21,6 +22,13 @@ interface LocationItem {
 export interface GlobalLocationsSections2Props {
   autoSwitchMs?: number;
   className?: string;
+  heading?: ReactNode;
+  label?: ReactNode;
+  center?: boolean;
+  headingClassName?: string;
+  delayMsHeading?: number;
+  contentClassName?: string;
+  headerNode?: ReactNode;
 }
 
 /*
@@ -87,7 +95,17 @@ const LOCATIONS: (LocationItem & { nx: number; ny: number })[] = [
 const WORLD_MAP_IMAGE_URL =
   'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png';
 
-const GlobalLocationsSections2 = ({ autoSwitchMs = 4200, className }: GlobalLocationsSections2Props): ReactElement => {
+const GlobalLocationsSections2 = ({
+  autoSwitchMs = 4200,
+  className,
+  heading,
+  label,
+  center = true,
+  headingClassName,
+  delayMsHeading,
+  contentClassName,
+  headerNode,
+}: GlobalLocationsSections2Props): ReactElement => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -103,7 +121,23 @@ const GlobalLocationsSections2 = ({ autoSwitchMs = 4200, className }: GlobalLoca
 
   return (
     <section className={`w-full dark:bg-backgroundDark ${className ?? ''}`} data-purpose="locations-section-variant-two">
-      <div className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className={contentClassName ?? 'py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'}>
+        {/* Optional heading injected by parent (e.g., About page). If the parent passes a full `headerNode`, render it instead. */}
+        {headerNode ? (
+          headerNode
+        ) : heading ? (
+          <div className="mb-16">
+            <SectionHeading
+              label={label}
+              heading={heading}
+              center={center}
+              headingClassName={headingClassName}
+              delayMsHeading={delayMsHeading}
+            />
+            <div className={`w-80 h-1.5 bg-secondary mt-2 rounded-full ${center ? 'mx-auto' : ''}`} />
+          </div>
+        ) : null}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="bg-servicesCardLight relative order-1 lg:order-1" data-purpose="map-visualization">
           <div className="relative w-full min-h-[440px] overflow-hidden rounded-3xl border border-slate-200">
