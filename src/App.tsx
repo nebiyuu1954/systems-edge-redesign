@@ -13,6 +13,7 @@ import { TestingSection } from './components/sections/Services/Testing';
 import IdentitySection from './components/sections/Services/Identity';
 import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
+import FadeInOnScroll from './components/common/FadeInOnScroll';
 import AboutUsPage from './components/pages/About-us';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
@@ -226,7 +227,25 @@ function HomePage(): ReactElement {
       <TestimonialsSection />
       <NumbersSection />
       <FinalCTASection />
-      <GlobalLocationsSections />
+      <GlobalLocationsSections
+        className="bg-backgroundOne dark:bg-backgroundDark"
+        contentClassName="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        headerNode={(
+          <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
+            <FadeInOnScroll>
+              <h1 id="locations-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
+                Global Locations
+              </h1>
+            </FadeInOnScroll>
+
+            <FadeInOnScroll delayMs={120}>
+              <p className="mb-20 max-w-[800px] mx-auto text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                Our offices and delivery centers around the world.
+              </p>
+            </FadeInOnScroll>
+          </div>
+        )}
+      />
       <Footer />
     </main>
   );
