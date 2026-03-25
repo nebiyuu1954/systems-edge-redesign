@@ -364,23 +364,33 @@ function AboutUsPage(): ReactElement {
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
 
-      <section className="relative flex h-[619px] items-center justify-center overflow-hidden">
+      <section className="relative flex h-[619px] items-center justify-start overflow-hidden pl-6 md:pl-12 lg:pl-24">
         <div className="absolute inset-0 z-0">
           <img
             alt="Professional team collaborating in a modern architectural office space"
-            className="h-full w-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhymxOg9rVrUxLcqBMIUA7RNTO1uIsuV3nGaqvoq69V2F9PUqYelj1JT92_XR7c11YXk3jOji1IH95VwP1LATUGlSR0ZvWiM5TkvfhAHe2y2EPEyF4nExk-8PAIQYQUTfavMAC5ZQhFda94IkD9XkiZe6lcQd34k235udxe0uAMQzhQpo9468PuOa0GeaXSO7dgEytuITBjOY5BBVNa_DST-tmsmFAHMsKKlwNO1OfdRgU2lerx0vNmTW4EhKCWrhzNPad7-riXhex"
+            className="h-full w-full object-cover object-center"
+            loading="eager"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB728oauJVRl29WPyL268DurE6Z57AjHM7PVOyb4tUvaGASUNzlli74qch07uFfmKNYhLfneZQAdFnci--1IVu36PcFRi2dMMitO8kQfxsYEY1qhwfgqZGI9ucyiK9-LV3cP9gQamqXcZ_y3PrWleZCMEiDrujSDqDcaUdXpQlVqqWTSfgrWiZmHZxce1pe-cZvkJ6qM216Q15FyOC4dgNhVdLrjBw_5E346VKGwHDVTfao_7J53youY6roG9klQVbhYdzU-bCMy8Sg"
           />
           <div className="absolute inset-0 bg-primary/40 backdrop-brightness-50" />
         </div>
 
-        <div className="relative z-10 max-w-4xl px-6 text-center">
+        <div className="relative z-10 max-w-4xl px-0 -ml-6 md:-ml-12 text-left">
           <FadeInOnScroll>
-            <h1 className="mb-6 text-5xl font-extrabold leading-tight tracking-tighter text-white md:text-7xl">
-              Architectural Precision in Engineering.
+            <h1 className="mb-4 text-5xl font-bold leading-tight tracking-tighter text-white md:text-5xl">
+              We are Dedicated
+              <br />
+              to Your Success.
             </h1>
           </FadeInOnScroll>
-          <FadeInOnScroll delayMs={300}>
+
+          <FadeInOnScroll delayMs={120}>
+            <p className="mb-6 max-w-2xl text-lg leading-relaxed text-white">
+              We are more than just an IT solutions provider. We are a community of passionate tech enthusiasts, united by a common goal: to inspire talent, empower businesses, and shape a future fueled by innovation.
+            </p>
+          </FadeInOnScroll>
+
+          <FadeInOnScroll delayMs={240}>
             <a
               href="/#contact"
               className="inline-flex rounded-xl bg-secondary px-8 py-4 text-lg font-bold text-white shadow-xl shadow-black/20 transition-all hover:bg-[#006666] hover:scale-105 active:scale-95"
@@ -520,9 +530,9 @@ function AboutUsPage(): ReactElement {
         <div className="mx-auto max-w-7xl px-8">
           <div className="flex flex-col items-center gap-16 md:flex-row">
             <div className="md:w-3/5">
-              <FadeInOnScroll>
+              {/* <FadeInOnScroll>
                 <p className="mb-4 block text-sm font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">The Core</p>
-              </FadeInOnScroll>
+              </FadeInOnScroll> */}
 
               <FadeInOnScroll delayMs={120}>
                 <h2 className="mb-8 text-5xl font-black tracking-tight text-primary dark:text-secondary">Executive &amp; Technical Orchestration</h2>
@@ -652,7 +662,7 @@ function AboutUsPage(): ReactElement {
             headingClassName={"text-3xl font-extrabold italic leading-tight tracking-tighter text-black dark:text-white lg:text-5xl"}
           />
 
-          <div className="mx-auto mt-12 h-1 w-24 bg-secondary" />
+          <div className="mx-auto mt-2 h-1 w-24 bg-secondary rounded-full" />
 
           <div className="mt-14 text-left">
             <AnimatedImageMarquee rows={marqueeRows} />
@@ -660,8 +670,8 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
       
-      <GlobalLocationsSections className="bg-backgroundOne dark:bg-backgroundDark"/>
-
+      <GlobalLocationsSections className="bg-backgroundOne dark:bg-backgroundDark" contentClassName="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" heading="Global Locations" center={false} headingClassName="text-5xl font-black tracking-tight text-black dark:text-white" delayMsHeading={120} />
+      
       <section className="px-8 py-24 bg-background dark:bg-backgroundDarkOne">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-primary p-16 md:p-24">
           <div className="relative z-10 mx-auto max-w-3xl text-center">
