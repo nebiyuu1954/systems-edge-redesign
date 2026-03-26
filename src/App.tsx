@@ -15,6 +15,7 @@ import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
 import FadeInOnScroll from './components/common/FadeInOnScroll';
 import AboutUsPage from './components/pages/About-us';
+import CareersPage from './components/pages/Careers';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -28,6 +29,7 @@ function HomePage(): ReactElement {
           { id: 'services', label: 'Services', href: '#services' },
           { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
           { id: 'locations', label: 'Locations', href: '#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -262,6 +264,7 @@ function ERPPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -285,6 +288,7 @@ function OutsourcingPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -308,6 +312,7 @@ function SupportedPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -331,6 +336,7 @@ function SoftwareDevPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -354,6 +360,7 @@ function UIUXPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -377,6 +384,7 @@ function TestingPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
@@ -400,6 +408,7 @@ function IdentityPage(): ReactElement {
           { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
           { id: 'leadership', label: 'Leadership', href: '/#leadership' },
           { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/#why-us-heading' },
         ]}
         ctaLabel="Get Consultation"
@@ -426,6 +435,7 @@ function App(): ReactElement {
       <Route path="/services/identity" element={<IdentityPage />} />
       <Route path="/services/supported" element={<SupportedPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
+      <Route path="/careers" element={<CareersPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
