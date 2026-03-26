@@ -62,6 +62,7 @@ const headerNavItems: HeaderNavItem[] = [
   { id: 'services', label: 'Services', href: '/#services' },
   { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
   { id: 'locations', label: 'Locations', href: '/#locations' },
+  { id: 'careers', label: 'Careers', href: '/careers' },
   { id: 'about', label: 'About Us', href: '/about-us' },
 ];
 
