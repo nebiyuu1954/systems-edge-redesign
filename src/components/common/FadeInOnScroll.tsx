@@ -5,9 +5,10 @@ export interface FadeInOnScrollProps {
   delayMs?: number;
   className?: string;
   style?: CSSProperties;
+  onVisibleChange?: (isVisible: boolean) => void;
 }
 
-const FadeInOnScroll = ({ children, delayMs = 300, className = '', style }: FadeInOnScrollProps): ReactElement => {
+const FadeInOnScroll = ({ children, delayMs = 300, className = '', style, onVisibleChange }: FadeInOnScrollProps): ReactElement => {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,6 +19,7 @@ const FadeInOnScroll = ({ children, delayMs = 300, className = '', style }: Fade
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
+        if (typeof onVisibleChange === 'function') onVisibleChange(entry.isIntersecting);
       },
       {
         threshold: 0.2,
@@ -34,6 +36,7 @@ const FadeInOnScroll = ({ children, delayMs = 300, className = '', style }: Fade
     const viewportThreshold = window.innerHeight * 0.92; // similar to rootMargin
     if (rect.top <= viewportThreshold) {
       setIsVisible(true);
+      if (typeof onVisibleChange === 'function') onVisibleChange(true);
     }
 
     return () => {
