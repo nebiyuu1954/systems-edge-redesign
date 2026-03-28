@@ -172,7 +172,7 @@ const heroTypewriterCharDelayMs = 45;
 const engineerFirstCardOffsetY = '70px';
 
 const heroActionButtonBaseClasses =
-  'button-1-settings shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-100';
+  'button-1-settings w-52 sm:w-fit shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-100';
 
 const heroActionButtonVariantClasses = {
   openRoles: 'bg-primary text-white hover:bg-white hover:text-primary',
