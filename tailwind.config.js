@@ -69,6 +69,11 @@ export default {
       fontFamily: {
         display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        H1: '48px',
+        H1md: '60px',
+        H1lg: '60px',
+      },
     },
   },
   plugins: [],
