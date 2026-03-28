@@ -172,7 +172,7 @@ const heroTypewriterCharDelayMs = 45;
 const engineerFirstCardOffsetY = '70px';
 
 const heroActionButtonBaseClasses =
-  'button-1-settings w-52 sm:w-fit shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-100';
+  'button-1-settings !w-52 sm:!w-fit shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-100';
 
 const heroActionButtonVariantClasses = {
   openRoles: 'bg-primary text-white hover:bg-white hover:text-primary',
@@ -874,7 +874,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
 
       <section className="bg-backgroundOne py-24 dark:bg-backgroundDark">
         <div className="mx-auto max-w-7xl px-8">
-          <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
+          <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <h2 className="h2-settings mb-4 text-balance text-black dark:text-white">Current Openings</h2>
               <p className="h3-settings max-w-xl text-slate-600 dark:text-slate-300">Every journey at Systems Edge is bespoke. Find your alignment within our architectural tiers.</p>
@@ -934,7 +934,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
             <p className="h3-settings mx-auto mb-10 max-w-2xl text-blue-100 opacity-80">
               Explore our current openings and <br /> find your place in an elite engineering culture.
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <button type="button" className="button-1-settings bg-secondary text-on-secondary shadow-xl transition-all hover:brightness-110">
                 Open Roles
               </button>
