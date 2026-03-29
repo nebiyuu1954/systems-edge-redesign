@@ -37,7 +37,6 @@ function HomePage(): ReactElement {
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <HeroSection
-        badgeText="Enterprise Grade Solutions"
         title="Enterprise IT & ERP Solutions Delivered by Global-Grade Teams"
         description="Systems Edge Solutions delivers software development, IT outsourcing, and ERP implementation services for enterprises and institutions-combining global delivery standards with strong local execution."
         imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuAN51Y3Ugac-GYWdywVgWJPohaROAOGmQnJfpPHmDeOGZWZG15tLGeUxLTiJqzEpyFXGTB_Itbd09t_cMQzHKT6vMFrx3BtrUOMWe5eTrbtaTBNkdeaV4nXnhJHhFQ48hvwWfScSAr0DYpopIiGyXmVjLWcMqRv9ivWf6jLLxrAsn42WGJbsivplNbJEh5IqFDVWbCeoC_KaKNzziOpq5vbUvoFfQVKsH0fKlok053s6gYSdguGjBtkbDNaQTxLhz3BOV1Nbyk7gBix"
