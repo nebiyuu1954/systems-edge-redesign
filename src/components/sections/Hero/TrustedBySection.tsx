@@ -4,19 +4,19 @@ export interface TrustedPartnerLogo {
   id: string;
   logoSrc: string;
   logoAlt: string;
-  // optional message and person info shown when this logo is centered
+  // optional message and institution info shown when this logo is centered
   message?: string;
   personName?: string;
-  personRole?: string;
+  institution?: string;
 }
 
 export interface TrustedBySectionProps {
   heading: string;
   partnerLogos: TrustedPartnerLogo[];
-  // fallback message/person when the centered logo has no message
+  // fallback message/institution when the centered logo has no message
   fallbackMessage?: string;
   fallbackPersonName?: string;
-  fallbackPersonRole?: string;
+  fallbackInstitution?: string;
   // carousel settings
   visibleCount?: number; // default 3
   autoPlay?: boolean; // default true
@@ -29,8 +29,7 @@ const TrustedBySection = ({
   heading,
   partnerLogos,
   fallbackMessage,
-  fallbackPersonName,
-  fallbackPersonRole,
+  fallbackInstitution,
   visibleCount = 3,
   autoPlay = true,
   intervalMs = 3000,
@@ -144,7 +143,7 @@ const TrustedBySection = ({
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="hidden sm:block lg:col-span-7">
-            <h3 id="trusted-by-heading" className="mb-6 text-lg font-medium tracking-tight text-primary dark:text-white sm:text-xl md:text-2xl">
+            <h3 id="trusted-by-heading" className="h2-settings mb-6 text-primary dark:text-white">
               {heading}
             </h3>
 
@@ -199,7 +198,7 @@ const TrustedBySection = ({
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 lg:mt-16">
             <div className="relative ml-0 rounded-2xl border-l-4 border-secondary bg-white p-6 shadow-md dark:bg-backgroundDark sm:p-8 md:ml-4 md:p-12">
               <div className="absolute -left-[14px] top-1/2 hidden h-0 w-0 -translate-y-1/2 border-y-[12px] border-y-transparent border-r-[12px] border-r-secondary md:block" />
               <div className="absolute -left-[10px] top-1/2 z-10 hidden h-0 w-0 -translate-y-1/2 border-y-[10px] border-y-transparent border-r-[10px] border-r-white dark:border-r-slate-800 md:block" />
@@ -216,20 +215,16 @@ const TrustedBySection = ({
                 </div>
               ) : null}
 
-              <p className="mb-8 text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
+              <p className="h3-settings mb-8 text-slate-600 dark:text-slate-300">
                 "{centered?.message ?? fallbackMessage ?? ''}"
               </p>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-                  <span className="material-symbols-outlined translate-y-2 text-4xl text-slate-400 dark:text-slate-500">person</span>
-                </div>
+              {centered?.institution ?? fallbackInstitution ? (
+                <p className="-mt-4 text-sm font-semibold text-secondary">
+                  {centered?.institution ?? fallbackInstitution}
+                </p>
+              ) : null}
 
-                <div className="flex flex-col">
-                  <span className="text-base font-bold leading-snug text-primary dark:text-white">{centered?.personName ?? fallbackPersonName}</span>
-                  <span className="text-sm font-light text-slate-500 dark:text-slate-400">{centered?.personRole ?? fallbackPersonRole}</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
