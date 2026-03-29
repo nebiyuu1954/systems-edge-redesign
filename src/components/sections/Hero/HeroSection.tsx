@@ -41,12 +41,12 @@ const HeroSection = ({
 
           <h1
             id="hero-heading"
-            className="text-3xl font-black leading-tight tracking-tight text-white drop-shadow-sm sm:text-4xl lg:text-5xl xl:text-6xl"
+            className="h1-settings text-white drop-shadow-sm"
           >
             {title}
           </h1>
 
-          <p className="max-w-xl text-base font-normal leading-relaxed text-slate-200 sm:text-lg">{description}</p>
+          <p className="h3-settings max-w-xl text-slate-200">{description}</p>
 
           <div className="mt-4 flex flex-wrap gap-4">
             {actions.map((action) => (
@@ -55,8 +55,8 @@ const HeroSection = ({
                 href={action.href}
                 className={
                     action.variant === 'primary'
-                      ? 'flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-bold text-[#282971] shadow-lg ring-1 ring-white/10 transition-colors hover:bg-slate-100 sm:h-12 sm:px-8 sm:text-base'
-                    : 'flex h-11 items-center justify-center rounded-lg border border-white/30 bg-white/10 px-6 text-sm font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20 sm:h-12 sm:px-8 sm:text-base'
+                      ? 'button-1-settings inline-flex items-center justify-center bg-white text-[#282971] shadow-lg ring-1 ring-white/10 transition-colors hover:bg-slate-100'
+                    : 'button-1-settings inline-flex items-center justify-center border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20'
                 }
               >
                 {action.label}
