@@ -372,7 +372,7 @@ const ERPSection = (): ReactElement => {
             <SectionHeading
               heading="Methodology"
               description="A structured, proven approach to enterprise transformation."
-              headingClassName="h1-settings"
+              headingClassName="h2-settings"
               descriptionClassName="h3-settings max-w-2xl !mb-4"
             />
           </div>
