@@ -56,7 +56,7 @@ function HomePage(): ReactElement {
             logoAlt: 'INSA partner logo',
             message: 'INSA partnered with us to modernize core ERP processes across manufacturing lines.',
             personName: 'Mina Lopez',
-            personRole: 'Head of IT, INSA',
+            institution: 'INSA',
           },
           {
             id: 'institution-investment',
@@ -64,7 +64,7 @@ function HomePage(): ReactElement {
             logoAlt: 'Investment partner logo',
             message: 'Our investment partners rely on us for secure, auditable financial integrations.',
             personName: 'Harold Chung',
-            personRole: 'Finance Director, Investment Co.',
+            institution: 'Investment Co.',
           },
           {
             id: 'institution-poessa',
@@ -72,7 +72,7 @@ function HomePage(): ReactElement {
             logoAlt: 'Poessa partner logo',
             message: 'Poessa used our delivery model to deploy a global HR and payroll platform.',
             personName: 'Aisha Khan',
-            personRole: 'CIO, Poessa',
+            institution: 'Poessa',
           },
           {
             id: 'institution-pssa',
@@ -80,12 +80,12 @@ function HomePage(): ReactElement {
             logoAlt: 'PSSA partner logo',
             message: 'PSSA credits our phased rollout approach for minimal disruption during migration.',
             personName: 'Carlos Mendes',
-            personRole: 'CTO, PSSA',
+            institution: 'PSSA',
           },
         ]}
         fallbackMessage="Systems Edge Solutions brought real expertise and local insight to our global ERP rollout."
         fallbackPersonName="Alex Rivera"
-        fallbackPersonRole="CIO, Global Manufacturing Corp."
+        fallbackInstitution="Global Manufacturing Corp."
         visibleCount={3}
         autoPlay={true}
         intervalMs={3800}
