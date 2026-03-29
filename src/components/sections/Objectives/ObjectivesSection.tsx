@@ -39,7 +39,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
       <div className="relative w-full">
         <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
           <FadeInOnScroll>
-            <h1 id="why-us-heading" className="h1-settings mb-6 text-center text-primary dark:text-white">
+            <h1 id="why-us-heading" className="h2-settings sm:h1-settings mb-6 text-center text-primary dark:text-white">
               Why us
             </h1>
           </FadeInOnScroll>
@@ -78,7 +78,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                 <h2
                   id={`${block.id}-heading`}
                   style={{ lineHeight: TITLE_LINE_HEIGHT }}
-                  className="h2-settings mb-5 text-white sm:mb-6"
+                  className="big-card-tittle-settings  sm:h2-settings mb-5 text-white sm:mb-6"
                 >
                   {block.title}
                 </h2>
