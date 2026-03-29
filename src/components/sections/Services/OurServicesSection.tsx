@@ -51,7 +51,13 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
   return (
     <section id="services" className="w-full bg-background px-6 py-16 lg:px-12 lg:py-24 dark:bg-backgroundDark" aria-labelledby="our-services-heading">
       <div className="mx-auto flex max-w-7xl flex-col items-center">
-        <SectionHeading id="our-services-heading" heading={heading} description={description} />
+        <SectionHeading
+          id="our-services-heading"
+          heading={heading}
+          description={description}
+          headingClassName="h1-settings"
+          descriptionClassName="h3-settings"
+        />
 
         <div className="flex w-full max-w-6xl flex-col gap-8">
           <FadeInOnScroll delayMs={80}>
@@ -68,7 +74,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                     aria-controls={`service-panel-${service.id}`}
                     id={`service-tab-${service.id}`}
                     onClick={() => setActiveServiceIndex(index)}
-                    className={`rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 sm:px-5 sm:py-2.5 ${
+                    className={`h4-settings rounded-full px-4 py-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 sm:px-5 sm:py-2.5 ${
                       isActive
                         ? 'bg-primary text-white shadow-md'
                           : 'border border-slate-200 bg-background text-slate-700 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary dark:border-slate-700 dark:bg-backgroundDarkOne bg-backgroundOne  dark:text-slate-300 dark:hover:text-white'
@@ -98,17 +104,17 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                 </div>
                 <div className="flex w-full flex-col justify-center p-8 md:w-[60%] lg:p-12 bg-backgroundOne dark:bg-backgroundDarkOne text-white">
                   <FadeInOnScroll delayMs={80}>
-                    <h3 className="mb-4 text-2xl font-bold text-black">{activeService.title}</h3>
+                    <h2 className="big-card-tittle-settings mb-4 text-black dark:text-white">{activeService.title}</h2>
                   </FadeInOnScroll>
                   <FadeInOnScroll delayMs={160}>
-                    <p className="text-base leading-relaxed text-black dark:text-white">{activeService.description}</p>
+                    <p className="card-1-tittle-settings text-black dark:text-white">{activeService.description}</p>
                   </FadeInOnScroll>
 
                   <FadeInOnScroll delayMs={240}>
                     <div className="mt-6 flex flex-wrap gap-3">
                       <button
                         type="button"
-                        className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        className="button-2-settings inline-flex items-center bg-primary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/40"
                         aria-label={`Get started with ${activeService.title}`}
                       >
                         {`Get started`}
@@ -118,7 +124,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                         activeService.learnMoreHref.startsWith('/') ? (
                           <Link
                             to={activeService.learnMoreHref}
-                            className="inline-flex items-center rounded-md border border-slate-200 bg-secondary px-4 py-2 text-sm font-semibold text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                            className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
                             aria-label={`Learn more about ${activeService.title}`}
                           >
                             Learn More
@@ -126,7 +132,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                         ) : (
                           <a
                             href={activeService.learnMoreHref}
-                            className="inline-flex items-center rounded-md border border-slate-200 bg-secondary px-4 py-2 text-sm font-semibold text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                            className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
                             aria-label={`Learn more about ${activeService.title}`}
                           >
                             Learn More
@@ -135,7 +141,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                       ) : (
                         <button
                           type="button"
-                          className="inline-flex items-center rounded-md border border-slate-200 bg-secondary px-4 py-2 text-sm font-semibold text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                          className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
                           aria-label={`Learn more about ${activeService.title}`}
                         >
                           Learn More
