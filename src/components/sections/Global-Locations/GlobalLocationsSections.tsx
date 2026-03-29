@@ -190,9 +190,9 @@ const GlobalLocationsSections2 = ({
 
             <div className="p-8">
               <header className="mb-6">
-                <h2 className="text-2xl font-bold text-secondary mb-1">{activeLocation.city}</h2>
-                <p className="text-secondary font-semibold text-sm tracking-wide uppercase">{activeLocation.country}</p>
-                <p className="text-slate-600 text-sm mt-2 dark:text-slate-300">{activeLocation.tagline}</p>
+                <h2 className="card-1-title-settings text-secondary mb-1">{activeLocation.city}</h2>
+                <p className="card-1-description-settings text-secondary uppercase tracking-wide">{activeLocation.country}</p>
+                <p className="h4-settings mt-2 text-slate-600 dark:text-slate-300">{activeLocation.tagline}</p>
               </header>
 
               <div className="space-y-4">
@@ -204,7 +204,7 @@ const GlobalLocationsSections2 = ({
                     </svg>
                   </div>
                   <div>
-                    <p className="text-slate-600 text-sm leading-relaxed dark:text-slate-300">{activeLocation.address}</p>
+                    <p className="h4-settings text-slate-600 leading-relaxed dark:text-slate-300">{activeLocation.address}</p>
                   </div>
                 </div>
 
@@ -212,7 +212,7 @@ const GlobalLocationsSections2 = ({
                   <svg className="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                     <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                   </svg>
-                  <a className="text-slate-600 text-sm hover:text-secondary transition-colors dark:text-slate-300" href={`mailto:${activeLocation.email}`}>
+                  <a className="h4-settings text-slate-600 hover:text-secondary transition-colors dark:text-slate-300" href={`mailto:${activeLocation.email}`}>
                     {activeLocation.email}
                   </a>
                 </div>
@@ -221,7 +221,7 @@ const GlobalLocationsSections2 = ({
                   <svg className="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                     <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                   </svg>
-                  <p className="text-slate-600 text-sm dark:text-slate-300">{activeLocation.officeHours}</p>
+                  <p className="h4-settings text-slate-600 dark:text-slate-300">{activeLocation.officeHours}</p>
                 </div>
               </div>
 
