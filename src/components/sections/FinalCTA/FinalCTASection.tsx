@@ -10,13 +10,13 @@ const FinalCTASection = (): ReactElement => {
 
       <div className="relative z-10 mx-auto px-6 py-24 md:py-32 lg:py-36 flex flex-col items-center justify-center text-center max-w-7xl">
         <FadeInOnScroll>
-          <h2 id="final-cta-title" className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight">
+          <h2 id="final-cta-title" className="h2-settings mb-4 text-white">
             Let's Build Systems That Scale
           </h2>
         </FadeInOnScroll>
 
         <FadeInOnScroll delayMs={120}>
-          <p className="text-base md:text-lg text-white/90 mb-8 max-w-[640px]">
+          <p className="h3-settings mb-8 max-w-[640px] text-white/90">
             Get in touch with our team to discuss your enterprise needs.
           </p>
         </FadeInOnScroll>
@@ -25,7 +25,7 @@ const FinalCTASection = (): ReactElement => {
           <a
             href="#contact"
             role="button"
-            className="inline-block bg-secondary hover:bg-secondary/90 text-white font-bold py-4 px-8 md:py-5 md:px-10 rounded-lg transition-colors duration-200 shadow-lg text-lg"
+            className="button-1-settings inline-block bg-secondary text-white shadow-lg transition-colors duration-200 hover:bg-secondary/90"
           >
             Request Consultation
           </a>
