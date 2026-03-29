@@ -134,21 +134,17 @@ const SoftwareDevelopmentSection = (): ReactElement => {
         <div className={overview.container}>
           <div className={overview.grid}>
             <div className={overview.textColumn}>
-              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
-                Software Development
-              </span>
-
-              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
                 Custom software that 
                 <span className={overview.titleAccent}> scales, integrates & performs</span>
               </h1>
 
-              <p className={overview.description} data-slot={overviewSlotIds.description}>
+              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
                 Unlock operational excellence with bespoke software solutions tailored to your unique business logic. We bridge the gap between disparate systems and build future-proof
                 platforms that drive growth.
               </p>
 
-              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+              <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
                 {softwareDevelopmentPoints.map((point, idx) => (
                   <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
                     <li className={overview.listItem}>
