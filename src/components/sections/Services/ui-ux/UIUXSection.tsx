@@ -163,7 +163,7 @@ const cyclePoints: CyclePoint[] = [
     title: '04. Deliver',
     subtitle: 'Production Ready Assets',
     labelClassName: 'left-20 top-1/2 -translate-y-1/2 text-left md:left-28',
-    nodeClassName: 'left-2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-0',
+    nodeClassName: 'left-[20px] top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-0',
   },
 ];
 
@@ -268,8 +268,8 @@ const UIUXSection = (): ReactElement => {
               id="ux-ui-capabilities"
               heading="Core Capabilities"
               description="Capabilities built to translate enterprise complexity into clear, usable experiences."
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-xl mb-4"
+              headingClassName="h2-settings"
+              descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 mb-8 rounded-full" />
           </div>
@@ -292,8 +292,8 @@ const UIUXSection = (): ReactElement => {
       <section ref={cycleSectionRef} className="overflow-hidden bg-surface px-4 py-20 sm:px-6 sm:py-24 dark:bg-backgroundDark">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center sm:mb-20 lg:mb-24">
-            <h2 className="mb-6 text-4xl font-bold tracking-tighter text-primary sm:text-5xl">The Iterative Cycle</h2>
-            <p className="mx-auto max-w-2xl text-base text-on-surface-variant dark:text-slate-300 sm:text-lg">
+            <h2 className="h2-settings mb-6 text-primary">The Iterative Cycle</h2>
+            <p className="h3-settings mx-auto max-w-2xl text-on-surface-variant dark:text-slate-300">
               We believe great design isn&apos;t a destination, but a continuous loop of refinement. Our &apos;Cycle&apos; methodology ensures your product evolves with your users.
             </p>
           </div>
@@ -317,7 +317,7 @@ const UIUXSection = (): ReactElement => {
                 }`}
               >
                 <span className="mb-2 text-xs font-bold uppercase tracking-[0.2em] opacity-60">Core Focus</span>
-                <div className="text-2xl font-black leading-tight sm:text-3xl">
+                <div className="h3-settings md:h2-settings text-2xl font-black leading-tight sm:text-3xl">
                   RESEARCH
                   <br />
                   DESIGN
@@ -354,10 +354,16 @@ const UIUXSection = (): ReactElement => {
                     )}
 
                     <div className="mt-3 text-center whitespace-nowrap">
-                      <span className={`block text-[10px] font-black uppercase tracking-widest sm:text-sm ${isDeliver ? 'text-secondary' : 'text-primary'}`}>
+                      <span
+                        className={`h4-settings md:card-1-title-settings block text-[10px] font-black uppercase tracking-widest sm:text-sm ${
+                          isDeliver ? 'text-secondary' : 'text-primary'
+                        }`}
+                      >
                         {point.title}
                       </span>
-                      <span className="hidden text-[10px] text-on-surface-variant dark:text-slate-300 sm:block sm:text-xs">{point.subtitle}</span>
+                      <span className="h4-settings md:card-1-description-settings hidden text-[10px] text-on-surface-variant dark:text-slate-300 sm:block sm:text-xs">
+                        {point.subtitle}
+                      </span>
                       {isDeliver ? <span className="mt-1 hidden text-[9px] font-bold italic text-secondary sm:block sm:text-[10px]">Continuous Loop Maintained</span> : null}
                     </div>
                   </div>
@@ -371,7 +377,7 @@ const UIUXSection = (): ReactElement => {
       <section className="bg-surface-container-lowest px-8 py-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h3 className="mb-6 text-4xl font-bold tracking-tight dark:text-background text-primary">Built for Scalability</h3>
+            <h2 className="h2-settings mb-6 text-primary dark:text-background">Built for Scalability</h2>
             <div className="mb-8 space-y-4 md:hidden">
               <div className="overflow-hidden rounded-xl bg-surface-container shadow-sm">
                 <img
@@ -382,7 +388,7 @@ const UIUXSection = (): ReactElement => {
                 />
               </div>
             </div>
-            <p className="mb-8 text-lg leading-relaxed text-on-surface-variant dark:text-slate-300">
+            <p className="h3-settings mb-8 text-on-surface-variant dark:text-slate-300">
               Our design systems are built to grow. We provide comprehensive documentation and component libraries that empower your development team to build faster and more consistently.
             </p>
             <div className="mb-8 space-y-4 md:hidden">
@@ -460,11 +466,11 @@ const UIUXSection = (): ReactElement => {
       <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDark">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to elevate your enterprise experience?</h2>
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Partner with Systems Edge to transform your complex workflows into high-performing and visually appealing solutions.</p>
+            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to elevate your enterprise experience?</h2>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Partner with Systems Edge to transform your complex workflows into high-performing and visually appealing solutions.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="/#contact">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="/#contact">
                 Schedule a Consultation
               </a>
             </div>
