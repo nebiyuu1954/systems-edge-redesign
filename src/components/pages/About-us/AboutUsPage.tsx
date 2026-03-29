@@ -133,7 +133,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     id: 'back-end-logic',
     icon: 'database',
-    title: 'Back-End Logic',
+    title: 'Back-End\nLogic',
     description: 'High-performance server-side architectures designed for enterprise scale and absolute reliability.',
     tags: ['Core Engine', 'Microservices'],
     technologies: [
@@ -157,7 +157,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     id: 'front-end-precision',
     icon: 'web_asset',
-    title: 'Front-End Precision',
+    title: 'Front-End\nPrecision',
     description: 'Responsive, accessible interfaces that combine smooth interactivity with complex data visualization.',
     tags: ['SPA', 'Architecture'],
     technologies: [
@@ -181,7 +181,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     id: 'data-intelligence',
     icon: 'insights',
-    title: 'Data Intelligence',
+    title: 'Data\nIntelligence',
     description: 'Unlocking business value through advanced analytics, machine learning, and robust data pipelines.',
     tags: ['AI / ML', 'Big Data'],
     technologies: [
@@ -205,7 +205,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     id: 'ux-ui-strategy',
     icon: 'palette',
-    title: 'UX/UI Strategy',
+    title: 'UX/UI\nStrategy',
     description: 'Strategic design systems that balance aesthetic brilliance with functional excellence and usability.',
     tags: ['Design Ops', 'Strategy'],
     technologies: [
@@ -229,7 +229,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     id: 'quality-assurance',
     icon: 'rule',
-    title: 'Quality Assurance',
+    title: 'Quality\nAssurance',
     description: 'Comprehensive testing strategies ensuring zero-defect deployments through deep automation.',
     tags: ['Automation', 'CI/CD'],
     technologies: [
@@ -253,7 +253,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     id: 'cybersecurity',
     icon: 'shield_lock',
-    title: 'Cybersecurity',
+    title: 'Cyber\nSecurity',
     description: 'End-to-end security architecture protecting enterprise assets across cloud and local ecosystems.',
     tags: ['Identity', 'Compliance'],
     technologies: [
@@ -365,7 +365,7 @@ function AboutUsPage(): ReactElement {
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
 
-      <section className="relative flex h-[619px] items-center justify-start overflow-hidden pl-6 md:pl-12 lg:pl-24">
+      <section className="relative flex h-[619px] items-center justify-center overflow-hidden px-6 md:justify-start md:px-0 md:pl-12 lg:pl-24">
         <div className="absolute inset-0 z-0">
           <img
             alt="Professional team collaborating in a modern architectural office space"
@@ -376,9 +376,9 @@ function AboutUsPage(): ReactElement {
           <div className="absolute inset-0 bg-primary/40 backdrop-brightness-50" />
         </div>
 
-        <div className="relative z-10 max-w-4xl px-0 -ml-6 md:-ml-12 text-left">
+        <div className="relative z-10 max-w-4xl text-center md:-ml-12 md:text-left">
           <FadeInOnScroll>
-            <h1 className="mb-4 text-5xl font-bold leading-tight tracking-tighter text-white md:text-5xl">
+            <h1 className="h1-settings mb-4 text-white">
               We are Dedicated
               <br />
               to Your Success.
@@ -386,7 +386,7 @@ function AboutUsPage(): ReactElement {
           </FadeInOnScroll>
 
           <FadeInOnScroll delayMs={120}>
-            <p className="mb-6 max-w-2xl text-lg leading-relaxed text-white">
+            <p className="h3-settings mb-6 max-w-2xl text-white">
               We are more than just an IT solutions provider. We are a community of passionate tech enthusiasts, united by a common goal: to inspire talent, empower businesses, and shape a future fueled by innovation.
             </p>
           </FadeInOnScroll>
@@ -394,7 +394,7 @@ function AboutUsPage(): ReactElement {
           <FadeInOnScroll delayMs={240}>
             <a
               href="/#contact"
-              className="inline-flex rounded-xl bg-secondary px-8 py-4 text-lg font-bold text-white shadow-xl shadow-black/20 transition-all hover:bg-[#006666] hover:scale-105 active:scale-95"
+              className="button-1-settings bg-secondary text-white shadow-xl shadow-black/20 transition-all hover:bg-[#006666] hover:scale-105 active:scale-95"
             >
               Talk to an Expert
             </a>
@@ -416,11 +416,11 @@ function AboutUsPage(): ReactElement {
                 </FadeInOnScroll>
 
                 <FadeInOnScroll delayMs={120}>
-                  <h2 className="mb-6 text-4xl font-bold leading-tight text-black dark:text-white">Building Partnerships That Last Generations</h2>
+                  <h2 className="h2-settings mb-6 text-black dark:text-white">Building Partnerships That Last Generations</h2>
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={240}>
-                <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="card-1-description-settings text-slate-600 dark:text-slate-300">
                   We don&apos;t just deliver software; we engineer trust. Our mission is to integrate seamlessly with your core objectives, creating lasting architectural solutions that grow alongside your business.
                 </p>
               </FadeInOnScroll>
@@ -437,11 +437,11 @@ function AboutUsPage(): ReactElement {
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={120}>
-                <h2 className="mb-6 text-4xl font-bold leading-tight text-black dark:text-white">Empowering Customers Through Pure Technology</h2>
+                <h2 className="h2-settings mb-6 text-black dark:text-white">Empowering Customers Through Pure Technology</h2>
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={240}>
-                <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="card-1-description-settings text-slate-600 dark:text-slate-300">
                   To redefine the standard of engineering excellence, where technical barriers dissolve and our clients are empowered to lead their industries through superior digital infrastructure.
                 </p>
               </FadeInOnScroll>
@@ -457,7 +457,7 @@ function AboutUsPage(): ReactElement {
               label={"Methodology"}
               heading={"Our Strategic Approach"}
               center={false}
-              headingClassName={"text-5xl font-black tracking-tight text-black dark:text-white"}
+              headingClassName={"h2-settings text-black dark:text-white"}
               delayMsHeading={120}
             />
             <div className="w-80 h-1.5 bg-secondary mt-2 rounded-full" />
@@ -509,12 +509,12 @@ function AboutUsPage(): ReactElement {
                     />
                   </div>
                   <div className="p-8">
-                    <div className="mb-4 text-5xl font-black text-black dark:text-white">{step.number}</div>
-                    <h3 className="mb-4 text-2xl font-bold text-black dark:text-white">
+                    <div className="h2-settings mb-4 text-black dark:text-white">{step.number}</div>
+                    <h3 className="card-1-title-settings mb-4 text-black dark:text-white">
                       {hoveredApproachIndex === i ? step.expandedTitle : step.title}
                     </h3>
                     <p
-                      className={`text-sm leading-relaxed text-slate-600 dark:text-white transition-all duration-500 ${hoveredApproachIndex === i ? 'max-w-2xl' : 'line-clamp-3 md:line-clamp-4'}`}
+                      className={`card-1-description-settings text-slate-600 dark:text-white transition-all duration-500 ${hoveredApproachIndex === i ? 'max-w-2xl' : 'line-clamp-3 md:line-clamp-4'}`}
                       style={{ transitionDuration: `${approachAnimation.contentMs}ms` }}
                     >
                       {hoveredApproachIndex === i ? step.expandedDescription : step.description}
@@ -536,15 +536,15 @@ function AboutUsPage(): ReactElement {
               </FadeInOnScroll> */}
 
               <FadeInOnScroll delayMs={120}>
-                <h2 className="mb-8 text-5xl font-black tracking-tight text-primary dark:text-secondary">Executive &amp; Technical Orchestration</h2>
+                <h2 className="h2-settings mb-8 text-primary dark:text-secondary">Executive &amp; Technical Orchestration</h2>
               </FadeInOnScroll>
 
               <FadeInOnScroll delayMs={240}>
                 <div className="space-y-6 text-lg leading-relaxed">
-                    <p className="text-slate-700 dark:text-background">
+                    <p className="h3-settings text-slate-700 dark:text-background">
                     At Systems Edge, leadership isn&apos;t just about oversight; it&apos;s about setting the standard for technical precision. Our executive team brings decades of global engineering experience.
                     </p>
-                    <p className="text-slate-700 dark:text-background">
+                    <p className="h3-settings mb-2 md:mb-0 text-slate-700 dark:text-background">
                     Our tech leads are active contributors to the developer community, ensuring that our internal standards always reflect the frontier of modern software architecture.
                   </p>
                 </div>
@@ -552,7 +552,7 @@ function AboutUsPage(): ReactElement {
 
               <FadeInOnScroll delayMs={360}>
                 {/* Mobile-only image: shown above the numbers on small screens */}
-                <div className="block md:hidden">
+                <div className="mt-6 block md:mt-0 md:hidden">
                   <div className="overflow-hidden rounded-2xl shadow-2xl shadow-primary/20 aspect-[4/5] mb-6">
                     <img
                       alt="Strategic executive meeting happening in a glass-walled boardroom"
@@ -610,11 +610,11 @@ function AboutUsPage(): ReactElement {
         <div className="mx-auto max-w-7xl px-8">
           <div className="mb-20 text-center">
             <FadeInOnScroll>
-              <h2 className="mb-4 text-5xl font-black text-black dark:text-white">Deep Domain Expertise</h2>
+              <h2 className="h2-settings mb-4 text-black dark:text-white">Deep Domain Expertise</h2>
             </FadeInOnScroll>
 
             <FadeInOnScroll delayMs={120}>
-              <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-300">Specialized squads dedicated to mastering every layer of the digital ecosystem.</p>
+              <p className="h3-settings mx-auto max-w-2xl text-slate-600 dark:text-slate-300">Specialized squads dedicated to mastering every layer of the digital ecosystem.</p>
             </FadeInOnScroll>
           </div>
 
@@ -625,6 +625,8 @@ function AboutUsPage(): ReactElement {
                   title={card.title}
                   description={card.description}
                   delayMs={i * 90}
+                  titleClassName="card-1-title-settings text-black dark:text-white"
+                  descriptionClassName="card-1-description-settings text-slate-600 dark:text-slate-300"
                   Icon={(props: SVGProps<SVGSVGElement>) => (
                     <span
                       aria-hidden="true"
@@ -660,7 +662,7 @@ function AboutUsPage(): ReactElement {
           <SectionHeading
             heading={"A Symphony of Tech Expertise"}
             center={true}
-            headingClassName={"text-3xl font-extrabold italic leading-tight tracking-tighter text-black dark:text-white lg:text-5xl"}
+            headingClassName={"h2-settings text-black dark:text-white"}
           />
 
           <div className="mx-auto mt-2 h-1 w-24 bg-secondary rounded-full" />
@@ -671,19 +673,19 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
       
-      <GlobalLocationsSections className="bg-backgroundOne dark:bg-backgroundDark" contentClassName="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" heading="Global Locations" center={false} headingClassName="text-5xl font-black tracking-tight text-black dark:text-white" delayMsHeading={120} />
+      <GlobalLocationsSections className="bg-backgroundOne dark:bg-backgroundDark" contentClassName="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" heading="Global Locations" center={false} headingClassName="h2-settings text-black dark:text-white" delayMsHeading={120} />
       
       <section className="px-8 py-24 bg-background dark:bg-backgroundDarkOne">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-primary p-16 md:p-24">
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <FadeInOnScroll>
-              <h2 className="mb-10 text-4xl font-black leading-tight text-white md:text-6xl">Ready to build something extraordinary together?</h2>
+              <h2 className="h2-settings mb-10 text-center text-white">Ready to build something extraordinary together?</h2>
             </FadeInOnScroll>
 
             <FadeInOnScroll delayMs={120}>
               <a
                 href="/#contact"
-                className="inline-flex rounded-xl bg-secondary px-12 py-5 text-xl font-bold text-white shadow-xl shadow-black/20 transition-colors hover:bg-secondary-fixed hover:text-slate-700 dark:hover:text-slate-300"
+                className="button-1-settings bg-secondary text-white shadow-xl shadow-black/20 transition-colors hover:bg-secondary-fixed hover:text-slate-700 dark:hover:text-slate-300"
               >
                 Start Your Project
               </a>
