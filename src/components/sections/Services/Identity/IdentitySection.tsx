@@ -5,7 +5,6 @@ import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
 import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 export interface IdentitySectionProps {
-  badgeText?: string;
   ctaLabel?: string;
 }
 
@@ -132,7 +131,6 @@ const methodologySteps: MethodologyStep[] = [
 ];
 
 const IdentitySection = ({
-  badgeText = 'IDENTITY & ACCESS MANAGEMENT',
   ctaLabel = 'Request IAM Consultation',
 }: IdentitySectionProps): ReactElement => {
   const overview = erpOverviewLayoutConfig;
@@ -143,21 +141,17 @@ const IdentitySection = ({
         <div className={overview.container}>
           <div className={overview.grid}>
             <div className={overview.textColumn}>
-              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
-                {badgeText}
-              </span>
-
-              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
                 Secure your enterprise <br />
                 <span className={overview.titleAccent}>Identity &amp; Access</span> Perimeter
               </h1>
 
-              <p className={overview.description} data-slot={overviewSlotIds.description}>
+              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
                 Deploy resilient security frameworks that balance ironclad protection with seamless user experiences. Our MFA and SSO integrations ensure that only the right people access the
                 right resources at the right time.
               </p>
 
-              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+              <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
                 {overviewPoints.map((point, idx) => (
                   <FadeInOnScroll key={point} delayMs={idx * 80} className="block">
                     <li className={overview.listItem}>
