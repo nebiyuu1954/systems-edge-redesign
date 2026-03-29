@@ -30,7 +30,6 @@ export interface ERPMethodologyPhase {
 }
 
 export interface ERPSectionProps {
-  badgeText?: string;
 }
 
 const CheckIcon = (props: SVGProps<SVGSVGElement>): ReactElement => (
@@ -231,7 +230,7 @@ const methodologyPhases: ERPMethodologyPhase[] = [
   },
 ];
 
-const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactElement => {
+const ERPSection = (): ReactElement => {
   const overview = erpOverviewLayoutConfig;
 
   const [methodVisible, setMethodVisible] = useState<boolean[]>(() => methodologyPhases.map(() => false));
@@ -305,31 +304,27 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
         <div className={overview.container}>
           <div className={overview.grid}>
             <div className={overview.textColumn}>
-              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
-                {badgeText}
-              </span>
-
-              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
                 Next-Generation <br />
                 <span className={overview.titleAccent}>ERP &amp; Enterprise</span> Systems
               </h1>
 
-              <p className={overview.description} data-slot={overviewSlotIds.description}>
+              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
                 Revolutionize your organizational workflow with end-to-end ERP solutions. Systems Edge Solutions bridges the gap between complex data silos and seamless business operations, ensuring your enterprise scales with precision and clarity.
               </p>
 
-              <ul className={overview.list} data-slot={overviewSlotIds.list}>
-                {valuePoints.map((point, idx) => (
-                  <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
-                    <li className={overview.listItem}>
-                      <span className={overview.listBullet}>
-                        <CheckIcon className="h-4 w-4" />
-                      </span>
-                      <span className={overview.listText}>{point.text}</span>
-                    </li>
-                  </FadeInOnScroll>
-                ))}
-              </ul>
+                <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
+                  {valuePoints.map((point, idx) => (
+                    <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
+                      <li className={overview.listItem}>
+                        <span className={overview.listBullet}>
+                          <CheckIcon className="h-4 w-4" />
+                        </span>
+                        <span className={overview.listText}>{point.text}</span>
+                      </li>
+                    </FadeInOnScroll>
+                  ))}
+                </ul>
             </div>
 
             <div className={overview.imageColumn} data-slot={overviewSlotIds.image}>
@@ -351,8 +346,8 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
             id="erp-services"
             heading="ERP Services"
             description="Comprehensive solutions designed to modernize your core business infrastructure and enhance operational visibility."
-            headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-            descriptionClassName="max-w-xl mb-4"
+            headingClassName="h1-settings"
+            descriptionClassName="h3-settings max-w-xl !mb-4"
           />
           <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 mb-8 rounded-full" />
 
@@ -377,8 +372,8 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
             <SectionHeading
               heading="Methodology"
               description="A structured, proven approach to enterprise transformation."
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-2xl"
+              headingClassName="h1-settings"
+              descriptionClassName="h3-settings max-w-2xl !mb-4"
             />
           </div>
 
@@ -404,8 +399,8 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
                   >
                       <div className={`${isEven ? 'ml-auto max-w-[420px] text-right' : 'mr-auto max-w-[420px] text-left'}`}>
                         <div className="inline-block rounded-2xl bg-primary px-6 py-4">
-                          <h4 className="text-2xl font-bold text-white">{`${phase.phaseLabel}: ${phase.title}`}</h4>
-                          <p className="mt-2 text-sm text-white/90">{phase.desktopSubtitle}</p>
+                          <h4 className="card-1-title-settings text-white">{`${phase.phaseLabel}: ${phase.title}`}</h4>
+                          <p className="card-1-description-settings mt-2 text-white/90">{phase.desktopSubtitle}</p>
                         </div>
                       </div>
                   </div>
@@ -420,16 +415,16 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
                   <div className={`mt-4 w-full md:mt-0 md:w-5/12 ${isEven ? 'md:pl-12' : 'md:order-1 md:pr-12 md:text-right'}`}>
                     {/* Mobile: stacked, centered layout (no small bg badge) */}
                     <div className="md:hidden w-full text-center">
-                      <h4 className="text-2xl font-bold text-primary">{`${phase.phaseLabel}: ${phase.title}`}</h4>
-                      <p className="mt-2 mb-[15px] text-sm text-slate-600 dark:text-slate-300">{phase.desktopSubtitle}</p>
+                      <h4 className="card-1-title-settings text-primary">{`${phase.phaseLabel}: ${phase.title}`}</h4>
+                      <p className="card-1-description-settings mt-2 mb-[15px] text-slate-600 dark:text-slate-300">{phase.desktopSubtitle}</p>
                     </div>
 
                     <div className={`mb-2 flex items-center gap-4 text-secondary justify-center md:justify-start ${isEven ? '' : 'md:justify-end'}`}>
-                      <span className="text-xs font-semibold uppercase tracking-wider">{phase.stageLabel}</span>
+                      <span className="h3-settings uppercase tracking-wider">{phase.stageLabel}</span>
                       <Icon className="h-6 w-6" />
                     </div>
 
-                    <p className="text-slate-600 dark:text-slate-300 text-center md:text-left md:dark:text-slate-300">{phase.description}</p>
+                    <p className="h4-settings text-center text-slate-600 dark:text-slate-300 md:text-left md:dark:text-slate-300">{phase.description}</p>
                   </div>
                 </div>
               );
@@ -441,11 +436,11 @@ const ERPSection = ({ badgeText = 'Core Solutions' }: ERPSectionProps): ReactEle
       <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to Scale Your Enterprise?</h2>
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let&apos;s build your future today.</p>
+            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to Scale Your Enterprise?</h2>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let&apos;s build your future today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="/#contact">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="/#contact">
                 Schedule a Consultation
               </a>
             </div>
