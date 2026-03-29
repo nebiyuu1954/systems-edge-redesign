@@ -8,7 +8,6 @@ export interface HeroAction {
 }
 
 export interface HeroSectionProps {
-  badgeText: string;
   title: string;
   description: string;
   imageSrc: string;
@@ -17,7 +16,6 @@ export interface HeroSectionProps {
 }
 
 const HeroSection = ({
-  badgeText,
   title,
   description,
   imageSrc,
