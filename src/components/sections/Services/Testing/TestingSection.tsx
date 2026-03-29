@@ -5,7 +5,6 @@ import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
 import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 export interface TestingSectionProps {
-  badgeText?: string;
   ctaLabel?: string;
 }
 
@@ -191,7 +190,7 @@ const overviewPoints = [
   { id: 'stress-testing', text: 'Cloud-Scale Performance Stress Testing' },
 ];
 
-const TestingSection = ({ badgeText = 'Software Testing', ctaLabel = 'Discuss Your Testing Needs' }: TestingSectionProps): ReactElement => {
+const TestingSection = ({ ctaLabel = 'Discuss Your Testing Needs' }: TestingSectionProps): ReactElement => {
   const overview = erpOverviewLayoutConfig;
 
   return (
@@ -207,20 +206,16 @@ const TestingSection = ({ badgeText = 'Software Testing', ctaLabel = 'Discuss Yo
         <div className={overview.container}>
           <div className={overview.grid}>
             <div className={overview.textColumn}>
-              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
-                {badgeText}
-              </span>
-
-              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
                 Software testing that <br />
                 <span className={overview.titleAccent}>scales</span>, validates, and protects
               </h1>
 
-              <p className={overview.description} data-slot={overviewSlotIds.description}>
+              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
                 Systems Edge Solutions delivers end-to-end testing services that reduce risk, improve performance, and ensure every release meets enterprise-grade standards.
               </p>
 
-              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+              <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
                 {overviewPoints.map((point, index) => (
                   <FadeInOnScroll key={point.id} delayMs={index * 80} className="block">
                     <li className={overview.listItem}>
