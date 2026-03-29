@@ -39,16 +39,16 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
       <div className="relative w-full">
         <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
           <FadeInOnScroll>
-            <h1 id="why-us-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
+            <h1 id="why-us-heading" className="h1-settings mb-6 text-center text-primary dark:text-white">
               Why us
             </h1>
           </FadeInOnScroll>
 
-          <FadeInOnScroll delayMs={120} className="mx-auto">
-            <p className="mb-20 mx-auto max-w-[800px] text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+          {/* <FadeInOnScroll delayMs={120} className="mx-auto">
+            <p className="h3-settings mb-20 mx-auto max-w-[800px] text-center text-slate-600 dark:text-slate-400">
               We translate strategic objectives into scalable, measurable solutions that reduce risk and accelerate business value.
             </p>
-          </FadeInOnScroll>
+          </FadeInOnScroll> */}
         </div>
         {blocks.map((block, index) => {
           const isExpanded = Boolean(expandedById[block.id]);
@@ -78,13 +78,13 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                 <h2
                   id={`${block.id}-heading`}
                   style={{ lineHeight: TITLE_LINE_HEIGHT }}
-                  className="mb-5 text-3xl font-bold text-white sm:mb-6 sm:text-4xl lg:text-[48px]"
+                  className="h2-settings mb-5 text-white sm:mb-6"
                 >
                   {block.title}
                 </h2>
 
                 <FadeInOnScroll delayMs={120} className="max-w-3xl">
-                  <p className="text-base leading-relaxed text-white sm:text-lg lg:text-[20px]">{block.description}</p>
+                  <p className="h3-settings text-white">{block.description}</p>
                 </FadeInOnScroll>
 
                 <FadeInOnScroll delayMs={220}>
@@ -93,7 +93,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                     onClick={() => toggleExpanded(block.id)}
                     aria-expanded={isExpanded}
                     aria-controls={detailsId}
-                    className="mt-8 inline-flex items-center justify-center rounded-lg bg-secondary px-7 py-3 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-secondary dark:text-white"
+                    className="button-1-settings mt-8 bg-secondary text-white transition-all duration-300 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-secondary dark:text-white"
                   >
                     {isExpanded ? 'Hide Details' : block.learnMoreLabel ?? 'Learn More'}
                   </button>
@@ -107,9 +107,9 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                   aria-hidden={!isExpanded}
                 >
                   <div className="px-6 py-5">
-                    <p className="text-base leading-relaxed !text-white text-center">{block.details ?? block.description}</p>
+                    <p className="h3-settings text-center !text-white">{block.details ?? block.description}</p>
                     {block.detailPoints && block.detailPoints.length > 0 ? (
-                      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed !text-white marker:text-white mx-auto text-left">
+                      <ul className="card-1-description-settings mt-4 list-disc space-y-2 pl-5 !text-white marker:text-white mx-auto text-left">
                         {block.detailPoints.map((point) => (
                           <li key={`${block.id}-${point}`} className="!text-white">
                             {point}
