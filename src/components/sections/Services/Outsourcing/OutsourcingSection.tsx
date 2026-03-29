@@ -65,20 +65,16 @@ const OutsourcingSection = (): ReactElement => {
         <div className={overview.container}>
           <div className={overview.grid}>
             <div className={overview.textColumn}>
-              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
-                IT Outsourcing &amp; Staffing
-              </span>
-
-              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
                 Access top-tier technical talent, <br />
                 <span className={overview.titleAccent}>scaled</span> to your needs
               </h1>
 
-              <p className={overview.description} data-slot={overviewSlotIds.description}>
+              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
                 Bridge the talent gap with Systems Edge Solutions through high-impact engineering teams and specialized professionals who integrate seamlessly into your workflows and accelerate product delivery.
               </p>
 
-              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+              <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
                 {overviewPoints.map((point, index) => (
                   <FadeInOnScroll key={point} delayMs={index * 80} className="block">
                     <li className={overview.listItem}>
@@ -114,8 +110,8 @@ const OutsourcingSection = (): ReactElement => {
               id="outsourcing-services"
               heading="IT outsourcing & staffing services"
               description="High-impact engineering teams and staffing solutions that integrate with your workflows to accelerate delivery and reduce time-to-hire."
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-xl mb-4"
+              headingClassName="h1-settings"
+              descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 rounded-full" />
           </div>
@@ -178,8 +174,8 @@ const OutsourcingSection = (): ReactElement => {
               id="how-we-build-your-teams"
               heading="How we build your teams"
               description="Our Strategic Integration Process"
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-xl mb-4"
+              headingClassName="h1-settings"
+              descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 rounded-full" />
           </div>
@@ -190,8 +186,8 @@ const OutsourcingSection = (): ReactElement => {
                 <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-secondary/30" aria-hidden />
                 <div className="relative z-10 w-12 h-12 flex-shrink-0 bg-secondary text-white flex items-center justify-center rounded-full font-bold text-xl shadow-lg">1</div>
                 <div className="ml-10">
-                  <h4 className="text-2xl font-bold text-primary mb-2">Discovery &amp; Analysis</h4>
-                  <p className="text-primary/70 dark:text-white leading-relaxed">We conduct a deep dive into your technical stack, project roadmap, and team culture to define the exact skill sets required for success.</p>
+                  <h4 className="card-1-title-settings mb-2 text-primary">Discovery &amp; Analysis</h4>
+                  <p className="card-1-description-settings text-primary/70 dark:text-white leading-relaxed">We conduct a deep dive into your technical stack, project roadmap, and team culture to define the exact skill sets required for success.</p>
                 </div>
               </div>
             </FadeInOnScroll>
@@ -201,8 +197,8 @@ const OutsourcingSection = (): ReactElement => {
                 <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-secondary/30" aria-hidden />
                 <div className="relative z-10 w-12 h-12 flex-shrink-0 bg-secondary text-white flex items-center justify-center rounded-full font-bold text-xl shadow-lg">2</div>
                 <div className="ml-10">
-                  <h4 className="text-2xl font-bold text-primary mb-2">Sourcing &amp; Screening</h4>
-                  <p className="text-primary/70 dark:text-white leading-relaxed">Our global network is activated. Candidates undergo rigorous technical evaluations and live coding sessions curated by our domain experts.</p>
+                  <h4 className="card-1-title-settings mb-2 text-primary">Sourcing &amp; Screening</h4>
+                  <p className="card-1-description-settings text-primary/70 dark:text-white leading-relaxed">Our global network is activated. Candidates undergo rigorous technical evaluations and live coding sessions curated by our domain experts.</p>
                 </div>
               </div>
             </FadeInOnScroll>
@@ -212,8 +208,8 @@ const OutsourcingSection = (): ReactElement => {
                 <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-secondary/30" aria-hidden />
                 <div className="relative z-10 w-12 h-12 flex-shrink-0 bg-secondary text-white flex items-center justify-center rounded-full font-bold text-xl shadow-lg">3</div>
                 <div className="ml-10">
-                  <h4 className="text-2xl font-bold text-primary mb-2">Precise Matching</h4>
-                  <p className="text-primary/70 dark:text-white leading-relaxed">We present a shortlist of the top 3% of talent. You interview and select the candidates who best fit your team dynamics and technical needs.</p>
+                  <h4 className="card-1-title-settings mb-2 text-primary">Precise Matching</h4>
+                  <p className="card-1-description-settings text-primary/70 dark:text-white leading-relaxed">We present a shortlist of the top 3% of talent. You interview and select the candidates who best fit your team dynamics and technical needs.</p>
                 </div>
               </div>
             </FadeInOnScroll>
@@ -222,8 +218,8 @@ const OutsourcingSection = (): ReactElement => {
               <div className="relative flex items-start">
                 <div className="relative z-10 w-12 h-12 flex-shrink-0 bg-secondary text-white flex items-center justify-center rounded-full font-bold text-xl shadow-lg">4</div>
                 <div className="ml-10">
-                  <h4 className="text-2xl font-bold text-primary mb-2">Seamless Integration</h4>
-                  <p className="text-primary/70 dark:text-white leading-relaxed">Onboarding begins immediately. We handle the administrative heavy lifting while you focus on leading your newly expanded engineering force.</p>
+                  <h4 className="card-1-title-settings mb-2 text-primary">Seamless Integration</h4>
+                  <p className="card-1-description-settings text-primary/70 dark:text-white leading-relaxed">Onboarding begins immediately. We handle the administrative heavy lifting while you focus on leading your newly expanded engineering force.</p>
                 </div>
               </div>
             </FadeInOnScroll>
@@ -234,12 +230,12 @@ const OutsourcingSection = (): ReactElement => {
       <section className="p-6 md:p-12 lg:p-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to scale your engineering capacity?</h2>
+            <h1 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to scale your engineering capacity?</h1>
 
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Get the elite technical talent your project deserves. Let's discuss your requirements today.</p>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Get the elite technical talent your project deserves. Let's discuss your requirements today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="#contact">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="#contact">
                 Request Staffing Consultation
               </a>
             </div>
