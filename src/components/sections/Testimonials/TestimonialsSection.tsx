@@ -135,13 +135,13 @@ const TestimonialsSection = (): ReactElement => {
     <section id="testimonials" className="w-full bg-background dark:bg-backgroundDark flex flex-col items-center justify-center py-12" aria-labelledby="testimonials-heading">
       <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
         <FadeInOnScroll>
-          <h1 id="testimonials-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
+          <h1 id="testimonials-heading" className="h2-settings mb-6 text-center text-primary dark:text-white md:text-5xl">
             Our Testimonials
           </h1>
         </FadeInOnScroll>
 
         <FadeInOnScroll delayMs={120}>
-          <p className="mb-20 max-w-[800px] mx-auto text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+          <p className="h3-settings mb-20 max-w-[800px] mx-auto text-center text-slate-600 dark:text-slate-400">
             Real-world outcomes from clients who rely on our expertise to deliver secure, scalable systems and measurable business impact.
           </p>
         </FadeInOnScroll>
@@ -189,12 +189,12 @@ const TestimonialsSection = (): ReactElement => {
             </FadeInOnScroll>
 
             <div className={"w-full sm:max-w-[60%] md:max-w-[50%] text-white " + textTransitionClass()}>
-              <blockquote className="text-sm sm:text-base md:text-lg font-medium leading-relaxed mb-4 sm:mb-6 italic">{t.quote}</blockquote>
+              <blockquote className="h3-settings mb-4 sm:mb-6 italic text-white">{t.quote}</blockquote>
 
               <div className="flex items-center">
                 <div className="flex flex-col mb-8 sm:mb-0">
-                  <span className="font-black text-xl sm:text-2xl tracking-tight mb-1">{t.name}</span>
-                  <span className="text-white/80 text-xs sm:text-sm font-normal uppercase tracking-wider">{t.role}</span>
+                  <span className="card-1-title-settings mb-1 text-white">{t.name}</span>
+                  <span className="card-1-description-settings text-white/80 uppercase tracking-wider">{t.role}</span>
                 </div>
               </div>
             </div>
