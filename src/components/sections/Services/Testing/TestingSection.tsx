@@ -248,8 +248,8 @@ const TestingSection = ({ ctaLabel = 'Discuss Your Testing Needs' }: TestingSect
             id="testing-capabilities-heading"
             heading="Our software testing capabilities"
             description="Capabilities built to protect releases, performance, and user experience."
-            headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-            descriptionClassName="max-w-xl mb-4"
+            headingClassName="h2-settings"
+            descriptionClassName="h3-settings max-w-xl mb-4"
           />
           <div className="mx-auto mb-8 mt-2 h-1.5 w-20 rounded-full bg-secondary" />
 
@@ -265,12 +265,12 @@ const TestingSection = ({ ctaLabel = 'Discuss Your Testing Needs' }: TestingSect
         <div className="mx-auto max-w-6xl">
           <div className="mb-24 text-center">
             <FadeInOnScroll delayMs={0}>
-              <h2 id="testing-methodology-heading" className="text-4xl font-bold tracking-tight text-primary md:text-5xl dark:text-white">
+              <h2 id="testing-methodology-heading" className="h2-settings text-primary dark:text-white">
                 How we ensure quality
               </h2>
             </FadeInOnScroll>
             <FadeInOnScroll delayMs={120}>
-              <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">A systematic approach to excellence.</p>
+              <p className="h3-settings mt-4 text-slate-600 dark:text-slate-300">A systematic approach to excellence.</p>
             </FadeInOnScroll>
           </div>
 
@@ -284,15 +284,15 @@ const TestingSection = ({ ctaLabel = 'Discuss Your Testing Needs' }: TestingSect
                 return (
                   <FadeInOnScroll key={step.id} delayMs={index * 100}>
                     <div className="flex flex-col items-center gap-8 md:flex-row md:gap-0">
-                      <div className={`flex-1 ${alignRight ? 'md:order-3 md:pl-16' : 'md:order-1 md:pr-16 md:text-right'}`}>
-                        <h3 className="mb-3 text-2xl font-bold text-primary dark:text-white">{step.title}</h3>
-                        <p className="leading-relaxed text-slate-600 dark:text-slate-300">{step.description}</p>
-                      </div>
-
-                      <div className="relative z-10 flex items-center justify-center order-1 md:order-2">
+                      <div className="relative z-10 order-1 flex items-center justify-center md:order-2">
                         <div className={`flex h-16 w-16 items-center justify-center rounded-full shadow-lg ${step.accent === 'primary' ? 'bg-primary' : 'bg-secondary'} text-white`}>
                           <step.Icon className="h-8 w-8" />
                         </div>
+                      </div>
+
+                      <div className={`order-2 flex-1 text-center ${alignRight ? 'md:order-3 md:pl-16' : 'md:order-1 md:pr-16 md:text-right'}`}>
+                        <h3 className="card-1-title-settings mb-3 text-primary dark:text-white">{step.title}</h3>
+                        <p className="card-1-description-settings leading-relaxed text-slate-600 dark:text-slate-300">{step.description}</p>
                       </div>
 
                       <div className={`flex-1 hidden md:block ${alignRight ? 'md:order-1' : 'md:order-3'}`} />
@@ -308,11 +308,11 @@ const TestingSection = ({ ctaLabel = 'Discuss Your Testing Needs' }: TestingSect
       <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to deliver flawless software?</h2>
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Partner with Systems Edge to build a culture of quality. Let&apos;s engineer a testing strategy that scales with your ambition.</p>
+            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to deliver flawless software?</h2>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Partner with Systems Edge to build a culture of quality. Let&apos;s engineer a testing strategy that scales with your ambition.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button type="button" className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg">
+              <button type="button" className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600">
                 {ctaLabel}
               </button>
             </div>
