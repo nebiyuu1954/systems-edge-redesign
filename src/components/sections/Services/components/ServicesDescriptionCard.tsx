@@ -8,9 +8,20 @@ export interface ServicesDescriptionCardProps {
   delayMs?: number;
   Icon?: (props: SVGProps<SVGSVGElement>) => ReactElement;
   children?: ReactNode;
+  titleClassName?: string;
+  descriptionClassName?: string;
 }
 
-export default function ServicesDescriptionCard({ title, description, imageSrc, delayMs, Icon, children }: ServicesDescriptionCardProps): ReactElement {
+export default function ServicesDescriptionCard({
+  title,
+  description,
+  imageSrc,
+  delayMs,
+  Icon,
+  children,
+  titleClassName,
+  descriptionClassName,
+}: ServicesDescriptionCardProps): ReactElement {
   const baseDelay = delayMs ?? 0;
 
   const altText = typeof title === 'string' ? title : undefined;
@@ -28,25 +39,25 @@ export default function ServicesDescriptionCard({ title, description, imageSrc, 
 
               <div className="flex-1">
                 <FadeInOnScroll delayMs={baseDelay + 120} className="block">
-                  <h3 className="relative z-10 text-xl font-bold text-black dark:text-white mb-0 whitespace-pre-line">{title}</h3>
+                  <h3 className={`card-1-title-settings relative z-10 mb-0 whitespace-pre-line ${titleClassName ?? 'text-black dark:text-white'}`}>{title}</h3>
                 </FadeInOnScroll>
               </div>
             </div>
 
             <div className="mt-4">
               <FadeInOnScroll delayMs={baseDelay + 260} className="block">
-                <p className="relative z-10 text-slate-600 dark:text-slate-300 leading-relaxed">{description}</p>
+                <p className={`card-1-description-settings relative z-10 leading-relaxed ${descriptionClassName ?? 'text-slate-600 dark:text-slate-300'}`}>{description}</p>
               </FadeInOnScroll>
             </div>
           </div>
         ) : (
           <>
             <FadeInOnScroll delayMs={baseDelay + 120} className="block">
-              <h3 className="relative z-10 text-xl font-bold text-primary dark:text-white mb-4 whitespace-pre-line">{title}</h3>
+              <h3 className={`card-1-title-settings relative z-10 mb-4 whitespace-pre-line ${titleClassName ?? 'text-primary dark:text-white'}`}>{title}</h3>
             </FadeInOnScroll>
 
             <FadeInOnScroll delayMs={baseDelay + 260} className="block">
-              <p className="relative z-10 text-slate-600 dark:text-slate-300 leading-relaxed">{description}</p>
+              <p className={`card-1-description-settings relative z-10 leading-relaxed ${descriptionClassName ?? 'text-slate-600 dark:text-slate-300'}`}>{description}</p>
             </FadeInOnScroll>
 
             {children ? <div className="relative z-10 mt-6">{children}</div> : null}
