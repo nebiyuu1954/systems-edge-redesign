@@ -146,9 +146,9 @@ const NumbersSection = (_props: NumbersSectionProps): ReactElement => {
       <div className="max-w-7xl mx-auto">
         <header className="flex flex-col items-center mb-20 text-center">
           <FadeInOnScroll>
-            <h2 id="numbers-heading" className="text-brand-navy font-medium text-2xl tracking-tight mb-4 dark:text-white">
+              <h1 id="numbers-heading" className="h2-settings text-brand-navy mb-4 dark:text-white">
               Our Impact in Numbers
-            </h2>
+              </h1>
           </FadeInOnScroll>
 
           <div className="w-12 h-0.5 bg-brand-teal" aria-hidden />
@@ -157,7 +157,7 @@ const NumbersSection = (_props: NumbersSectionProps): ReactElement => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Users */}
           <div className="flex flex-col items-center text-center" data-purpose="stat-block">
-            <div className="mb-6 text-brand-teal">
+            <div className="relative -top-5 mb-6 text-brand-teal">
               <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
@@ -165,47 +165,47 @@ const NumbersSection = (_props: NumbersSectionProps): ReactElement => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
             </div>
-            <span className="text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">
+            <span className="card-1-title-settings text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">
               {formatUsers(usersValue)}{usersValue >= 1_000_000 ? '+' : ''}
             </span>
-            <p className="text-gray-600 text-lg font-normal dark:text-slate-400">Total Users Supported Systems</p>
+            <p className="h3-settings mt-5 text-gray-600 text-lg font-normal dark:text-slate-400">Total Users Supported Systems</p>
           </div>
 
           {/* Managed Support */}
           <div className="flex flex-col items-center text-center" data-purpose="stat-block">
-            <div className="mb-6 text-brand-teal">
+            <div className="relative -top-5 mb-6 text-brand-teal">
               <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
               </svg>
             </div>
-            <span className="text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">{Math.round(supportValue)}/7</span>
-            <p className="text-gray-600 text-lg font-normal dark:text-slate-400">Managed Support</p>
+            <span className="card-1-title-settings text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">{Math.round(supportValue)}/7</span>
+            <p className="h3-settings mt-5 text-gray-600 text-lg font-normal dark:text-slate-400">Managed Support</p>
           </div>
 
           {/* System Uptime */}
           <div className="flex flex-col items-center text-center" data-purpose="stat-block">
-            <div className="mb-6 text-brand-teal">
+            <div className="relative -top-5 mb-6 text-brand-teal">
               <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <path d="m12 14 4-4" />
                 <path d="M3.34 19a10 10 0 1 1 17.32 0" />
               </svg>
             </div>
-            <span className="text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">{uptimeValue.toFixed(1)}%</span>
-            <p className="text-gray-600 text-lg font-normal dark:text-slate-400">System Uptime</p>
+            <span className="card-1-title-settings text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">{uptimeValue.toFixed(1)}%</span>
+            <p className="h3-settings mt-5 text-gray-600 text-lg font-normal dark:text-slate-400">System Uptime</p>
           </div>
 
           {/* Delivery Centers */}
           <div className="flex flex-col items-center text-center" data-purpose="stat-block">
-            <div className="mb-6 text-brand-teal">
+            <div className="relative -top-5 mb-6 text-brand-teal">
               <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </div>
-            <span className="text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">{Math.round(centersValue)}</span>
-            <p className="text-gray-600 text-lg font-normal dark:text-slate-400">Global Delivery Centers</p>
+            <span className="card-1-title-settings text-[56px] md:text-[80px] font-bold text-brand-navy block mb-4">{Math.round(centersValue)}</span>
+            <p className="h3-settings mt-5 text-gray-600 text-lg font-normal dark:text-slate-400">Global Delivery Centers</p>
           </div>
         </div>
       </div>
