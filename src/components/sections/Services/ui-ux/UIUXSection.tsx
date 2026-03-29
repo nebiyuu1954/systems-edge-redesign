@@ -5,7 +5,6 @@ import SectionHeading from '../../../common/SectionHeading';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
 
 export interface UIUXSectionProps {
-  badgeText?: string;
 }
 
 interface CapabilityItem {
@@ -168,7 +167,7 @@ const cyclePoints: CyclePoint[] = [
   },
 ];
 
-const UIUXSection = ({ badgeText = 'UX/UI Design' }: UIUXSectionProps): ReactElement => {
+const UIUXSection = (): ReactElement => {
   const [cycleVisible, setCycleVisible] = useState<boolean[]>(() => cyclePoints.map(() => false));
   const cycleSectionRef = useRef<HTMLElement | null>(null);
   const cyclePrevTopRef = useRef<number | null>(null);
@@ -227,18 +226,15 @@ const UIUXSection = ({ badgeText = 'UX/UI Design' }: UIUXSectionProps): ReactEle
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <span className="mb-6 inline-block rounded-full border border-secondary px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-secondary dark:text-secondary">
-                {badgeText}
-              </span>
-              <h1 className="mb-8 text-4xl font-extrabold leading-tight text-primary lg:text-6xl">
+              <h1 className="h1-settings mb-8 text-primary lg:text-6xl">
                 Architecting the <br />
                 <span className="text-secondary">Digital Future</span>.
               </h1>
-              <p className="mb-8 text-lg leading-relaxed text-slate-600 dark:text-slate-300 lg:text-xl">
+              <p className="h3-settings mb-8 text-slate-600 dark:text-slate-300">
                 We bridge the gap between complex enterprise systems and intuitive human experiences. Our methodology prioritizes structural integrity and high-fidelity precision to ensure your
                 product scales without friction.
               </p>
-              <ul className="mb-10 space-y-4">
+              <ul className="card-1-title-settings mb-10 space-y-4">
                 {valuePoints.map((point, idx) => (
                   <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
                     <li className="flex items-start">
