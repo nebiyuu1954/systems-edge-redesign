@@ -34,14 +34,10 @@ const HeroSection = ({
         </div>
 
         <div className="relative z-20 flex max-w-3xl flex-col gap-5 px-5 py-10 sm:gap-6 sm:px-6 sm:py-12 lg:px-16">
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#20c997]" />
-            {badgeText}
-          </div>
 
           <h1
             id="hero-heading"
-            className="h1-settings text-white drop-shadow-sm"
+            className="h2-settings sm:h1-settings text-white drop-shadow-sm"
           >
             {title}
           </h1>
