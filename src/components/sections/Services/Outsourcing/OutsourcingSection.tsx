@@ -110,7 +110,7 @@ const OutsourcingSection = (): ReactElement => {
               id="outsourcing-services"
               heading="IT outsourcing & staffing services"
               description="High-impact engineering teams and staffing solutions that integrate with your workflows to accelerate delivery and reduce time-to-hire."
-              headingClassName="h1-settings"
+              headingClassName="h2-settings"
               descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 rounded-full" />
@@ -174,7 +174,7 @@ const OutsourcingSection = (): ReactElement => {
               id="how-we-build-your-teams"
               heading="How we build your teams"
               description="Our Strategic Integration Process"
-              headingClassName="h1-settings"
+              headingClassName="h2-settings"
               descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 rounded-full" />
