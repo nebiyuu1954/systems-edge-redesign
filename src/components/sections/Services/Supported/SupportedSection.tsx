@@ -55,20 +55,16 @@ const SupportedSection = (): ReactElement => {
         <div className={overview.container}>
           <div className={overview.grid}>
             <div className={overview.textColumn}>
-              <span className={overview.badge} data-slot={overviewSlotIds.badge}>
-                Support, Managed Services &amp; DevOps
-              </span>
-
-              <h1 className={overview.title} data-slot={overviewSlotIds.title}>
+              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
                                 <span className={overview.titleAccent}>24/7 reliability &amp;</span> automation
               </h1>
 
-              <p className={overview.description} data-slot={overviewSlotIds.description}>
+              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
                 At Systems Edge Solutions, we bridge the gap between development and operations. Our managed services ensure your mission-critical applications remain online, secure, and
                 performing at peak efficiency while our DevOps culture accelerates your release cycles.
               </p>
 
-              <ul className={overview.list} data-slot={overviewSlotIds.list}>
+              <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
                 {supportedPoints.map((point, idx) => (
                   <FadeInOnScroll key={point.id} delayMs={idx * 80} className="block">
                     <li className={overview.listItem}>
@@ -101,8 +97,8 @@ const SupportedSection = (): ReactElement => {
             id="supported-capabilities"
             heading="Core Capabilities"
             description="Capabilities that keep your operations resilient and scalable."
-            headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-            descriptionClassName="max-w-xl mb-4"
+            headingClassName="h2-settings"
+            descriptionClassName="h3-settings max-w-xl !mb-4"
           />
           <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 mb-8 rounded-full" />
 
@@ -161,8 +157,8 @@ const SupportedSection = (): ReactElement => {
       <section className="py-20 px-6 bg-background dark:bg-backgroundDark overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-primary">Methodology</h2>
-            <p className="text-gray-500 mt-4">A proven journey from audit to continuous evolution</p>
+            <h1 className="h2-settings md:h1-settings text-primary">Methodology</h1>
+            <p className="h3-settings mt-4 text-gray-500">A proven journey from audit to continuous evolution</p>
           </div>
 
           <div className="relative">
@@ -170,8 +166,8 @@ const SupportedSection = (): ReactElement => {
             <FadeInOnScroll delayMs={0} className="relative">
               <div className="relative mb-12 md:mb-24 flex flex-col md:flex-row items-center md:items-start">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-                  <h4 className="text-xl font-bold text-primary dark:text-white">Discovery &amp; Audit</h4>
-                  <p className="text-gray-600 dark:text-slate-300 mt-2">Deep dive into current tech stack, pain points, and existing bottlenecks.</p>
+                  <h4 className="card-1-title-settings text-primary dark:text-white">Discovery &amp; Audit</h4>
+                  <p className="card-1-description-settings mt-2 text-gray-600 dark:text-slate-300">Deep dive into current tech stack, pain points, and existing bottlenecks.</p>
                 </div>
                 <div className="z-10 w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold shadow-lg ring-4 ring-background">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -191,8 +187,8 @@ const SupportedSection = (): ReactElement => {
                   </svg>
                 </div>
                 <div className="md:w-1/2 md:pl-12 mt-6 md:mt-0">
-                  <h4 className="text-xl font-bold text-primary dark:text-white">Strategy &amp; IaC</h4>
-                  <p className="text-gray-600 dark:text-slate-300 mt-2">Designing Infrastructure as Code templates for repeatable, reliable environment management.</p>
+                  <h4 className="card-1-title-settings text-primary dark:text-white">Strategy &amp; IaC</h4>
+                  <p className="card-1-description-settings mt-2 text-gray-600 dark:text-slate-300">Designing Infrastructure as Code templates for repeatable, reliable environment management.</p>
                 </div>
               </div>
             </FadeInOnScroll>
@@ -200,8 +196,8 @@ const SupportedSection = (): ReactElement => {
             <FadeInOnScroll delayMs={160} className="relative">
               <div className="relative mb-12 md:mb-24 flex flex-col md:flex-row items-center md:items-start">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-                  <h4 className="text-xl font-bold text-primary dark:text-white">Deployment &amp; CI/CD</h4>
-                  <p className="text-gray-600 dark:text-slate-300 mt-2">Implementation of automated pipelines and migration to modernized infra.</p>
+                  <h4 className="card-1-title-settings text-primary dark:text-white">Deployment &amp; CI/CD</h4>
+                  <p className="card-1-description-settings mt-2 text-gray-600 dark:text-slate-300">Implementation of automated pipelines and migration to modernized infra.</p>
                 </div>
                 <div className="z-10 w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold shadow-lg ring-4 ring-background">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -222,8 +218,8 @@ const SupportedSection = (): ReactElement => {
                   </svg>
                 </div>
                 <div className="md:w-1/2 md:pl-12 mt-6 md:mt-0">
-                  <h4 className="text-xl font-bold text-primary dark:text-white">24/7 Managed Ops</h4>
-                  <p className="text-gray-600 dark:text-slate-300 mt-2">Continuous monitoring, security updates, and performance optimization for life.</p>
+                  <h4 className="card-1-title-settings text-primary dark:text-white">24/7 Managed Ops</h4>
+                  <p className="card-1-description-settings mt-2 text-gray-600 dark:text-slate-300">Continuous monitoring, security updates, and performance optimization for life.</p>
                 </div>
               </div>
             </FadeInOnScroll>
@@ -234,10 +230,10 @@ const SupportedSection = (): ReactElement => {
       <section className="p-6 md:p-12 lg:p-24 bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Scale your infrastructure with expert management.</h2>
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Ready to eliminate downtime and accelerate your delivery? Our team is standing by to take the operational burden off your shoulders.</p>
+            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Scale your infrastructure with expert management.</h2>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Ready to eliminate downtime and accelerate your delivery? Our team is standing by to take the operational burden off your shoulders.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="#">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="#">
                 Schedule a Consultation
               </a>
             </div>
