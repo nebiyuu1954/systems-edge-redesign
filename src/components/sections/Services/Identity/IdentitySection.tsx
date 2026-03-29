@@ -194,8 +194,8 @@ const IdentitySection = ({
             id="identity-services"
             heading="IAM Services"
             description="Modular security components designed to scale with your organization's complexity."
-            headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-            descriptionClassName="max-w-xl mb-4"
+            headingClassName="h2-settings"
+            descriptionClassName="h3-settings max-w-xl mb-4"
           />
 
           <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 mb-8 rounded-full" />
@@ -225,10 +225,10 @@ const IdentitySection = ({
 
       <section className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-24" aria-labelledby="identity-methodology-heading">
         <div className="mb-20 text-center">
-          <h2 id="identity-methodology-heading" className="mb-4 text-4xl font-black tracking-tight text-primary">
+          <h2 id="identity-methodology-heading" className="h2-settings mb-4 text-primary">
             How we secure your identities
           </h2>
-          <p className="text-lg text-slate-600">A systematic approach to identity modernization.</p>
+          <p className="h3-settings text-slate-600">A systematic approach to identity modernization.</p>
         </div>
 
         <div className="relative">
@@ -242,8 +242,8 @@ const IdentitySection = ({
                       <MaterialSymbol name={step.iconName} />
                     </span>
                   </div>
-                  <h4 className="mb-4 text-xl font-extrabold text-primary">{step.title}</h4>
-                  <p className="text-slate-600">{step.description}</p>
+                  <h4 className="card-1-title-settings mb-4 text-primary">{step.title}</h4>
+                  <p className="card-1-description-settings text-slate-600">{step.description}</p>
                   {index < methodologySteps.length - 1 ? <span className="sr-only">Next step follows</span> : null}
                 </div>
               </FadeInOnScroll>
@@ -255,12 +255,12 @@ const IdentitySection = ({
       <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDarkOne">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to strengthen your identity security?</h2>
+            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to strengthen your identity security?</h2>
 
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Schedule a diagnostic session with our IAM specialists and discover how to eliminate credential-based vulnerabilities.</p>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Schedule a diagnostic session with our IAM specialists and discover how to eliminate credential-based vulnerabilities.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="/##contact">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600" href="/##contact">
                 {ctaLabel}
               </a>
             </div>
