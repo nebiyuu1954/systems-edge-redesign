@@ -125,6 +125,8 @@ const softwareDevelopmentPoints = [
   { id: 'cloud-ready', text: 'High-performance, secure, and cloud-ready deployments' },
 ];
 
+const desktopIconAlignmentClass = 'ml-36 md:ml-auto md:mr-24';
+
 const SoftwareDevelopmentSection = (): ReactElement => {
   const overview = erpOverviewLayoutConfig;
 
@@ -172,8 +174,8 @@ const SoftwareDevelopmentSection = (): ReactElement => {
             <SectionHeading
               heading="Software development & Integration capabilities"
               description="Capabilities built for enterprise scale"
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-xl mb-4"
+              headingClassName="h2-settings"
+              descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 rounded-full" />
           </div>
@@ -200,8 +202,8 @@ const SoftwareDevelopmentSection = (): ReactElement => {
             <SectionHeading
               heading="Our Technology Stack"
               description="Tools and platforms we use to build reliable systems"
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-xl mb-4"
+              headingClassName="h2-settings"
+              descriptionClassName="h3-settings max-w-xl !mb-4"
             />
             <div className="w-20 h-1.5 bg-secondary mx-auto mt-2 rounded-full" />
           </div>
@@ -261,8 +263,8 @@ const SoftwareDevelopmentSection = (): ReactElement => {
             <SectionHeading
               heading="Methodical Approach"
               description="A structured engineering process that ensures precision, quality, and timely delivery for every project."
-              headingClassName="mb-4 text-3xl font-extrabold lg:text-4xl"
-              descriptionClassName="max-w-2xl mx-auto mb-4"
+              headingClassName="h2-settings"
+              descriptionClassName="h3-settings max-w-2xl mx-auto !mb-4"
             />
           </div>
 
@@ -277,11 +279,11 @@ const SoftwareDevelopmentSection = (): ReactElement => {
             ].map((step, idx) => (
               <div key={step.id} className="flex-1 flex flex-col items-center text-center px-4">
                 <FadeInOnScroll delayMs={idx * 80} className="w-full">
-                  <div className="w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center mb-6 shadow-xl shadow-secondary/20 ring-4 ring-white z-10">
+                  <div className={`w-14 h-14 bg-secondary text-white rounded-full flex items-center justify-center mb-6 shadow-xl shadow-secondary/20 ring-4 ring-white z-10 ${desktopIconAlignmentClass}`}>
                     <step.Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary mb-2">{step.title}</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p>
+                  <h4 className="card-1-title-settings mb-2 text-primary">{step.title}</h4>
+                  <p className="card-1-description-settings text-slate-500 leading-relaxed">{step.desc}</p>
                 </FadeInOnScroll>
               </div>
             ))}
@@ -292,11 +294,11 @@ const SoftwareDevelopmentSection = (): ReactElement => {
       <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDark">
         <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
           <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight max-w-3xl mx-auto">Ready to Scale Your Enterprise?</h2>
-            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let&apos;s build your future today.</p>
+            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to Scale Your Enterprise?</h2>
+            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let&apos;s build your future today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="inline-block bg-secondary hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-xl text-lg" href="/#contact">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="/#contact">
                 Schedule a Consultation
               </a>
             </div>
