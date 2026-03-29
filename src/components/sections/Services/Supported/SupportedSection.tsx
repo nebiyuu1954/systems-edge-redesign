@@ -157,7 +157,7 @@ const SupportedSection = (): ReactElement => {
       <section className="py-20 px-6 bg-background dark:bg-backgroundDark overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="h2-settings md:h1-settings text-primary">Methodology</h1>
+            <h1 className="h2-settings text-primary">Methodology</h1>
             <p className="h3-settings mt-4 text-gray-500">A proven journey from audit to continuous evolution</p>
           </div>
 
