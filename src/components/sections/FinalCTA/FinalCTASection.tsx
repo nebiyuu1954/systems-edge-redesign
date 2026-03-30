@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
+import { Link } from 'react-router-dom';
 
 const FinalCTASection = (): ReactElement => {
   return (
@@ -22,13 +23,13 @@ const FinalCTASection = (): ReactElement => {
         </FadeInOnScroll>
 
         <div>
-          <a
-            href="#contact"
+          <Link
+            to="/contact-us"
             role="button"
             className="button-1-settings inline-block bg-secondary text-white shadow-lg transition-colors duration-200 hover:bg-secondary/90"
           >
             Request Consultation
-          </a>
+          </Link>
         </div>
       </div>
     </section>
