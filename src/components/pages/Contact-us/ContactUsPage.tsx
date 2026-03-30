@@ -42,7 +42,6 @@ export default function ContactUsPage(): ReactElement {
     { id: 'about', label: 'About Us', href: '/about-us' },
   ];
 
-  const topicPlaceholder = 'Select a Topic';
   const topicOptions = [
     { value: 'Enterprise Solutions', label: 'Enterprise Solutions' },
     { value: 'Consulting Services', label: 'Consulting Services' },
