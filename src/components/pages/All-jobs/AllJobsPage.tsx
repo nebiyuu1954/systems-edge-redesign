@@ -177,50 +177,7 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
       <main className="bg-backgroundOne dark:bg-backgroundDarkOne py-20 px-8">
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                id: 'principal-systems-architect',
-                department: 'Systems & Infra',
-                title: 'Principal Systems Architect',
-                description: 'Design and scale our core architectural frameworks to support high-concurrency cloud systems globally.',
-                icon: 'terminal',
-              },
-              {
-                id: 'senior-product-designer',
-                department: 'Product Design',
-                title: 'Senior Product Designer',
-                description: 'Shape the future of enterprise interfaces by crafting seamless, human-centric digital experiences.',
-                icon: 'palette',
-              },
-              {
-                id: 'technical-product-lead',
-                department: 'Management',
-                title: 'Technical Product Lead',
-                description: 'Bridge the gap between business strategy and engineering excellence for our flagship solutions.',
-                icon: 'account_tree',
-              },
-              {
-                id: 'cloud-infra-engineer',
-                department: 'Cloud Operations',
-                title: 'Cloud Infrastructure Engineer',
-                description: 'Optimize our multi-region cloud footprint with cutting-edge automation and monitoring tools.',
-                icon: 'cloud',
-              },
-              {
-                id: 'full-stack-developer',
-                department: 'Full Stack',
-                title: 'Full-Stack Developer',
-                description: 'Build robust end-to-end features using modern stacks to solve complex data visualization challenges.',
-                icon: 'code',
-              },
-              {
-                id: 'cybersecurity-specialist',
-                department: 'Security',
-                title: 'Cybersecurity Specialist',
-                description: 'Protect our global ecosystem by implementing proactive threat detection and defense protocols.',
-                icon: 'shield',
-              },
-            ].map((job) => (
+            {filteredJobs.map((job) => (
               <article key={job.id} className="bg-background dark:bg-backgroundDark p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
                 <div>
                   <div className="flex justify-between items-start mb-6">
@@ -229,7 +186,7 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
                   </div>
 
                   <h3 className="card-1-title-settings mb-4">{job.title}</h3>
-                  <p className="card-1-description-settings dark:text-white mb-8 leading-relaxed">{job.description}</p>
+                  <p className="card-1-description-settings mb-8 leading-relaxed">{job.description}</p>
                 </div>
 
                 <button className="flex items-center gap-2 font-bold text-secondary hover:text-secondary transition-colors">
