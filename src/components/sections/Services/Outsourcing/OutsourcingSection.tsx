@@ -1,6 +1,7 @@
 import type { ReactElement, SVGProps } from 'react';
 import SectionHeading from '../../../common/SectionHeading';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
+import { Link } from 'react-router-dom';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
 import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
@@ -235,9 +236,9 @@ const OutsourcingSection = (): ReactElement => {
             <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Get the elite technical talent your project deserves. Let's discuss your requirements today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="#contact">
+              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" to="/contact-us">
                 Request Staffing Consultation
-              </a>
+              </Link>
             </div>
           </div>
         </div>
