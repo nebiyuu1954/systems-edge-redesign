@@ -75,7 +75,7 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
 
   return (
     <main className="bg-primary text-black dark:text-white">
-      <Header navItems={navItems} ctaLabel="Get Consultation" ctaHref="#contact" logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44" />
+      <Header navItems={navItems} ctaLabel="Get Consultation" ctaHref="/contact-us" logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44" />
 
       <header className="primary-gradient py-20 px-8 text-white">
         <div className="max-w-screen-2xl mx-auto">
