@@ -17,6 +17,7 @@ import FadeInOnScroll from './components/common/FadeInOnScroll';
 import AboutUsPage from './components/pages/About-us';
 import CareersPage from './components/pages/Careers';
 import AllJobsPage from './components/pages/All-jobs';
+import ContactUsPage from './components/pages/Contact-us';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -34,7 +35,7 @@ function HomePage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <HeroSection
@@ -264,7 +265,7 @@ function ERPPage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <ERPSection />
@@ -284,7 +285,7 @@ function OutsourcingPage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <OutsourcingSection />
@@ -304,7 +305,7 @@ function SupportedPage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <SupportedSection />
@@ -324,7 +325,7 @@ function SoftwareDevPage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <SoftwareDevelopmentSection />
@@ -344,7 +345,7 @@ function UIUXPage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <UIUXSection />
@@ -364,7 +365,7 @@ function TestingPage(): ReactElement {
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <TestingSection />
@@ -399,6 +400,7 @@ function App(): ReactElement {
       <ScrollToTop />
       <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/contact-us" element={<ContactUsPage />} />
       <Route path="/services/erp" element={<ERPPage />} />
       <Route path="/services/outsourcing" element={<OutsourcingPage />} />
       <Route path="/services/software-development" element={<SoftwareDevPage />} />
