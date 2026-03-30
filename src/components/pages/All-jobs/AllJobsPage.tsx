@@ -1,6 +1,8 @@
-import { useMemo, useState, type ReactElement } from 'react';
+import { useMemo, useState, useEffect, type ReactElement } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Header from '../../layout/Header/Header';
 import Footer from '../../layout/Footer/Footer';
+import jobs from './jobsData';
 
 export interface AllJobsPageProps {}
 
@@ -12,83 +14,64 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
     { id: 'about', label: 'About Us', href: '/about-us' },
   ];
 
-  const [selectedDept, setSelectedDept] = useState<string>('');
-  const [selectedJob, setSelectedJob] = useState<string>('');
-  const [selectedFlex, setSelectedFlex] = useState<string>('');
+  const [searchParams] = useSearchParams();
+  const initialDept = searchParams.get('dept') ?? '';
+  const initialJob = searchParams.get('job') ?? '';
+  const initialQuery = searchParams.get('q') ?? '';
+  const initialFlex = searchParams.get('flex') ?? '';
 
-  const jobOptionsMap: Record<string, string[]> = {
-    Engineering: ['Principal Systems Architect', 'Full-Stack Developer', 'Cloud Infrastructure Engineer'],
-    Product: ['Technical Product Lead', 'Product Manager'],
-    Design: ['Senior Product Designer', 'UX Researcher'],
-    Security: ['Cybersecurity Specialist', 'Security Engineer'],
-  };
+  const [selectedDept, setSelectedDept] = useState<string>(initialDept);
+  const [selectedJob, setSelectedJob] = useState<string>(initialJob);
+  const [query, setQuery] = useState<string>(initialQuery);
+  const [selectedFlex, setSelectedFlex] = useState<string>(initialFlex);
+
+  useEffect(() => {
+    setSelectedDept(searchParams.get('dept') ?? '');
+    setSelectedJob(searchParams.get('job') ?? '');
+    setQuery(searchParams.get('q') ?? '');
+    setSelectedFlex(searchParams.get('flex') ?? '');
+  }, [searchParams]);
+
+  const jobOptionsMap = useMemo(() => {
+    const map: Record<string, string[]> = {};
+    jobs.forEach((j) => {
+      const dept = j.department ?? 'Other';
+      if (!map[dept]) map[dept] = [];
+      if (j.title) map[dept].push(j.title);
+    });
+    return map;
+  }, []);
 
   const workFlexOptions = ['Full-time', 'Hybrid', 'Contract'];
 
-  const jobs = [
-    {
-      id: 'principal-systems-architect',
-      department: 'Engineering',
-      title: 'Principal Systems Architect',
-      description:
-        'Design and scale our core architectural frameworks to support high-concurrency cloud systems globally.',
-      icon: 'terminal',
-      flex: ['Full-time', 'Hybrid'],
-    },
-    {
-      id: 'senior-product-designer',
-      department: 'Design',
-      title: 'Senior Product Designer',
-      description: 'Shape the future of enterprise interfaces by crafting seamless, human-centric digital experiences.',
-      icon: 'palette',
-      flex: ['Full-time', 'Hybrid'],
-    },
-    {
-      id: 'technical-product-lead',
-      department: 'Product',
-      title: 'Technical Product Lead',
-      description: 'Bridge the gap between business strategy and engineering excellence for our flagship solutions.',
-      icon: 'account_tree',
-      flex: ['Full-time', 'Hybrid'],
-    },
-    {
-      id: 'cloud-infra-engineer',
-      department: 'Engineering',
-      title: 'Cloud Infrastructure Engineer',
-      description: 'Optimize our multi-region cloud footprint with cutting-edge automation and monitoring tools.',
-      icon: 'cloud',
-      flex: ['Full-time', 'Remote'],
-    },
-    {
-      id: 'full-stack-developer',
-      department: 'Engineering',
-      title: 'Full-Stack Developer',
-      description: 'Build robust end-to-end features using modern stacks to solve complex data visualization challenges.',
-      icon: 'code',
-      flex: ['Full-time', 'Hybrid', 'Contract'],
-    },
-    {
-      id: 'cybersecurity-specialist',
-      department: 'Security',
-      title: 'Cybersecurity Specialist',
-      description: 'Protect our global ecosystem by implementing proactive threat detection and defense protocols.',
-      icon: 'shield',
-      flex: ['Full-time', 'Contract'],
-    },
-  ];
+  // jobs are centralized in ./jobsData.ts
 
-  const availableJobOptions = useMemo(() => (selectedDept ? jobOptionsMap[selectedDept] ?? [] : []), [selectedDept]);
+  const availableJobOptions = useMemo(() => (selectedDept ? jobOptionsMap[selectedDept] ?? [] : []), [selectedDept, jobOptionsMap]);
 
   const filteredJobs = useMemo(
     () =>
       jobs.filter((job) => {
         if (selectedDept && job.department !== selectedDept) return false;
         if (selectedJob && job.title !== selectedJob) return false;
-        if (selectedFlex && !job.flex.includes(selectedFlex)) return false;
+        if (selectedFlex && !(job.flex?.includes(selectedFlex))) return false;
+        if (query && query.trim() !== '') {
+          const q = query.toLowerCase();
+          const inTitle = job.title?.toLowerCase().includes(q);
+          const inDesc = (job.description && job.description.toLowerCase().includes(q)) || (job.jobDescription && job.jobDescription.toLowerCase().includes(q));
+          if (!inTitle && !inDesc) return false;
+        }
         return true;
       }),
-    [jobs, selectedDept, selectedJob, selectedFlex],
+    [jobs, selectedDept, selectedJob, selectedFlex, query],
   );
+
+  const [visibleCount, setVisibleCount] = useState<number>(6);
+
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [selectedDept, selectedJob, selectedFlex, query]);
+
+  const visibleJobs = filteredJobs.slice(0, visibleCount);
 
   return (
     <main className="bg-primary text-black dark:text-white">
@@ -107,7 +90,13 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
             <div className="max-w-xl w-full">
               <div className="relative group">
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-primary-container/60">search</span>
-                <input className="w-full bg-surface-container-lowest/10 border-none rounded-xl py-5 pl-14 pr-6 text-white placeholder-on-primary-container/60 focus:ring-2 focus:ring-secondary transition-all outline-none text-lg h3-settings" placeholder="Start your search" type="text" />
+                <input
+                  className="w-full bg-surface-container-lowest/10 border-none rounded-xl py-5 pl-14 pr-6 text-white placeholder-on-primary-container/60 focus:ring-2 focus:ring-secondary transition-all outline-none text-lg h3-settings"
+                  placeholder="Start your search"
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
               </div>
             </div>
           </div>
@@ -177,7 +166,7 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
       <main className="bg-backgroundOne dark:bg-backgroundDarkOne py-20 px-8">
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredJobs.map((job) => (
+            {visibleJobs.map((job) => (
               <article key={job.id} className="bg-background dark:bg-backgroundDark p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
                 <div>
                   <div className="flex justify-between items-start mb-6">
@@ -186,7 +175,65 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
                   </div>
 
                   <h3 className="card-1-title-settings mb-4">{job.title}</h3>
-                  <p className="card-1-description-settings mb-8 leading-relaxed">{job.description}</p>
+                    <p className="card-1-description-settings dark:text-background mb-4 leading-relaxed">{job.description}</p>
+
+                  <div className="mb-6 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                    {job.location && (
+                      <div>
+                        <span className="font-semibold">Location:</span>
+                        <span className="ml-2">{job.location}</span>
+                      </div>
+                    )}
+
+                    {job.jobType && (
+                      <div>
+                        <span className="font-semibold">Job Type:</span>
+                        <span className="ml-2">{job.jobType}</span>
+                      </div>
+                    )}
+
+                    {job.deadline && (
+                      <div>
+                        <span className="font-semibold">Job Deadline:</span>
+                        <span className="ml-2">{job.deadline}</span>
+                      </div>
+                    )}
+
+                    {job.education && (
+                      <div>
+                        <span className="font-semibold">Education Qualification:</span>
+                        <span className="ml-2">{job.education}</span>
+                      </div>
+                    )}
+
+                    {job.seniority && (
+                      <div>
+                        <span className="font-semibold">Seniority:</span>
+                        <span className="ml-2">{job.seniority}</span>
+                      </div>
+                    )}
+
+                    {job.experienceLevel && (
+                      <div>
+                        <span className="font-semibold">Experience Level:</span>
+                        <span className="ml-2">{job.experienceLevel}</span>
+                      </div>
+                    )}
+
+                    {job.skills && job.skills.length > 0 && (
+                      <div>
+                        <span className="font-semibold">Skills and Expertise:</span>
+                        <span className="ml-2">{job.skills.join(', ')}</span>
+                      </div>
+                    )}
+
+                    {job.workAddress && (
+                      <div>
+                        <span className="font-semibold">Work Address:</span>
+                        <span className="ml-2">{job.workAddress}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <button className="flex items-center gap-2 font-bold text-secondary hover:text-secondary transition-colors">
@@ -197,9 +244,16 @@ function AllJobsPage(_props: AllJobsPageProps): ReactElement {
             ))}
           </div>
 
-          <div className="mt-20 text-center">
-            <button className="h3-settings bg-background text-primary px-10 py-4 rounded-xl font-bold hover:bg-surface-container-highest transition-all">Load More Positions</button>
-          </div>
+          {filteredJobs.length > visibleCount && (
+            <div className="mt-20 text-center">
+              <button
+                onClick={() => setVisibleCount((v) => Math.min(v + 9, filteredJobs.length))}
+                className="h3-settings bg-background text-primary px-10 py-4 rounded-xl font-bold hover:bg-surface-container-highest transition-all"
+              >
+                Load More Positions
+              </button>
+            </div>
+          )}
         </div>
       </main>
 
