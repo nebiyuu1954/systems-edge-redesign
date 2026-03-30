@@ -446,7 +446,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
       <Header
         navItems={navItems}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
 
@@ -971,6 +971,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               </button>
               <button
                 type="button"
+                onClick={() => navigate('/contact-us')}
                 className="button-1-settings border border-white/20 bg-white/10 text-on-primary backdrop-blur-md transition-all hover:bg-white/20"
               >
                 Contact HR
