@@ -1,4 +1,5 @@
 import { useState, type ReactElement, type SVGProps } from 'react';
+import { Link } from 'react-router-dom';
 import { Header, type HeaderNavItem } from '../../layout/Header';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
 import CountUp from '../../common/CountUp';
@@ -361,7 +362,7 @@ function AboutUsPage(): ReactElement {
       <Header
         navItems={headerNavItems}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="/contact-us"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
 
@@ -392,12 +393,12 @@ function AboutUsPage(): ReactElement {
           </FadeInOnScroll>
 
           <FadeInOnScroll delayMs={240}>
-            <a
-              href="/#contact"
+            <Link
+              to="/contact-us"
               className="button-1-settings bg-secondary text-white shadow-xl shadow-black/20 transition-all hover:bg-[#006666] hover:scale-105 active:scale-95"
             >
-              Talk to an Expert
-            </a>
+              Start Your Project
+            </Link>
           </FadeInOnScroll>
         </div>
       </section>
@@ -683,12 +684,12 @@ function AboutUsPage(): ReactElement {
             </FadeInOnScroll>
 
             <FadeInOnScroll delayMs={120}>
-              <a
-                href="/#contact"
+              <Link
+                to="/contact-us"
                 className="button-1-settings bg-secondary text-white shadow-xl shadow-black/20 transition-colors hover:bg-secondary-fixed hover:text-slate-700 dark:hover:text-slate-300"
               >
                 Start Your Project
-              </a>
+              </Link>
             </FadeInOnScroll>
           </div>
         </div>
