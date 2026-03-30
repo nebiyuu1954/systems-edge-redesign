@@ -112,13 +112,13 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
 
                   <FadeInOnScroll delayMs={240}>
                     <div className="mt-6 flex flex-wrap gap-2 justify-center md:justify-start md:gap-3">
-                      <button
-                        type="button"
+                      <Link
+                        to="/contact-us"
                         className="button-2-settings inline-flex items-center bg-primary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/40"
                         aria-label={`Get started with ${activeService.title}`}
                       >
                         {`Get started`}
-                      </button>
+                      </Link>
 
                       {activeService.learnMoreHref ? (
                         activeService.learnMoreHref.startsWith('/') ? (
