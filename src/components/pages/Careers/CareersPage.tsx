@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '../../layout/Header';
 import Footer from '../../layout/Footer/Footer';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
@@ -184,6 +185,7 @@ const mobileCultureSwapDelayMs = 220;
 const randomCultureSwapDurationMs = 5000;
 
 function CareersPage(_props: CareersPageProps): ReactElement {
+  const navigate = useNavigate();
   const animatedQuote = useMemo(() => {
     const selected = evolutionOptions.find((option) => option.id === quoteTypewriterTargetId);
     return selected?.quote ?? '';
@@ -729,15 +731,16 @@ function CareersPage(_props: CareersPageProps): ReactElement {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 pt-4">
-                <button
-                  type="button"
-                  className="button-1-settings group flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-4 text-on-primary transition-colors hover:bg-primary-container"
-                >
-                  View All Roles
-                  <span aria-hidden="true" className="material-symbols-outlined text-sm">open_in_new</span>
-                </button>
-              </div>
+                <div className="mt-8 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => navigate('/all-jobs')}
+                    className="button-1-settings group flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-4 text-on-primary transition-colors hover:bg-primary-container"
+                  >
+                    View All Roles
+                    <span aria-hidden="true" className="material-symbols-outlined text-sm">open_in_new</span>
+                  </button>
+                </div>
             </article>
 
             <article className="relative overflow-hidden rounded-xl bg-primary-container p-8 md:col-span-1 lg:col-span-3 lg:row-span-1">
