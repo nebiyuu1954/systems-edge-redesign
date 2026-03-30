@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Header } from './components/layout/Header';
+import Header from './components/layout/Header/Header';
 import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection, NumbersSection } from './components/sections';
 import GlobalLocationsSections from './components/sections/Global-Locations/GlobalLocationsSections';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
@@ -27,8 +27,8 @@ function HomePage(): ReactElement {
       <Header
         navItems={[
           { id: 'services', label: 'Services', href: '#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
-          { id: 'locations', label: 'Locations', href: '#locations' },
+          // { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
@@ -257,17 +257,13 @@ function ERPPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <ERPSection />
@@ -281,17 +277,13 @@ function OutsourcingPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <OutsourcingSection />
@@ -305,17 +297,13 @@ function SupportedPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <SupportedSection />
@@ -329,17 +317,13 @@ function SoftwareDevPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <SoftwareDevelopmentSection />
@@ -353,17 +337,13 @@ function UIUXPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <UIUXSection />
@@ -377,17 +357,13 @@ function TestingPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <TestingSection />
@@ -401,17 +377,13 @@ function IdentityPage(): ReactElement {
     <main>
       <Header
         navItems={[
-          { id: 'services', label: 'Services', href: '/#services' },
-          { id: 'erp', label: 'ERP Solutions', href: '/#enterprise-erp' },
-          { id: 'industries', label: 'Industries', href: '/#services' },
-          { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-          { id: 'leadership', label: 'Leadership', href: '/#leadership' },
-          { id: 'locations', label: 'Locations', href: '/#locations' },
+          { id: 'services', label: 'Services', href: '#services' },
+          { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/#why-us-heading' },
+          { id: 'about', label: 'About Us', href: '/about-us' },
         ]}
         ctaLabel="Get Consultation"
-        ctaHref="/#contact"
+        ctaHref="#contact"
         logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
       />
       <IdentitySection />
