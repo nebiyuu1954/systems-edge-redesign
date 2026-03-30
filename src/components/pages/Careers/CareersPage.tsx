@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from '../../layout/Header';
 import Footer from '../../layout/Footer/Footer';
 import FadeInOnScroll from '../../common/FadeInOnScroll';
+import jobs from '../All-jobs/jobsData';
 
 export interface CareersPageProps {}
 
@@ -21,13 +22,6 @@ type CareerStage = {
   description: string;
 };
 
-type OpeningCard = {
-  id: string;
-  icon: string;
-  title: string;
-  description: string;
-  tags: string[];
-};
 
 type EvolutionOption = {
   id: string;
@@ -114,29 +108,7 @@ const advantageCards: CultureCard[] = [
   },
 ];
 
-const openings: OpeningCard[] = [
-  {
-    id: 'principal-architect',
-    icon: 'architecture',
-    title: 'Principal Systems Architect',
-    description: 'Leading the architectural design for high-concurrency cloud infrastructure.',
-    tags: ['Infrastructure Design', 'Cloud Strategy'],
-  },
-  {
-    id: 'senior-product-designer',
-    icon: 'dashboard',
-    title: 'Senior Product Designer',
-    description: 'Crafting complex analytical dashboards and design systems for enterprise users.',
-    tags: ['Design Systems', 'Enterprise UX'],
-  },
-  {
-    id: 'technical-product-lead',
-    icon: 'hub',
-    title: 'Technical Product Lead',
-    description: 'Bridging the gap between stakeholder vision and engineering execution.',
-    tags: ['Product Strategy', 'Engineering Sync'],
-  },
-];
+// 'openings' sample removed; Careers now uses randomized jobs from the shared jobs dataset.
 
 const evolutionOptions: EvolutionOption[] = [
   {
@@ -458,6 +430,17 @@ function CareersPage(_props: CareersPageProps): ReactElement {
     };
   }, [isMobileViewport]);
 
+  // Pick a small random sample of jobs to display as "Current Openings".
+  const randomOpenings = useMemo(() => {
+    const count = Math.min(3, jobs.length);
+    const pool = jobs.slice();
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    return pool.slice(0, count);
+  }, [jobs]);
+
   return (
     <main className="bg-background text-black dark:bg-backgroundDark dark:text-white">
       <Header
@@ -484,15 +467,24 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               ) : null}
             </h1>
           </FadeInOnScroll>
-          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
             <button
               type="button"
+              onClick={() => navigate('/all-jobs')}
               className={[heroActionButtonBaseClasses, heroActionButtonVariantClasses.openRoles].join(' ')}
             >
               View Open Roles
             </button>
             <button
               type="button"
+              onClick={() => {
+                const el = document.getElementById('culture');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  return;
+                }
+                navigate('/careers#culture');
+              }}
               className={[heroActionButtonBaseClasses, heroActionButtonVariantClasses.ourCulture].join(' ')}
             >
               Our Culture
@@ -616,7 +608,11 @@ function CareersPage(_props: CareersPageProps): ReactElement {
                   We do not just hire for what you know today; we invest in what you will build tomorrow. Our culture is built by engineers, for
                   engineers.
                 </p>
-                <button type="button" className="button-1-settings bg-secondary text-on-secondary transition-all hover:bg-secondary-fixed hover:text-slate-700 dark:hover:text-slate-300">
+                <button
+                  type="button"
+                  onClick={() => navigate('/all-jobs')}
+                  className="button-1-settings bg-secondary text-on-secondary transition-all hover:bg-secondary-fixed hover:text-slate-700 dark:hover:text-slate-300"
+                >
                   Explore Career Paths
                 </button>
               </div>
@@ -670,7 +666,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
         </div>
       </section>
 
-      <section className="bg-background py-24 dark:bg-backgroundDark">
+      <section id="culture" className="bg-background py-24 dark:bg-backgroundDark">
         <div className="mx-auto max-w-screen-2xl px-8 lg:px-12">
           <div className="mb-16 flex flex-col items-start justify-between gap-8 md:mb-24 md:flex-row md:items-end">
             <div className="max-w-3xl">
@@ -705,10 +701,17 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               <div className="relative z-10 flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between">
                   <span aria-hidden="true" className="material-symbols-outlined text-4xl text-secondary-container">work</span>
-                  <span aria-hidden="true" className="material-symbols-outlined inline-flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-white">add</span>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/all-jobs')}
+                    aria-label="View all jobs"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-white"
+                  >
+                    <span aria-hidden="true" className="material-symbols-outlined">add</span>
+                  </button>
                 </div>
                 <div>
-                  <div className="h2-settings text-white">249</div>
+                  <div className="h2-settings text-white">20</div>
                   <div className="h3-settings text-white/70">Open Positions</div>
                 </div>
               </div>
@@ -717,10 +720,30 @@ function CareersPage(_props: CareersPageProps): ReactElement {
             <article className="rounded-xl bg-backgroundOne p-10 md:col-span-2 lg:col-span-5 lg:row-span-2 dark:bg-backgroundDarkOne">
               <h3 className="card-1-title-settings mb-8 text-primary dark:text-white">Global Departments</h3>
               <ul className="space-y-1">
-                {['Engineering', 'Product Management', 'Product Design', 'Operations', 'Sales & Marketing', 'People & Culture', 'Strategy & Innovation'].map((department) => (
+                  {useMemo(() => {
+                    const order = [
+                      'Engineering',
+                      'Product Management',
+                      'Sales / Business Development',
+                      'Marketing',
+                      'Human Resources',
+                      'Finance',
+                      'Product Design',
+                    ];
+                    const unique = Array.from(new Set(jobs.map((j) => j.department)));
+                    const ordered = order.filter((d) => unique.includes(d));
+                    const extras = unique.filter((d) => !order.includes(d));
+                    return [...ordered, ...extras];
+                  }, []).map((department) => (
                   <li
                     key={department}
-                    className="group -mx-4 flex items-center justify-between rounded-lg border-b border-outline-variant/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-surface-container-high dark:hover:bg-slate-800"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => navigate(`/all-jobs?dept=${encodeURIComponent(department)}`)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') navigate(`/all-jobs?dept=${encodeURIComponent(department)}`);
+                    }}
+                    className="cursor-pointer group -mx-4 flex items-center justify-between rounded-lg border-b border-outline-variant/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-surface-container-high dark:hover:bg-slate-800"
                   >
                     <span className="h3-settings text-backgroundDark transition-colors group-hover:text-primary dark:text-white dark:group-hover:text-secondary">
                       {department}
@@ -882,48 +905,53 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               <h2 className="h2-settings mb-4 text-balance text-black dark:text-white">Current Openings</h2>
               <p className="h3-settings max-w-xl text-slate-600 dark:text-slate-300">Every journey at Systems Edge is bespoke. Find your alignment within our architectural tiers.</p>
             </div>
-            <button type="button" className="button-2-settings !mb-0 bg-secondary text-on-secondary shadow-md transition-all hover:brightness-110 md:!mb-0">
+            <button type="button" onClick={() => navigate('/all-jobs')} className="button-2-settings !mb-0 bg-secondary text-on-secondary shadow-md transition-all hover:brightness-110 md:!mb-0">
               See Open Roles
             </button>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {openings.map((opening) => (
-              <article
-                key={opening.id}
-                className="group flex flex-col justify-between rounded-xl border border-outline-variant/10 bg-background p-10 shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-backgroundDarkOne"
-              >
-                <div>
-                  <span
-                    aria-hidden="true"
-                    className="material-symbols-outlined mb-6 text-4xl text-secondary"
-                  >
-                    {opening.icon}
-                  </span>
-                  <h3 className="card-1-title-settings mb-4 text-black dark:text-white">{opening.title}</h3>
-                  <p className="card-1-description-settings mb-8 text-backgroundDarkOne dark:text-background">{opening.description}</p>
-                </div>
+            {randomOpenings.map((job) => {
+              const tagsToShow: string[] = [];
+              if (job.flex && job.flex.length) tagsToShow.push(job.flex.join(' / '));
+              if (job.skills && job.skills.length) tagsToShow.push(job.skills.slice(0, 3).join(', '));
+              if (job.deadline) tagsToShow.push(job.deadline);
 
-                <ul className="mb-8 space-y-3">
-                  {opening.tags.map((tag) => (
-                    <li key={tag} className="h4-settings flex items-center gap-2 text-backgroundDarkOne dark:text-background">
-                      <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  type="button"
-                  className="h3-settings flex items-center gap-2 text-primary transition-all group-hover:gap-4 dark:text-secondary"
+              return (
+                <article
+                  key={job.id}
+                  className="group flex flex-col justify-between rounded-xl border border-outline-variant/10 bg-background p-10 shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-700 dark:bg-backgroundDarkOne"
                 >
-                  View Details
-                  <span aria-hidden="true" className="material-symbols-outlined h3-settings">
-                    trending_flat
-                  </span>
-                </button>
-              </article>
-            ))}
+                  <div>
+                    <span aria-hidden="true" className="material-symbols-outlined mb-6 text-4xl text-secondary">
+                      {job.icon ?? 'work'}
+                    </span>
+                    <h3 className="card-1-title-settings mb-4 text-black dark:text-white">{job.title}</h3>
+                    <p className="card-1-description-settings mb-8 text-backgroundDarkOne dark:text-background">{job.description ?? ''}</p>
+                  </div>
+
+                  <ul className="mb-8 space-y-3">
+                    {tagsToShow.map((t, i) => (
+                      <li key={i} className="h4-settings flex items-center gap-2 text-backgroundDarkOne dark:text-background">
+                        <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/all-jobs?job=${encodeURIComponent(job.title)}&q=${encodeURIComponent(job.title)}`)}
+                    className="h3-settings flex items-center gap-2 text-primary transition-all group-hover:gap-4 dark:text-secondary"
+                  >
+                    View Details
+                    <span aria-hidden="true" className="material-symbols-outlined h3-settings">
+                      trending_flat
+                    </span>
+                  </button>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -938,7 +966,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               Explore our current openings and <br /> find your place in an elite engineering culture.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button type="button" className="button-1-settings bg-secondary text-on-secondary shadow-xl transition-all hover:brightness-110">
+              <button type="button" onClick={() => navigate('/all-jobs')} className="button-1-settings bg-secondary text-on-secondary shadow-xl transition-all hover:brightness-110">
                 Open Roles
               </button>
               <button
