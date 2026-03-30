@@ -16,6 +16,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 import FadeInOnScroll from './components/common/FadeInOnScroll';
 import AboutUsPage from './components/pages/About-us';
 import CareersPage from './components/pages/Careers';
+import AllJobsPage from './components/pages/All-jobs';
 import insaLogo from './assets/logos/Insa.webp';
 import investmentLogo from './assets/logos/investment.webp';
 import poessaLogo from './assets/logos/Poessa.webp';
@@ -407,6 +408,7 @@ function App(): ReactElement {
       <Route path="/services/supported" element={<SupportedPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/careers" element={<CareersPage />} />
+      <Route path="/all-jobs" element={<AllJobsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
