@@ -71,7 +71,7 @@ export default function ContactUsPage(): ReactElement {
           {/* Left Column: Form */}
           <div className="w-full md:w-1/2">
             <div className="max-w-xl">
-              <h2 className="h2-settings mb-4">Let's Connect</h2>
+              <h2 className="h2-settings text-primary dark:text-secondary mb-4">Let's Connect</h2>
               <h3 className="h3-settings mb-10 leading-relaxed">
                 We're here to help you navigate the future of enterprise systems. Reach out to our team of experts today.
               </h3>
@@ -97,10 +97,10 @@ export default function ContactUsPage(): ReactElement {
                             id="firstName"
                             name="firstName"
                             type="text"
-                            placeholder=" "
-                            className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder-transparent"
+                             placeholder=" "
+                            className="peer w-full px-4 py-3 pt-6 bg-background dark:bg-backgroundDark placeholder-shown:bg-backgroundOne placeholder-shown:dark:bg-backgroundDarkOne border border-black dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent focus:bg-background focus:dark:bg-backgroundDark outline-none transition-all placeholder-transparent"
                           />
-                          <label htmlFor="firstName" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
+                          <label htmlFor="firstName" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:bg-backgroundOne peer-placeholder-shown:dark:bg-backgroundDarkOne bg-background dark:bg-backgroundDark peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
                             First Name
                           </label>
                         </div>
@@ -113,10 +113,10 @@ export default function ContactUsPage(): ReactElement {
                             id="lastName"
                             name="lastName"
                             type="text"
-                            placeholder=" "
-                            className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder-transparent"
+                             placeholder=" "
+                            className="peer w-full px-4 py-3 pt-6 bg-background dark:bg-backgroundDark placeholder-shown:bg-backgroundOne placeholder-shown:dark:bg-backgroundDarkOne border border-black dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent focus:bg-background focus:dark:bg-backgroundDark outline-none transition-all placeholder-transparent"
                           />
-                          <label htmlFor="lastName" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
+                          <label htmlFor="lastName" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:bg-backgroundOne peer-placeholder-shown:dark:bg-backgroundDarkOne bg-background dark:bg-backgroundDark peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
                             Last Name
                           </label>
                         </div>
@@ -130,10 +130,10 @@ export default function ContactUsPage(): ReactElement {
                           id="email"
                           name="email"
                           type="email"
-                          placeholder=" "
-                          className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder-transparent"
+                           placeholder=" "
+                          className="peer w-full px-4 py-3 pt-6 bg-background dark:bg-backgroundDark placeholder-shown:bg-backgroundOne placeholder-shown:dark:bg-backgroundDarkOne border border-black dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent focus:bg-background focus:dark:bg-backgroundDark outline-none transition-all placeholder-transparent"
                         />
-                        <label htmlFor="email" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
+                        <label htmlFor="email" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:bg-backgroundOne peer-placeholder-shown:dark:bg-backgroundDarkOne bg-background dark:bg-backgroundDark peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
                           Work Email
                         </label>
                       </div>
@@ -146,10 +146,10 @@ export default function ContactUsPage(): ReactElement {
                           id="company"
                           name="company"
                           type="text"
-                          placeholder=" "
-                          className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder-transparent"
+                           placeholder=" "
+                          className="peer w-full px-4 py-3 pt-6 bg-background dark:bg-backgroundDark placeholder-shown:bg-backgroundOne placeholder-shown:dark:bg-backgroundDarkOne border border-black dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent focus:bg-background focus:dark:bg-backgroundDark outline-none transition-all placeholder-transparent"
                         />
-                        <label htmlFor="company" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
+                        <label htmlFor="company" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:bg-backgroundOne peer-placeholder-shown:dark:bg-backgroundDarkOne bg-background dark:bg-backgroundDark peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
                           Company
                         </label>
                       </div>
@@ -162,10 +162,10 @@ export default function ContactUsPage(): ReactElement {
                           id="phone"
                           name="phone"
                           type="tel"
-                          placeholder=" "
-                          className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder-transparent"
+                           placeholder=" "
+                           className="peer w-full px-4 py-3 pt-6 bg-background dark:bg-backgroundDark placeholder-shown:bg-backgroundOne placeholder-shown:dark:bg-backgroundDarkOne border border-black dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent focus:bg-background focus:dark:bg-backgroundDark outline-none transition-all placeholder-transparent"
                         />
-                        <label htmlFor="phone" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
+                        <label htmlFor="phone" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:bg-backgroundOne peer-placeholder-shown:dark:bg-backgroundDarkOne bg-background dark:bg-backgroundDark peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
                           Phone
                         </label>
                       </div>
@@ -186,14 +186,14 @@ export default function ContactUsPage(): ReactElement {
                                 aria-expanded={topicOpen}
                                 aria-haspopup="listbox"
                                 tabIndex={0}
-                                onClick={() => setTopicOpen((v) => !v)}
-                                onKeyDown={(e) => {
-                                  if (e.key === 'Enter' || e.key === ' ') {
-                                    e.preventDefault();
-                                    setTopicOpen((v) => !v);
-                                  }
-                                }}
-                                className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex items-center justify-between cursor-pointer outline-none"
+                                 onClick={() => setTopicOpen((v) => !v)}
+                                 onKeyDown={(e) => {
+                                   if (e.key === 'Enter' || e.key === ' ') {
+                                     e.preventDefault();
+                                     setTopicOpen((v) => !v);
+                                   }
+                                 }}
+                                className={`peer w-full px-4 py-3 pt-6 ${isFloating ? 'bg-background dark:bg-backgroundDark' : 'bg-backgroundOne dark:bg-backgroundDarkOne'} border border-black dark:border-slate-700 rounded-xl flex items-center justify-between cursor-pointer outline-none`}
                               >
                                 <span className={field.value ? 'text-on-surface' : 'text-outline-variant'}>{displayLabel}</span>
                                 <svg className={`h-5 w-5 ml-3 transition-transform ${topicOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -201,8 +201,8 @@ export default function ContactUsPage(): ReactElement {
                                 </svg>
                               </div>
 
-                              {topicOpen && (
-                                <ul role="listbox" aria-label="Topic" className="absolute left-0 right-0 mt-2 z-50 bg-surface-container-low rounded-xl shadow max-h-60 overflow-auto">
+                                {topicOpen && (
+                                <ul role="listbox" aria-label="Topic" className={`absolute left-0 right-0 mt-2 z-50 ${isFloating ? 'bg-background dark:bg-backgroundDark' : 'bg-backgroundOne dark:bg-backgroundDarkOne'} rounded-xl shadow max-h-60 overflow-auto`}>
                                   {topicOptions.map((o) => (
                                     <li
                                       key={o.value || 'empty'}
@@ -229,8 +229,10 @@ export default function ContactUsPage(): ReactElement {
 
                               <label
                                 htmlFor="topic"
-                                className={`absolute left-4 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform ${
-                                  isFloating ? 'top-0 -translate-y-1/2 scale-100' : 'top-1/2 -translate-y-1/2 scale-75'
+                                className={`absolute left-4 px-1 transition-all duration-150 card-1-title-settings transform ${
+                                  isFloating
+                                    ? 'top-0 -translate-y-1/2 scale-100 bg-background dark:bg-backgroundDark'
+                                    : 'top-1/2 -translate-y-1/2 scale-75 bg-backgroundOne dark:bg-backgroundDarkOne'
                                 }`}
                               >
                                 Topic
@@ -250,9 +252,9 @@ export default function ContactUsPage(): ReactElement {
                           name="message"
                           placeholder=" "
                           rows={4}
-                          className="peer w-full px-4 py-3 pt-6 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all resize-none placeholder-transparent"
+                           className="peer w-full px-4 py-3 pt-6 bg-background dark:bg-backgroundDark placeholder-shown:bg-backgroundOne placeholder-shown:dark:bg-backgroundDarkOne border border-black dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent focus:bg-background focus:dark:bg-backgroundDark outline-none transition-all resize-none placeholder-transparent"
                         />
-                        <label htmlFor="message" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 bg-background dark:bg-backgroundDark transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
+                        <label htmlFor="message" className="absolute left-4 top-1/2 -translate-y-1/2 px-1 transition-all duration-150 card-1-title-settings transform peer-placeholder-shown:bg-backgroundOne peer-placeholder-shown:dark:bg-backgroundDarkOne bg-background dark:bg-backgroundDark peer-placeholder-shown:scale-75 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:scale-100">
                           Message
                         </label>
                       </div>
@@ -274,22 +276,22 @@ export default function ContactUsPage(): ReactElement {
 
           {/* Right Column: Contact Info & Socials */}
           <div className="w-full md:w-1/2 flex flex-col justify-start pt-4">
-            <div className="bg-surface-container-low p-8 md:p-12 rounded-3xl space-y-12">
+            <div className="bg-backgroundOne dark:bg-backgroundDarkOne p-8 md:p-12 rounded-3xl space-y-12">
               <div>
-                <h2 className="big-card-tittle-settings mb-8">Connect with us</h2>
+                <h2 className="big-card-tittle-settings text-primary dark:text-secondary mb-8">Connect with us</h2>
 
                 <div className="flex flex-wrap gap-4 mb-12">
-                  <a className="w-14 h-14 bg-surface-container-highest rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
-                    <span className="material-symbols-outlined text-secondary text-2xl">groups</span>
+                  <a className="w-14 h-14 bg-primary rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
+                    <span className="material-symbols-outlined text-white text-2xl">groups</span>
                   </a>
-                  <a className="w-14 h-14 bg-surface-container-highest rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
-                    <span className="material-symbols-outlined text-secondary text-2xl">share</span>
+                  <a className="w-14 h-14 bg-primary rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
+                    <span className="material-symbols-outlined text-white text-2xl">share</span>
                   </a>
-                  <a className="w-14 h-14 bg-surface-container-highest rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
-                    <span className="material-symbols-outlined text-secondary text-2xl">terminal</span>
+                  <a className="w-14 h-14 bg-primary rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
+                    <span className="material-symbols-outlined text-white text-2xl">terminal</span>
                   </a>
-                  <a className="w-14 h-14 bg-surface-container-highest rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
-                    <span className="material-symbols-outlined text-secondary text-2xl">mail</span>
+                  <a className="w-14 h-14 bg-primary rounded-full flex items-center justify-center group hover:bg-secondary-container transition-all" href="#">
+                    <span className="material-symbols-outlined text-white text-2xl">mail</span>
                   </a>
                 </div>
               </div>
@@ -300,8 +302,8 @@ export default function ContactUsPage(): ReactElement {
                     <span className="material-symbols-outlined text-secondary">alternate_email</span>
                   </div>
                   <div>
-                    <p className="card-1-title-settings mb-1">Email Support</p>
-                    <a className="card-1-description-settings text-on-surface hover:text-secondary transition-colors" href="mailto:info@systemedgesolutions.com">
+                    <p className="card-1-title-settings text-backgroundDark  dark:text-background mb-1">Email Support</p>
+                    <a className="card-1-description-settings text-backgroundDark  dark:text-background hover:text-secondary transition-colors" href="mailto:info@systemedgesolutions.com">
                       info@systemedgesolutions.com
                     </a>
                   </div>
@@ -312,8 +314,8 @@ export default function ContactUsPage(): ReactElement {
                     <span className="material-symbols-outlined text-secondary">call</span>
                   </div>
                   <div>
-                    <p className="card-1-title-settings mb-1">Call Us Directly</p>
-                    <a className="card-1-description-settings text-on-surface hover:text-secondary transition-colors" href="tel:+15551234567">
+                    <p className="card-1-title-settings text-backgroundDark  dark:text-background mb-1">Call Us Directly</p>
+                    <a className="card-1-description-settings text-backgroundDark  dark:text-background hover:text-secondary transition-colors" href="tel:+15551234567">
                       +1 (555) 123-4567
                     </a>
                   </div>
