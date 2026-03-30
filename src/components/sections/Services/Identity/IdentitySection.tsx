@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import SectionHeading from '../../../common/SectionHeading';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
@@ -260,9 +261,9 @@ const IdentitySection = ({
             <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Schedule a diagnostic session with our IAM specialists and discover how to eliminate credential-based vulnerabilities.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600" href="/##contact">
+              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600" to="/contact-us">
                 {ctaLabel}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
