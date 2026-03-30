@@ -100,12 +100,11 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
             )}
           </button>
 
-          <a
-            href={ctaHref}
-            className="flex h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-6 text-sm font-bold leading-normal tracking-wide text-white shadow-lg shadow-primary/20 transition-colors hover:bg-[#3d3e91]"
-          >
-            <span className="truncate">{ctaLabel}</span>
-          </a>
+          {renderNavLink(
+            ctaHref,
+            'flex h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-6 text-sm font-bold leading-normal tracking-wide text-white shadow-lg shadow-primary/20 transition-colors hover:bg-[#3d3e91]',
+            <span className="truncate">{ctaLabel}</span>,
+          )}
         </div>
 
         <button
@@ -169,22 +168,42 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
               )}
             </button>
 
+            {isRouteLink(ctaHref) ? (
+              <Link
+                to={ctaHref}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="button-1-settings bg-primary text-white hover:bg-[#3d3e91]"
+              >
+                {ctaLabel}
+              </Link>
+            ) : (
+              <a
+                href={ctaHref}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="button-1-settings bg-primary text-white hover:bg-[#3d3e91]"
+              >
+                {ctaLabel}
+              </a>
+            )}
+          </div>
+
+          {isRouteLink(ctaHref) ? (
+            <Link
+              to={ctaHref}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-4 inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-[#3d3e91]"
+            >
+              {ctaLabel}
+            </Link>
+          ) : (
             <a
               href={ctaHref}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="button-1-settings bg-primary text-white hover:bg-[#3d3e91]"
+              className="mt-4 inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-[#3d3e91]"
             >
               {ctaLabel}
             </a>
-          </div>
-
-          <a
-            href={ctaHref}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-4 inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold tracking-wide text-white transition-colors hover:bg-[#3d3e91]"
-          >
-            {ctaLabel}
-          </a>
+          )}
         </div>
       ) : null}
     </header>
