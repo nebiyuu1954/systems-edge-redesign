@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { ReactElement } from 'react';
 
 export interface HeroAction {
@@ -43,19 +44,24 @@ const HeroSection = ({
           <p className="h3-settings max-w-xl text-slate-200">{description}</p>
 
           <div className="mt-4 flex flex-wrap gap-4">
-            {actions.map((action) => (
-              <a
-                key={action.id}
-                href={action.href}
-                className={
-                    action.variant === 'primary'
-                      ? 'button-1-settings inline-flex items-center justify-center bg-white text-[#282971] shadow-lg ring-1 ring-white/10 transition-colors hover:bg-slate-100'
-                    : 'button-1-settings inline-flex items-center justify-center border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20'
-                }
-              >
-                {action.label}
-              </a>
-            ))}
+            {actions.map((action) => {
+              const normalizedHref = action.href.includes('#contact') ? '/contact-us' : action.href;
+              const classes =
+                action.variant === 'primary'
+                  ? 'button-1-settings inline-flex items-center justify-center bg-white text-[#282971] shadow-lg ring-1 ring-white/10 transition-colors hover:bg-slate-100'
+                  : 'button-1-settings inline-flex items-center justify-center border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20';
+              const isInternal = normalizedHref.startsWith('/') && !normalizedHref.startsWith('http');
+
+              return isInternal ? (
+                <Link key={action.id} to={normalizedHref} className={classes}>
+                  {action.label}
+                </Link>
+              ) : (
+                <a key={action.id} href={normalizedHref} className={classes}>
+                  {action.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
