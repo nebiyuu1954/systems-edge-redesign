@@ -104,17 +104,17 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                 </div>
                 <div className="flex w-full flex-col justify-center p-8 md:w-[60%] lg:p-12 bg-backgroundOne dark:bg-backgroundDarkOne text-white">
                   <FadeInOnScroll delayMs={80}>
-                    <h2 className="card-2-title-settings mb-4 text-center text-black dark:text-white">{activeService.title}</h2>
+                    <h2 className="card-2-title-settings mb-4 text-black dark:text-white text-center md:text-left">{activeService.title}</h2>
                   </FadeInOnScroll>
                   <FadeInOnScroll delayMs={160}>
-                    <p className="card-2-description-settings text-center text-black dark:text-white">{activeService.description}</p>
+                    <p className="card-1-tittle-settings text-black dark:text-white text-center md:text-left">{activeService.description}</p>
                   </FadeInOnScroll>
 
                   <FadeInOnScroll delayMs={240}>
-                    <div className="mt-6 flex flex-wrap justify-center gap-2">
+                    <div className="mt-6 flex flex-wrap gap-2 justify-center md:justify-start md:gap-3">
                       <button
                         type="button"
-                        className="button-2-settings mb-0 inline-flex items-center bg-primary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        className="button-2-settings inline-flex items-center bg-primary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/40"
                         aria-label={`Get started with ${activeService.title}`}
                       >
                         {`Get started`}
@@ -124,7 +124,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                         activeService.learnMoreHref.startsWith('/') ? (
                           <Link
                             to={activeService.learnMoreHref}
-                            className="button-2-settings mb-0 inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                            className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
                             aria-label={`Learn more about ${activeService.title}`}
                           >
                             Learn More
@@ -132,7 +132,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                         ) : (
                           <a
                             href={activeService.learnMoreHref}
-                            className="button-2-settings mb-0 inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                            className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
                             aria-label={`Learn more about ${activeService.title}`}
                           >
                             Learn More
@@ -141,7 +141,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                       ) : (
                         <button
                           type="button"
-                          className="button-2-settings mb-0 inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                          className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
                           aria-label={`Learn more about ${activeService.title}`}
                         >
                           Learn More
