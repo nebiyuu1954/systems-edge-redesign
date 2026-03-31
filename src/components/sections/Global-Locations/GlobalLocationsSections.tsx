@@ -125,18 +125,20 @@ const GlobalLocationsSections2 = ({
         {/* Optional heading injected by parent (e.g., About page). If the parent passes a full `headerNode`, render it instead. */}
         {headerNode ? (
           headerNode
-        ) : heading ? (
+        ) : (
           <div className="mb-16">
             <SectionHeading
-              label={label}
-              heading={heading}
+              {...(label ? { label } : {})}
+              heading={heading ?? 'Global Locations'}
+              description={'Our offices and delivery centers around the world.'}
               center={center}
-              headingClassName={headingClassName}
+              headingClassName={`${headingClassName ?? ''} h2-settings`}
+              descriptionClassName="h3-settings"
               delayMsHeading={delayMsHeading}
             />
             <div className={`w-80 h-1.5 bg-secondary mt-2 rounded-full ${center ? 'mx-auto' : ''}`} />
           </div>
-        ) : null}
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="bg-servicesCardLight relative order-1 lg:order-1" data-purpose="map-visualization">
