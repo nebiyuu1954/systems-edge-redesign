@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header/Header';
+import ServicesHeader from './components/layout/Header/ServicesHeader';
 import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection, NumbersSection } from './components/sections';
 import GlobalLocationsSections from './components/sections/Global-Locations/GlobalLocationsSections';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
@@ -236,7 +237,7 @@ function HomePage(): ReactElement {
         headerNode={(
           <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
             <FadeInOnScroll>
-              <h1 id="locations-heading" className="mb-6 text-center text-4xl font-bold text-primary dark:text-white md:text-5xl">
+              <h1 id="locations-heading" className="h2-settings mb-6 text-center text-primary dark:text-white">
                 Global Locations
               </h1>
             </FadeInOnScroll>
@@ -257,17 +258,7 @@ function HomePage(): ReactElement {
 function ERPPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="/contact-us"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader />
       <ERPSection />
       <Footer />
     </main>
@@ -277,17 +268,7 @@ function ERPPage(): ReactElement {
 function OutsourcingPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="/contact-us"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader />
       <OutsourcingSection />
       <Footer />
     </main>
@@ -297,17 +278,7 @@ function OutsourcingPage(): ReactElement {
 function SupportedPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="/contact-us"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader />
       <SupportedSection />
       <Footer />
     </main>
@@ -317,17 +288,7 @@ function SupportedPage(): ReactElement {
 function SoftwareDevPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="/contact-us"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader />
       <SoftwareDevelopmentSection />
       <Footer />
     </main>
@@ -337,17 +298,7 @@ function SoftwareDevPage(): ReactElement {
 function UIUXPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="/contact-us"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader />
       <UIUXSection />
       <Footer />
     </main>
@@ -357,17 +308,7 @@ function UIUXPage(): ReactElement {
 function TestingPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="/contact-us"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader />
       <TestingSection />
       <Footer />
     </main>
@@ -377,17 +318,7 @@ function TestingPage(): ReactElement {
 function IdentityPage(): ReactElement {
   return (
     <main>
-      <Header
-        navItems={[
-          { id: 'services', label: 'Services', href: '#services' },
-          { id: 'locations', label: 'Locations', href: '#locations-heading' },
-          { id: 'careers', label: 'Careers', href: '/careers' },
-          { id: 'about', label: 'About Us', href: '/about-us' },
-        ]}
-        ctaLabel="Get Consultation"
-        ctaHref="#contact"
-        logoSizeClass="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-44"
-      />
+      <ServicesHeader ctaHref="#contact" />
       <IdentitySection />
       <Footer />
     </main>
