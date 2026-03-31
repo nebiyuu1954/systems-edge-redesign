@@ -143,7 +143,7 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
 
           {renderNavLink(
             ctaHref,
-            'flex h-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-6 text-sm font-bold leading-normal tracking-wide text-white shadow-lg shadow-primary/20 transition-colors hover:bg-[#3d3e91]',
+            'flex h-10 cursor-pointer items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold leading-normal tracking-wide text-white transition-colors duration-200 hover:bg-secondary',
             <span className="truncate">{ctaLabel}</span>,
           )}
         </div>
@@ -213,7 +213,7 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
               <Link
                 to={ctaHref}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="button-2-settings w-full inline-flex items-center justify-center bg-primary text-white"
+                className="button-2-settings w-full inline-flex items-center justify-center bg-primary text-white transition-colors duration-200 hover:bg-secondary"
               >
                 {ctaLabel}
               </Link>
@@ -221,7 +221,7 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
               <a
                 href={ctaHref}
                 onClick={(e) => handleAnchorClick(e, ctaHref)}
-                className="button-2-settings w-full inline-flex items-center justify-center bg-primary text-white"
+                className="button-2-settings w-full inline-flex items-center justify-center bg-primary text-white transition-colors duration-200 hover:bg-secondary"
               >
                 {ctaLabel}
               </a>
