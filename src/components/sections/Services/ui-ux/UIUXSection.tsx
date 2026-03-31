@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ReactElement, SVGProps } from 'react';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
-import { Link } from 'react-router-dom';
 import SectionHeading from '../../../common/SectionHeading';
 import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
 
@@ -260,20 +259,6 @@ const UIUXSection = (): ReactElement => {
             </div>
           </div>
         </div>
-      <section className="p-6 md:p-12 lg:p-24 bg-background dark:bg-backgroundDark">
-        <div className="bg-primary max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
-          <div className="px-8 py-16 md:py-20 text-center relative z-10">
-            <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Ready to elevate your enterprise experience?</h2>
-            <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Partner with Systems Edge to transform your complex workflows into high-performing and visually appealing solutions.</p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" to="/contact-us">
-                Schedule a Consultation
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
       </section>
 
       <section className="bg-backgroundOne py-24 dark:bg-backgroundDarkOne">
@@ -332,7 +317,7 @@ const UIUXSection = (): ReactElement => {
                 }`}
               >
                 <span className="mb-2 text-xs font-bold uppercase tracking-[0.2em] opacity-60">Core Focus</span>
-                <div className="h3-settings md:h2-settings text-2xl font-black leading-tight sm:text-3xl">
+                <div className="h3-settings md:card-1-tittle-settings text-2xl font-black leading-tight sm:text-3xl">
                   RESEARCH
                   <br />
                   DESIGN
