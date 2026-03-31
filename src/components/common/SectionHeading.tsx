@@ -11,6 +11,7 @@ export interface SectionHeadingProps {
   descriptionClassName?: string;
   delayMsHeading?: number;
   delayMsDescription?: number;
+  compact?: boolean;
 }
 
 /**
@@ -26,8 +27,11 @@ export default function SectionHeading({
   descriptionClassName = '',
   delayMsHeading = 0,
   delayMsDescription = 120,
+  compact = false,
 }: SectionHeadingProps): ReactElement {
   const headingAlignment = center ? 'text-center' : 'text-left';
+  const headingMarginClass = compact ? 'mb-0' : 'mb-6';
+  const descriptionMarginClass = compact ? 'mb-6' : 'mb-20';
 
   return (
     <div className="w-full">
@@ -43,7 +47,7 @@ export default function SectionHeading({
       <FadeInOnScroll delayMs={delayMsHeading}>
         <h2
           id={id}
-          className={`mb-6 text-4xl font-bold text-primary dark:text-white md:text-5xl ${headingAlignment} ${headingClassName}`}
+          className={`${headingMarginClass} text-4xl font-bold text-primary dark:text-white md:text-5xl ${headingAlignment} ${headingClassName}`}
         >
           {heading}
         </h2>
@@ -52,9 +56,7 @@ export default function SectionHeading({
       {description ? (
         <FadeInOnScroll delayMs={delayMsDescription}>
           <p
-            className={`mb-20 max-w-[800px] mx-auto text-lg leading-relaxed text-slate-600 dark:text-slate-400 ${
-              center ? 'text-center' : 'text-left'
-            } ${descriptionClassName}`}
+            className={`${descriptionMarginClass} max-w-[800px] ${center ? 'mx-auto text-center' : 'text-left'} text-lg leading-relaxed text-slate-600 dark:text-slate-400 ${descriptionClassName}`}
           >
             {description}
           </p>

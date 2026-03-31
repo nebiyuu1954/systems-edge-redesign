@@ -61,9 +61,9 @@ type ExpertiseCard = {
 
 const headerNavItems: HeaderNavItem[] = [
   { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-  { id: 'locations', label: 'Locations', href: '/#locations' },
-  { id: 'careers', label: 'Careers', href: '/careers' },
+  { id: 'strategy', label: 'Strategy', href: '/about-us#our-strategic-approach' },
+  { id: 'tech', label: 'Tech Stack', href: '/about-us#tech-expertise' },
+  { id: 'locations', label: 'Locations', href: '/about-us#global-locations' },
   { id: 'about', label: 'About Us', href: '/about-us' },
 ];
 
@@ -455,13 +455,15 @@ function AboutUsPage(): ReactElement {
         <div className="mx-auto max-w-7xl px-8">
           <div className="mb-16">
             <SectionHeading
+              id="our-strategic-approach"
               label={"Methodology"}
               heading={"Our Strategic Approach"}
               center={false}
+              compact={true}
               headingClassName={"h2-settings text-black dark:text-white"}
               delayMsHeading={120}
             />
-            <div className="w-80 h-1.5 bg-secondary mt-2 rounded-full" />
+            <div className="w-80 h-1.5 bg-secondary mt-6 rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:flex md:gap-4">
@@ -661,12 +663,14 @@ function AboutUsPage(): ReactElement {
       <section className="bg-background dark:bg-backgroundDarkOne py-32 text-center">
         <div className="mx-auto max-w-4xl px-8">
           <SectionHeading
+            id="tech-expertise"
             heading={"A Symphony of Tech Expertise"}
             center={true}
+            compact={true}
             headingClassName={"h2-settings text-black dark:text-white"}
           />
 
-          <div className="mx-auto mt-2 h-1 w-24 bg-secondary rounded-full" />
+          <div className="mx-auto mt-6 h-1 w-24 bg-secondary rounded-full" />
 
           <div className="mt-14 text-left">
             <AnimatedImageMarquee rows={marqueeRows} />
@@ -674,7 +678,28 @@ function AboutUsPage(): ReactElement {
         </div>
       </section>
       
-      <GlobalLocationsSections className="bg-backgroundOne dark:bg-backgroundDark" contentClassName="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" heading="Global Locations" center={false} headingClassName="h2-settings text-black dark:text-white" delayMsHeading={120} />
+      <GlobalLocationsSections
+        className="bg-backgroundOne dark:bg-backgroundDark"
+        contentClassName="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        center={false}
+        headingClassName="h2-settings text-black dark:text-white"
+        delayMsHeading={120}
+        headerNode={
+          <div className="mb-16">
+            <SectionHeading
+              id="global-locations"
+              heading="Global Locations"
+              description={'Our offices and delivery centers around the world.'}
+              center={false}
+              compact={true}
+              headingClassName="h2-settings text-black dark:text-white"
+              descriptionClassName="h3-settings mb-2"
+              delayMsHeading={120}
+            />
+            <div className="w-80 h-1.5 bg-secondary mt-6 rounded-full" />
+          </div>
+        }
+      />
       
       <section className="px-8 py-24 bg-background dark:bg-backgroundDarkOne">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-primary p-16 md:p-24">
