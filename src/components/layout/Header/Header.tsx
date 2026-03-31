@@ -43,25 +43,32 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
   const navigate = useNavigate();
   const location = useLocation();
 
-  const getAnchorId = (href: string): string | null => {
+  const parsePathAndAnchor = (href: string): { path: string; anchor: string } | null => {
     const idx = href.indexOf('#');
     if (idx === -1) return null;
-    return href.slice(idx + 1);
+    const path = href.slice(0, idx) || '/';
+    const anchor = href.slice(idx + 1);
+    return { path, anchor };
   };
 
   const handleAnchorClick = (e: React.MouseEvent, href: string) => {
-    const anchor = getAnchorId(href);
-    if (!anchor) return;
+    const parsed = parsePathAndAnchor(href);
+    if (!parsed) return;
     e.preventDefault();
 
-    if (location.pathname === '/') {
+    const { path, anchor } = parsed;
+
+    // If the target path matches the current location, attempt to scroll on-page
+    if (path === location.pathname) {
       const el = document.getElementById(anchor);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
       else window.location.hash = `#${anchor}`;
-    } else {
-      navigate('/', { state: { scrollTo: anchor } });
+      setIsMobileMenuOpen(false);
+      return;
     }
 
+    // Otherwise navigate to the target path and pass the anchor as state so the destination can scroll to it
+    navigate(path || '/', { state: { scrollTo: anchor } });
     setIsMobileMenuOpen(false);
   };
 
@@ -74,8 +81,8 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
       );
     }
 
-    const anchor = getAnchorId(href);
-    if (anchor) {
+    const parsed = parsePathAndAnchor(href);
+    if (parsed) {
       return (
         <a className={className} href={href} onClick={(e) => handleAnchorClick(e, href)}>
           {children}
