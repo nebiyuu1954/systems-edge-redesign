@@ -22,7 +22,8 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
       if (typeof window === 'undefined') return false;
       const stored = localStorage.getItem('theme');
       if (stored) return stored === 'dark';
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // Default to light mode when no stored preference is present
+      return false;
     } catch {
       return false;
     }

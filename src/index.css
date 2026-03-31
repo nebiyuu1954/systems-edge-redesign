@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
+/* Prefer light mode by default and expose color-scheme to the UA */
+:root { color-scheme: light; }
+html.dark { color-scheme: dark; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
