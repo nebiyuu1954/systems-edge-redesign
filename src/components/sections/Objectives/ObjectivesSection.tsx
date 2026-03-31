@@ -93,7 +93,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
                     onClick={() => toggleExpanded(block.id)}
                     aria-expanded={isExpanded}
                     aria-controls={detailsId}
-                    className="button-1-settings mt-8 bg-secondary text-white transition-all duration-300 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-secondary dark:text-white"
+                    className="button-1-settings mt-8 bg-secondary text-white transition-all duration-300 hover:bg-white hover:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-secondary dark:text-white"
                   >
                     {isExpanded ? 'Hide Details' : block.learnMoreLabel ?? 'Learn More'}
                   </button>
