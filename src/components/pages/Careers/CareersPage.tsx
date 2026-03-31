@@ -122,11 +122,11 @@ const evolutionOptions: EvolutionOption[] = [
 ];
 
 const navItems = [
-  { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'testimonials', label: 'Testimonials', href: '/#testimonials' },
-  { id: 'locations', label: 'Locations', href: '/#locations' },
+  { id: 'path', label: 'Path', href: '/careers#evolution-path' },
+  { id: 'culture', label: 'Culture', href: '/careers#culture' },
+  { id: 'selection', label: 'Selection', href: '/careers#selection' },
+  { id: 'openings', label: 'Openings', href: '/careers#openings' },
   { id: 'about', label: 'About Us', href: '/about-us' },
-  { id: 'careers', label: 'Careers', href: '/careers' },
 ];
 
 // Typewriter controls for the quote in the image overlay.
@@ -627,7 +627,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
         </section>
       ))}
 
-      <section className="bg-backgroundOne dark:bg-backgroundDarkOne">
+      <section id="evolution-path" className="bg-backgroundOne dark:bg-backgroundDarkOne">
         <div className="mx-auto max-w-7xl px-8 py-24">
           <div className="mb-16 text-center lg:text-left">
             <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">Non-Linear Career Flow</span>
@@ -842,7 +842,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
 
 
 
-      <section className="bg-background">
+      <section id="selection" className="bg-background">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-8 py-24 lg:grid-cols-12">
           <div className="order-2 lg:order-1 lg:col-span-5">
           {/* Hide the large-screen image on mobile; show only on lg+ */}
@@ -898,7 +898,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
         </div>
       </section>
 
-      <section className="bg-backgroundOne py-24 dark:bg-backgroundDark">
+      <section id="openings" className="bg-backgroundOne py-24 dark:bg-backgroundDark">
         <div className="mx-auto max-w-7xl px-8">
           <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
