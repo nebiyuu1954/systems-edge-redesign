@@ -236,7 +236,7 @@ const OutsourcingSection = (): ReactElement => {
             <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Get the elite technical talent your project deserves. Let's discuss your requirements today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" to="/contact-us">
+              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105 sm:mx-0" to="/contact-us">
                 Request Staffing Consultation
               </Link>
             </div>
