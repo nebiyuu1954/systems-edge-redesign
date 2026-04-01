@@ -312,7 +312,10 @@ const TestingSection = ({ ctaLabel = 'Discuss Your Testing Needs' }: TestingSect
             <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Partner with Systems Edge to build a culture of quality. Let&apos;s engineer a testing strategy that scales with your ambition.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button type="button" className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600">
+              <button
+                type="button"
+                className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105"
+              >
                 {ctaLabel}
               </button>
             </div>
