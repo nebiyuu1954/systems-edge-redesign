@@ -107,15 +107,17 @@ const GlobalLocationsSections2 = ({
   headerNode,
 }: GlobalLocationsSections2Props): ReactElement => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   useEffect(() => {
     if (LOCATIONS.length <= 1) return;
+    if (isPaused) return; // don't auto-rotate while paused
     const timer = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % LOCATIONS.length);
     }, autoSwitchMs);
 
     return () => window.clearInterval(timer);
-  }, [autoSwitchMs]);
+  }, [autoSwitchMs, isPaused]);
 
   const activeLocation = LOCATIONS[activeIndex];
 
@@ -140,7 +142,11 @@ const GlobalLocationsSections2 = ({
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
         <div className="bg-servicesCardLight relative order-1 lg:order-1" data-purpose="map-visualization">
           <div className="relative w-full min-h-[440px] overflow-hidden rounded-3xl border border-slate-200">
             <img
@@ -228,12 +234,24 @@ const GlobalLocationsSections2 = ({
               </div>
 
               <div className="mt-10 flex justify-center gap-2" data-purpose="carousel-pagination" aria-hidden>
-                {LOCATIONS.map((location, index) => (
-                  <span
-                    key={location.id}
-                    className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex ? 'w-6 bg-secondary' : 'w-2 bg-slate-200 dark:bg-slate-700'}`}
-                  />
-                ))}
+                {LOCATIONS.map((location, index) => {
+                  const isActiveDot = index === activeIndex;
+                  return (
+                    <button
+                      key={location.id}
+                      type="button"
+                      aria-label={`Show ${location.city}`}
+                      aria-pressed={isActiveDot}
+                      onClick={() => {
+                        setActiveIndex(index);
+                        setIsPaused(true);
+                      }}
+                      className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${
+                        isActiveDot ? 'w-6 bg-secondary' : 'w-2 bg-slate-200 dark:bg-slate-700'
+                      }`}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
