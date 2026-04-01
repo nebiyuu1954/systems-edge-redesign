@@ -441,7 +441,7 @@ const ERPSection = (): ReactElement => {
             <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Join the organizations already leveraging Systems Edge for their digital backbone. Let&apos;s build your future today.</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" to="/contact-us">
+              <Link className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105 sm:mx-0" to="/contact-us">
                 Schedule a Consultation
               </Link>
             </div>
