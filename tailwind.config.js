@@ -7,6 +7,9 @@ export default {
       colors: {
         primary: '#282973',
         secondary: '#008080',
+
+
+
         'on-primary': '#ffffff',
         'on-secondary': '#ffffff',
         'primary-container': '#282973',
@@ -61,6 +64,23 @@ export default {
 
         servicesCardDark: '#0e0e28',
         servicesCardLight: '#f9fcfc',
+
+        buttonSecondaryLight: '#59acac',
+        buttonSecondaryLightHover: '#75baba',
+
+        buttonSecondaryDark: '#000e0e',
+        buttonSecondaryDarkHover: '#002020',
+
+        
+
+
+        buttonPrimaryLight: '#53548f',
+        buttonPrimaryLightHover: '#53548f',
+
+        buttonPrimary: '#53548f',
+
+        buttonPrimaryDark: '#000e0e',
+        buttonPrimaryDarkHover: '#002020',
 
 
         a: '#e6f2f2',
