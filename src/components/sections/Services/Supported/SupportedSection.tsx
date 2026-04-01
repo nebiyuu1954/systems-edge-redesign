@@ -233,7 +233,7 @@ const SupportedSection = (): ReactElement => {
             <h2 className="h2-settings mb-6 mx-auto max-w-3xl text-white">Scale your infrastructure with expert management.</h2>
             <p className="h3-settings mb-10 max-w-2xl mx-auto text-blue-100 opacity-80">Ready to eliminate downtime and accelerate your delivery? Our team is standing by to take the operational burden off your shoulders.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl transition duration-300 hover:bg-teal-600 sm:mx-0" href="#">
+              <a className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105 sm:mx-0" href="#">
                 Schedule a Consultation
               </a>
             </div>
