@@ -48,8 +48,8 @@ const HeroSection = ({
               const normalizedHref = action.href.includes('#contact') ? '/contact-us' : action.href;
               const classes =
                 action.variant === 'primary'
-                  ? 'button-1-settings inline-flex items-center justify-center bg-primary text-white shadow-lg ring-1 ring-white/10 transition-colors hover:bg-white hover:text-primary'
-                  : 'button-1-settings inline-flex items-center justify-center border border-white/30 bg-white text-backgroundDark backdrop-blur-md transition-colors hover:bg-white/20 hover:text-white';
+                  ? 'button-1-settings inline-flex items-center justify-center bg-primary text-white shadow-lg ring-1 ring-white/10 border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105'
+                  : 'button-1-settings inline-flex items-center justify-center border-2 border-transparent bg-white text-backgroundDark backdrop-blur-md transition duration-300 hover:bg-white/20 hover:text-white hover:border-white hover:scale-105';
               const isInternal = normalizedHref.startsWith('/') && !normalizedHref.startsWith('http');
 
               return isInternal ? (
