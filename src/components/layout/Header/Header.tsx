@@ -143,7 +143,7 @@ const Header = ({ navItems, ctaLabel, ctaHref, logoSizeClass = 'h-12' }: HeaderP
 
           {renderNavLink(
             ctaHref,
-            'flex h-10 cursor-pointer items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold leading-normal tracking-wide text-white transition-colors duration-200 hover:bg-secondary',
+            'flex h-10 cursor-pointer items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold leading-normal tracking-wide text-white shadow-lg border-2 border-transparent transition duration-300 hover:text-primary hover:bg-white hover:border-primary hover:scale-105 dark:hover:bg-backgroundDark dark:hover:text-white dark:hover:border-white',
             <span className="truncate">{ctaLabel}</span>,
           )}
         </div>
