@@ -148,9 +148,9 @@ const heroActionButtonBaseClasses =
   'button-1-settings !w-52 sm:!w-fit shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-100';
 
 const heroActionButtonVariantClasses = {
-  openRoles: 'bg-primary text-white hover:bg-white hover:text-primary',
+  openRoles: 'border-2 border-transparent bg-primary text-white hover:border-primary hover:bg-white dark:hover:text-white dark:hover:border-white   hover:text-primary dark:hover:bg-background',
   ourCulture:
-    'border-2 border-outline-variant/20 bg-background text-primary hover:bg-primary hover:text-background dark:bg-backgroundDarkOne dark:text-white dark:hover:bg-white dark:hover:text-backgroundDarkOne',
+    'border-2 border-primary bg-background text-primary hover:bg-primary hover:text-background dark:border-white dark:bg-backgroundDarkOne dark:text-white dark:hover:bg-backgroundDark dark:hover:text-white',
 } as const;
 
 const mobileCultureSwapDelayMs = 220;
@@ -611,7 +611,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
                 <button
                   type="button"
                   onClick={() => navigate('/all-jobs')}
-                  className="button-1-settings bg-secondary text-on-secondary transition-all hover:bg-secondary-fixed hover:text-slate-700 dark:hover:text-slate-300"
+                  className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105 sm:mx-0"
                 >
                   Explore Career Paths
                 </button>
@@ -688,7 +688,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               />
               <div className="relative z-20 flex h-full flex-col justify-between p-8">
                 <div className="flex justify-end">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white backdrop-blur-md">
+                  <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary text-white shadow-xl border-2 border-transparent backdrop-blur-md transition duration-300 hover:bg-background hover:text-primary hover:border-primary dark:hover:text-white dark:hover:border-white hover:scale-105">
                     <span aria-hidden="true" className="material-symbols-outlined">add</span>
                   </div>
                 </div>
@@ -705,7 +705,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
                     type="button"
                     onClick={() => navigate('/all-jobs')}
                     aria-label="View all jobs"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-white"
+                    className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-secondary text-white shadow-xl border-2 border-transparent backdrop-blur-md transition duration-300 hover:bg-background hover:text-secondary hover:border-secondary dark:hover:text-white dark:hover:border-white hover:scale-105"
                   >
                     <span aria-hidden="true" className="material-symbols-outlined">add</span>
                   </button>
@@ -743,12 +743,12 @@ function CareersPage(_props: CareersPageProps): ReactElement {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') navigate(`/all-jobs?dept=${encodeURIComponent(department)}`);
                     }}
-                    className="cursor-pointer group -mx-4 flex items-center justify-between rounded-lg border-b border-outline-variant/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-surface-container-high dark:hover:bg-slate-800"
+                    className="cursor-pointer group -mx-4 flex items-center justify-between rounded-lg border-b border-outline-variant/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-background dark:hover:bg-backgroundDark"
                   >
-                    <span className="h3-settings text-backgroundDark transition-colors group-hover:text-primary dark:text-white dark:group-hover:text-secondary">
+                    <span className="h3-settings text-backgroundDark transition-colors group-hover:text-primary dark:text-white dark:group-hover:text-white">
                       {department}
                     </span>
-                    <span aria-hidden="true" className="material-symbols-outlined text-secondary opacity-0 transition-opacity group-hover:opacity-100">
+                    <span aria-hidden="true" className="material-symbols-outlined text-primary dark:text-white opacity-0 transition-opacity group-hover:opacity-100">
                       arrow_forward
                     </span>
                   </li>
@@ -758,7 +758,7 @@ function CareersPage(_props: CareersPageProps): ReactElement {
                   <button
                     type="button"
                     onClick={() => navigate('/all-jobs')}
-                    className="button-1-settings group flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-4 text-on-primary transition-colors hover:bg-primary-container"
+                    className="button-1-settings group flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-4 text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-background hover:border-primary hover:text-primary dark:hover:bg-backgroundDark dark:hover:border-white dark:hover:text-white dark:hover:scale-105"
                   >
                     View All Roles
                     <span aria-hidden="true" className="material-symbols-outlined text-sm">open_in_new</span>
@@ -900,12 +900,16 @@ function CareersPage(_props: CareersPageProps): ReactElement {
 
       <section id="openings" className="bg-backgroundOne py-24 dark:bg-backgroundDark">
         <div className="mx-auto max-w-7xl px-8">
-          <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <h2 className="h2-settings mb-4 text-balance text-black dark:text-white">Current Openings</h2>
               <p className="h3-settings max-w-xl text-slate-600 dark:text-slate-300">Every journey at Systems Edge is bespoke. Find your alignment within our architectural tiers.</p>
             </div>
-            <button type="button" onClick={() => navigate('/all-jobs')} className="button-2-settings !mb-0 bg-secondary text-on-secondary shadow-md transition-all hover:brightness-110 md:!mb-0">
+            <button
+              type="button"
+              onClick={() => navigate('/all-jobs')}
+              className="button-1-settings !mb-0 md:!mb-0 border-2 border-transparent bg-secondary text-white shadow-xl transition duration-300 hover:bg-backgroundOne dark:hover:bg-backgroundDarkOne hover:text-secondary hover:border-secondary hover:scale-105"
+            >
               See Open Roles
             </button>
           </div>
@@ -966,13 +970,17 @@ function CareersPage(_props: CareersPageProps): ReactElement {
               Explore our current openings and <br /> find your place in an elite engineering culture.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button type="button" onClick={() => navigate('/all-jobs')} className="button-1-settings bg-secondary text-on-secondary shadow-xl transition-all hover:brightness-110">
+              <button
+                type="button"
+                onClick={() => navigate('/all-jobs')}
+                className="button-1-settings border-2 border-transparent bg-secondary text-white shadow-xl transition duration-300 hover:bg-primary hover:border-white hover:scale-105"
+              >
                 Open Roles
               </button>
               <button
                 type="button"
                 onClick={() => navigate('/contact-us')}
-                className="button-1-settings border border-white/20 bg-white/10 text-on-primary backdrop-blur-md transition-all hover:bg-white/20"
+                className="button-1-settings border-2 border-transparent bg-primary border-white text-on-primary backdrop-blur-md transition duration-300 hover:bg-secondary hover:border-secondary hover:scale-105"
               >
                 Contact HR
               </button>
