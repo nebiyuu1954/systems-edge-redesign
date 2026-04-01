@@ -26,7 +26,7 @@ const FinalCTASection = (): ReactElement => {
           <Link
             to="/contact-us"
             role="button"
-            className="button-1-settings inline-block bg-secondary text-white shadow-lg transition-colors duration-200 hover:bg-secondary/90"
+            className="button-1-settings mx-auto w-fit bg-secondary text-white shadow-xl border-2 border-transparent transition duration-300 hover:bg-primary hover:border-white hover:scale-105 sm:mx-0"
           >
             Request Consultation
           </Link>
