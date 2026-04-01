@@ -114,7 +114,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                     <div className="mt-6 flex flex-wrap gap-2 justify-center md:justify-start md:gap-3">
                       <Link
                         to="/contact-us"
-                        className="button-2-settings inline-flex items-center bg-primary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        className="button-2-settings inline-flex items-center bg-primary text-white shadow-sm border-2 border-transparent transition duration-300 hover:bg-white dark:hover:border-white hover:border-primary hover:scale-105 dark:hover:text-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40 dark:hover:bg-background"
                         aria-label={`Get started with ${activeService.title}`}
                       >
                         {`Get started`}
@@ -122,17 +122,17 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
 
                       {activeService.learnMoreHref ? (
                         activeService.learnMoreHref.startsWith('/') ? (
-                          <Link
-                            to={activeService.learnMoreHref}
-                            className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
-                            aria-label={`Learn more about ${activeService.title}`}
-                          >
-                            Learn More
-                          </Link>
+                        <Link
+                          to={activeService.learnMoreHref}
+                          className="button-2-settings inline-flex items-center border-2 border-transparent bg-secondary text-white shadow-sm transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:hover:border-white dark:text-white dark:hover:bg-background"
+                          aria-label={`Learn more about ${activeService.title}`}
+                        >
+                          Learn More
+                        </Link>
                         ) : (
                           <a
                             href={activeService.learnMoreHref}
-                            className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                            className="button-2-settings inline-flex items-center border-2 border-transparent bg-secondary text-white shadow-sm transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:hover:border-white dark:text-white dark:hover:bg-background"
                             aria-label={`Learn more about ${activeService.title}`}
                           >
                             Learn More
@@ -141,7 +141,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                       ) : (
                         <button
                           type="button"
-                          className="button-2-settings inline-flex items-center border border-slate-200 bg-secondary text-white shadow-sm transform transition duration-150 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-secondary dark:text-white"
+                          className="button-2-settings inline-flex items-center border-2 border-transparent bg-secondary text-white shadow-sm transition duration-300 hover:bg-white hover:border-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:hover:border-white dark:text-white dark:hover:bg-background"
                           aria-label={`Learn more about ${activeService.title}`}
                         >
                           Learn More
