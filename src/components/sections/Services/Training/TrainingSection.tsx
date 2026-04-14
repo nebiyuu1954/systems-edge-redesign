@@ -199,7 +199,7 @@ const TrainingSection = ({
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <h1 className="h1-settings mb-8 text-primary lg:text-6xl">
+              <h1 className="relative -left-[5px] md:left-0 h1-settings mb-8 text-primary lg:text-6xl">
                 Architecture<br />
                 <span className="text-secondary"> of Evolution.</span>
               </h1>
@@ -244,11 +244,10 @@ const TrainingSection = ({
                 id="training-capabilities"
                 heading="Strategic Capabilities"
                 description="Precision-engineered curricula designed for the modern technical workforce."
-                center={false}
-                headingClassName="h1-settings"
-                descriptionClassName="h3-settings max-w-xl !mb-4"
+                headingClassName="h1-settings md:text-left"
+                descriptionClassName="h3-settings max-w-xl !mb-4 md:mx-0 md:text-left"
               />
-              <div className="h-1.5 w-20 rounded-full bg-secondary" />
+              <div className="h-1.5 w-20 rounded-full bg-secondary mx-auto md:mx-0" />
             </div>
 
             <div className="hidden text-right md:block">
@@ -311,6 +310,7 @@ const TrainingSection = ({
                   ? 'hover:bg-backgroundOne dark:hover:bg-slate-800/90'
                   : 'hover:bg-surface-container-high dark:hover:bg-slate-800';
               const cardOffsetClass = index % 2 === 1 ? 'md:translate-y-10' : '';
+              const mobileUnderlineSideClass = index % 2 === 0 ? 'left-6 md:left-auto md:right-6' : 'right-6';
 
               return (
                 <FadeInOnScroll
@@ -338,7 +338,7 @@ const TrainingSection = ({
                       <p className="card-1-description-settings text-white dark:text-slate-200">{phase.description}</p>
                     </div>
 
-                    <div className="pointer-events-none absolute -bottom-3 right-6 h-1.5 w-16 rounded-full bg-secondary" aria-hidden="true" />
+                    <div className={`pointer-events-none absolute -bottom-3 h-1.5 w-16 rounded-full bg-secondary ${mobileUnderlineSideClass}`} aria-hidden="true" />
                   </article>
                 </FadeInOnScroll>
               );
