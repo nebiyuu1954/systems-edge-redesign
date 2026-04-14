@@ -2,7 +2,6 @@ import type { ReactElement, SVGProps } from 'react';
 import { Link } from 'react-router-dom';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import SectionHeading from '../../../common/SectionHeading';
-import { erpOverviewLayoutConfig, overviewSlotIds } from '../components/overviewLayout';
 
 export interface TrainingSectionProps {
   ctaLabel?: string;
@@ -194,44 +193,42 @@ const methodologySteps: TrainingMethodologyStep[] = [
 const TrainingSection = ({
   ctaLabel = 'Consult an Expert',
 }: TrainingSectionProps): ReactElement => {
-  const overview = erpOverviewLayoutConfig;
-
   return (
     <>
-      <section id="overview" className={overview.section}>
-        <div className={overview.container}>
-          <div className={overview.grid}>
-            <div className={overview.textColumn}>
-              <h1 className={`${overview.title} h1-settings`} data-slot={overviewSlotIds.title}>
-                Architecture of <br />
-                <span className={overview.titleAccent}>Evolution.</span>
+      <section id="overview" className="bg-background dark:bg-backgroundDark px-6 py-20 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <h1 className="h1-settings mb-8 text-primary lg:text-6xl">
+                Architecture<br />
+                <span className="text-secondary"> of Evolution.</span>
               </h1>
 
-              <p className={`${overview.description} h3-settings`} data-slot={overviewSlotIds.description}>
+              <p className="h3-settings mb-8 text-slate-600 dark:text-slate-300">
                 Elevating enterprise intelligence through a rigorous and minimalist approach to professional development. We build precision-engineered training programs for the modern technical
                 workforce.
               </p>
 
-              <ul className={`${overview.list} card-1-title-settings`} data-slot={overviewSlotIds.list}>
+              <ul className="card-1-title-settings mb-10 space-y-4">
                 {heroHighlights.map((highlight, index) => (
                   <FadeInOnScroll key={highlight.id} delayMs={index * 90} className="block">
-                    <li className={overview.listItem}>
-                      <span className={overview.listBullet}>
+                    <li className="flex items-start">
+                      <span className="mr-4 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-white">
                         <CheckIcon className="h-4 w-4" />
                       </span>
-                      <span className={overview.listText}>{highlight.text}</span>
+                      <span className="font-medium text-slate-700 dark:text-white">{highlight.text}</span>
                     </li>
                   </FadeInOnScroll>
                 ))}
               </ul>
             </div>
 
-            <div className={overview.imageColumn} data-slot={overviewSlotIds.image}>
-              <div className={overview.imageGlow} aria-hidden="true" />
+            <div className="relative hidden md:block lg:col-span-5">
+              <div className="absolute -inset-4 rounded-3xl bg-secondary/10 blur-2xl" aria-hidden="true" />
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUQOo7IvKes2IC_eXdnQOajq5xYNzI5ZnelqNLriXX43AiLd27Voa2h2WvDE1exSHH4SKcf0A9XX7PxnbsS8bw6uotMfQCDRyvtPQ37KsV9tGYCUwJ8K-aVMUiucovdO590V8NyKNKYjarqGgUIRAThAGyhQexG8LZbdy8G8G8EWt_mK1-gFcLYMq7NXxl_8iCHrvqLLvVkO9QpSRRKWQ43J7nYCJG7cPwO2lvWNes07p6AyBwZtvB5UWAGVhfNAT16BWGIltzQqHe"
                 alt="Modern minimalist skyscraper representing enterprise growth"
-                className={overview.image}
+                className="relative h-[500px] w-full rounded-2xl border-4 border-white object-cover shadow-2xl dark:border-slate-700"
                 loading="lazy"
               />
             </div>
