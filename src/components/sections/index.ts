@@ -9,4 +9,6 @@ export type { OurServicesSectionProps, ServiceItem } from './Services';
 export type { ObjectiveBlock, ObjectivesSectionProps } from './Objectives';
 export { TestingSection } from './Services/Testing';
 export type { TestingSectionProps } from './Services/Testing';
+export { TrainingSection } from './Services/Training';
+export type { TrainingSectionProps } from './Services/Training';
  
