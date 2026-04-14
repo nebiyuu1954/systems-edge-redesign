@@ -63,6 +63,11 @@ const Footer = (): ReactElement => {
                 </Link>
               </li>
               <li>
+                <Link className="text-white/90 hover:text-white transition-colors" to="/services/training">
+                  Professional Development Training
+                </Link>
+              </li>
+              <li>
                 <Link className="text-white/90 hover:text-white transition-colors" to="/services/identity">
                   Identity &amp; Access Management
                 </Link>
