@@ -12,6 +12,7 @@ import SupportedSection from './components/sections/Services/Supported/Supported
 import SoftwareDevelopmentSection from './components/sections/Services/Software-Development/SoftwareDevelopmentSection';
 import { TestingSection } from './components/sections/Services/Testing';
 import IdentitySection from './components/sections/Services/Identity';
+import { TrainingSection } from './components/sections/Services/Training';
 import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
 import FadeInOnScroll from './components/common/FadeInOnScroll';
@@ -217,6 +218,16 @@ function HomePage(): ReactElement {
             learnMoreHref: '/services/testing',
           },
           {
+            id: 'service-training',
+            imageSrc:
+              'https://lh3.googleusercontent.com/aida-public/AB6AXuBUQOo7IvKes2IC_eXdnQOajq5xYNzI5ZnelqNLriXX43AiLd27Voa2h2WvDE1exSHH4SKcf0A9XX7PxnbsS8bw6uotMfQCDRyvtPQ37KsV9tGYCUwJ8K-aVMUiucovdO590V8NyKNKYjarqGgUIRAThAGyhQexG8LZbdy8G8G8EWt_mK1-gFcLYMq7NXxl_8iCHrvqLLvVkO9QpSRRKWQ43J7nYCJG7cPwO2lvWNes07p6AyBwZtvB5UWAGVhfNAT16BWGIltzQqHe',
+            imageAlt: 'Professional development training and enterprise learning session',
+            title: 'Professional Development Training',
+            description:
+              'Enterprise-focused technical training programs that upskill teams across cloud architecture, security, DevOps, and agile delivery with measurable outcomes.',
+            learnMoreHref: '/services/training',
+          },
+          {
             id: 'service-iam',
             imageSrc:
               'https://lh3.googleusercontent.com/aida-public/AB6AXuDbqt5dryNPoWOkyQpzjGzCxmiLKNFOVHfAbsFm4MeRoyWTm1uAcVO4zBHorJXV41KqEEJoS6sIjwPKd2BprWv1Vx--JE549JWifvmaM1OkNuufEjd-80j63g7wdNpVxpNNnablTk3fdvklPKXhfPl6kRAKVMGk5rdTUrB9IE_-DTrHUDW4e3s8gQMQORfn5l-vxsvxq8lPG5Hw6TpwDbilzwT_CJq6dUIxTIhn75vE4p-k7HFsRmT-b53Szpba8nB0scdO3tk2BuZS',
@@ -315,6 +326,16 @@ function TestingPage(): ReactElement {
   );
 }
 
+function TrainingPage(): ReactElement {
+  return (
+    <main>
+      <ServicesHeader />
+      <TrainingSection />
+      <Footer />
+    </main>
+  );
+}
+
 function IdentityPage(): ReactElement {
   return (
     <main>
@@ -337,6 +358,7 @@ function App(): ReactElement {
       <Route path="/services/software-development" element={<SoftwareDevPage />} />
       <Route path="/services/ui-ux" element={<UIUXPage />} />
       <Route path="/services/testing" element={<TestingPage />} />
+      <Route path="/services/training" element={<TrainingPage />} />
       <Route path="/services/identity" element={<IdentityPage />} />
       <Route path="/services/supported" element={<SupportedPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
