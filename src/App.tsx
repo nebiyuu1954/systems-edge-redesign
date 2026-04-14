@@ -54,22 +54,6 @@ function HomePage(): ReactElement {
         heading="Trusted by partners and institutions including"
         partnerLogos={[
           {
-            id: 'institution-insa',
-            logoSrc: insaLogo,
-            logoAlt: 'INSA partner logo',
-            message: 'INSA partnered with us to modernize core ERP processes across manufacturing lines.',
-            personName: 'Mina Lopez',
-            institution: 'INSA',
-          },
-          {
-            id: 'institution-investment',
-            logoSrc: investmentLogo,
-            logoAlt: 'Investment partner logo',
-            message: 'Our investment partners rely on us for secure, auditable financial integrations.',
-            personName: 'Harold Chung',
-            institution: 'Investment Co.',
-          },
-          {
             id: 'institution-poessa',
             logoSrc: poessaLogo,
             logoAlt: 'Poessa partner logo',
