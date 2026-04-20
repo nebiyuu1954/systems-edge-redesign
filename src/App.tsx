@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header/Header';
 import ServicesHeader from './components/layout/Header/ServicesHeader';
-import { HeroSection, ObjectivesSection, OurServicesSection, TrustedBySection, TestimonialsSection, NumbersSection } from './components/sections';
+import { HeroSection, ObjectivesSection, OurServicesSection, OurPartnersSection, NumbersSection, FAQSection } from './components/sections';
 import GlobalLocationsSections from './components/sections/Global-Locations/GlobalLocationsSections';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
 import Footer from './components/layout/Footer/Footer';
@@ -20,10 +20,6 @@ import AboutUsPage from './components/pages/About-us';
 import CareersPage from './components/pages/Careers';
 import AllJobsPage from './components/pages/All-jobs';
 import ContactUsPage from './components/pages/Contact-us';
-import insaLogo from './assets/logos/Insa.webp';
-import investmentLogo from './assets/logos/investment.webp';
-import poessaLogo from './assets/logos/Poessa.webp';
-import pssaLogo from './assets/logos/pssa.webp';
 
 function HomePage(): ReactElement {
   return (
@@ -31,7 +27,7 @@ function HomePage(): ReactElement {
       <Header
         navItems={[
           { id: 'services', label: 'Services', href: '#services' },
-          // { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
+          // { id: 'partners', label: 'Our Partners', href: '#partners' },
           { id: 'locations', label: 'Locations', href: '#locations-heading' },
           { id: 'careers', label: 'Careers', href: '/careers' },
           { id: 'about', label: 'About Us', href: '/about-us' },
@@ -49,35 +45,6 @@ function HomePage(): ReactElement {
           { id: 'explore-services', label: 'Explore Services', href: '#services', variant: 'primary' },
           { id: 'contact-sales', label: 'Contact Sales', href: '#contact', variant: 'secondary' },
         ]}
-      />
-      <TrustedBySection
-        heading="Trusted by partners and institutions including"
-        partnerLogos={[
-          {
-            id: 'institution-poessa',
-            logoSrc: poessaLogo,
-            logoAlt: 'Poessa partner logo',
-            message: 'Poessa used our delivery model to deploy a global HR and payroll platform.',
-            personName: 'Aisha Khan',
-            institution: 'Poessa',
-          },
-          {
-            id: 'institution-pssa',
-            logoSrc: pssaLogo,
-            logoAlt: 'PSSA partner logo',
-            message: 'PSSA credits our phased rollout approach for minimal disruption during migration.',
-            personName: 'Carlos Mendes',
-            institution: 'PSSA',
-          },
-        ]}
-        fallbackMessage="Systems Edge Solutions brought real expertise and local insight to our global ERP rollout."
-        fallbackPersonName="Alex Rivera"
-        fallbackInstitution="Global Manufacturing Corp."
-        visibleCount={3}
-        autoPlay={true}
-        intervalMs={3800}
-        slideDurationMs={1200}
-        transitionEasing="cubic-bezier(0.22, 1, 0.36, 1)"
       />
       <ObjectivesSection
         blocks={[
@@ -223,7 +190,7 @@ function HomePage(): ReactElement {
           },
         ]}
       />
-      <TestimonialsSection />
+      <OurPartnersSection />
       <NumbersSection />
       <FinalCTASection />
       <GlobalLocationsSections
@@ -244,6 +211,30 @@ function HomePage(): ReactElement {
             </FadeInOnScroll>
           </div>
         )}
+      />
+      <FAQSection
+        heading="Frequently Asked Questions"
+        description="Everything you need to know before starting an engagement with our team."
+        items={[
+          {
+            id: 'faq-delivery-model',
+            question: 'How do you run enterprise projects across multiple regions?',
+            answer:
+              'We use a hybrid delivery model with local engagement leads and globally aligned engineering teams. This keeps communication clear for stakeholders while maintaining speed, quality, and predictable release cycles across regions.',
+          },
+          {
+            id: 'faq-onboarding-timeline',
+            question: 'How quickly can you start after kickoff?',
+            answer:
+              'Most programs begin with discovery and planning immediately, followed by phased execution. Depending on scope, we can typically mobilize delivery teams in a few weeks with clear milestones and governance from day one.',
+          },
+          {
+            id: 'faq-service-flexibility',
+            question: 'Can we combine ERP, software development, and managed services in one engagement?',
+            answer:
+              'Yes. We regularly deliver blended engagements that combine ERP implementation, custom software, and ongoing support. This creates one accountable delivery partner and a unified roadmap across your technology lifecycle.',
+          },
+        ]}
       />
       <Footer />
     </main>
