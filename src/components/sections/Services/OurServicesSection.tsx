@@ -49,7 +49,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
   }, [services.length]);
 
   return (
-    <section id="services" className="w-full bg-background px-6 py-16 lg:px-12 lg:py-24 dark:bg-backgroundDark" aria-labelledby="our-services-heading">
+    <section id="services" className="w-full bg-backgroundOne px-6 py-16 lg:px-12 lg:py-24 dark:bg-backgroundDark" aria-labelledby="our-services-heading">
       <div className="mx-auto flex max-w-7xl flex-col items-center">
         <SectionHeading
           id="our-services-heading"
@@ -76,8 +76,8 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                     onClick={() => setActiveServiceIndex(index)}
                     className={`h4-settings rounded-full px-4 py-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 sm:px-5 sm:py-2.5 ${
                       isActive
-                        ? 'bg-primary text-white shadow-md'
-                          : 'border border-slate-200 bg-background text-slate-700 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary dark:border-slate-700 dark:bg-backgroundDarkOne bg-backgroundOne  dark:text-slate-300 dark:hover:text-white'
+                        ? 'border border-primary bg-white text-primary shadow-md'
+                        : 'border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-white hover:text-primary dark:border-primary dark:bg-primary dark:text-white dark:hover:bg-white dark:hover:text-primary'
                     }`}
                   >
                     {service.title}
@@ -95,44 +95,62 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                 aria-labelledby={`service-tab-${activeService.id}`}
                 onMouseEnter={() => stopTimer()}
                 onMouseLeave={() => startTimer()}
-                className={`flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-servicesCardLight p-6 shadow-md dark:border-slate-800 dark:bg-servicesCardDark md:p-0 ${
-                  activeService.reversedOnDesktop ? 'md:flex-row-reverse' : 'md:flex-row'
-                }`}
+                className="relative flex flex-col items-center overflow-hidden rounded-3xl border border-slate-200/50 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900 md:flex-row md:items-stretch"
               >
-                <div className="min-h-[280px] w-full md:w-[40%]">
-                  <img alt={activeService.imageAlt} className="h-full w-full object-cover" src={activeService.imageSrc} loading="lazy" />
+                <div
+                  className={`relative min-h-[350px] w-full overflow-hidden md:w-[55%] ${
+                    activeService.reversedOnDesktop ? 'md:order-last' : ''
+                  }`}
+                >
+                  <img
+                    alt={activeService.imageAlt}
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    src={activeService.imageSrc}
+                    loading="lazy"
+                  />
+                  <div
+                    className={`absolute inset-0 hidden from-black/20 to-transparent md:block ${
+                      activeService.reversedOnDesktop ? 'bg-gradient-to-l' : 'bg-gradient-to-r'
+                    }`}
+                  />
                 </div>
-                <div className="flex w-full flex-col justify-center p-8 md:w-[60%] lg:p-12 bg-backgroundOne dark:bg-backgroundDarkOne text-white">
+                <div
+                  className={`z-10 -mt-12 flex w-[92%] flex-col justify-center rounded-2xl border border-slate-200 bg-white p-8 shadow-xl shadow-black/5 dark:border-slate-700 dark:bg-slate-900 md:mt-0 md:w-[50%] md:p-12 lg:p-16 ${
+                    activeService.reversedOnDesktop
+                      ? 'md:-mr-12 md:ml-0 md:rounded-r-[3rem] md:rounded-l-2xl'
+                      : 'md:-ml-12 md:mr-0 md:rounded-l-[3rem] md:rounded-r-2xl'
+                  }`}
+                >
                   <FadeInOnScroll delayMs={80}>
-                    <h2 className="card-2-title-settings mb-4 text-black dark:text-white text-center md:text-left">{activeService.title}</h2>
+                    <h2 className="mb-6 text-3xl font-bold tracking-tight text-slate-900 dark:text-white lg:text-4xl">{activeService.title}</h2>
                   </FadeInOnScroll>
                   <FadeInOnScroll delayMs={160}>
-                    <p className="card-1-tittle-settings text-black dark:text-white text-center md:text-left">{activeService.description}</p>
+                    <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">{activeService.description}</p>
                   </FadeInOnScroll>
 
                   <FadeInOnScroll delayMs={240}>
-                    <div className="mt-6 flex flex-wrap gap-2 justify-center md:justify-start md:gap-3">
+                    <div className="mt-10 flex flex-wrap gap-4">
                       <Link
                         to="/contact-us"
-                        className="button-2-settings inline-flex items-center bg-primary text-white shadow-sm border-2 border-transparent transition duration-300 hover:bg-white dark:hover:border-white hover:border-primary hover:scale-105 dark:hover:text-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40 dark:hover:bg-background"
+                        className="inline-flex items-center rounded-full border-2 border-transparent bg-primary px-8 py-3 font-semibold text-white transition duration-300 hover:bg-white hover:border-primary hover:scale-105 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40 dark:hover:border-white dark:hover:bg-background dark:hover:text-white"
                         aria-label={`Get started with ${activeService.title}`}
                       >
-                        {`Get started`}
+                        Get started
                       </Link>
 
                       {activeService.learnMoreHref ? (
                         activeService.learnMoreHref.startsWith('/') ? (
-                        <Link
-                          to={activeService.learnMoreHref}
-                          className="button-2-settings inline-flex items-center border-2 border-transparent bg-secondary text-white shadow-sm transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:hover:border-white dark:text-white dark:hover:bg-background"
-                          aria-label={`Learn more about ${activeService.title}`}
-                        >
-                          Learn More
-                        </Link>
+                          <Link
+                            to={activeService.learnMoreHref}
+                            className="inline-flex items-center rounded-full border border-slate-300 px-8 py-3 font-semibold text-slate-700 transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:text-white dark:hover:border-white dark:hover:bg-background"
+                            aria-label={`Learn more about ${activeService.title}`}
+                          >
+                            Learn More
+                          </Link>
                         ) : (
                           <a
                             href={activeService.learnMoreHref}
-                            className="button-2-settings inline-flex items-center border-2 border-transparent bg-secondary text-white shadow-sm transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:hover:border-white dark:text-white dark:hover:bg-background"
+                            className="inline-flex items-center rounded-full border border-slate-300 px-8 py-3 font-semibold text-slate-700 transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:text-white dark:hover:border-white dark:hover:bg-background"
                             aria-label={`Learn more about ${activeService.title}`}
                           >
                             Learn More
@@ -141,7 +159,7 @@ const OurServicesSection = ({ heading, description, services }: OurServicesSecti
                       ) : (
                         <button
                           type="button"
-                          className="button-2-settings inline-flex items-center border-2 border-transparent bg-secondary text-white shadow-sm transition duration-300 hover:bg-white hover:border-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:hover:border-white dark:text-white dark:hover:bg-background"
+                          className="inline-flex items-center rounded-full border border-slate-300 px-8 py-3 font-semibold text-slate-700 transition duration-300 hover:bg-white hover:border-secondary hover:text-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:text-white dark:hover:border-white dark:hover:bg-background"
                           aria-label={`Learn more about ${activeService.title}`}
                         >
                           Learn More
