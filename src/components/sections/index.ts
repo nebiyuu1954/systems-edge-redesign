@@ -13,4 +13,6 @@ export { TestingSection } from './Services/Testing';
 export type { TestingSectionProps } from './Services/Testing';
 export { TrainingSection } from './Services/Training';
 export type { TrainingSectionProps } from './Services/Training';
+export { SatelliteStaffingSection } from './Satellite-Staffing';
+export type { SatelliteStaffingSectionProps, SatelliteOrbitImage } from './Satellite-Staffing';
  
