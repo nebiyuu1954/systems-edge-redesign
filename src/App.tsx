@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header/Header';
 import ServicesHeader from './components/layout/Header/ServicesHeader';
-import { HeroSection, ObjectivesSection, OurServicesSection, OurPartnersSection, NumbersSection, FAQSection } from './components/sections';
+import { HeroSection, SatelliteStaffingSection, ObjectivesSection, OurServicesSection, OurPartnersSection, NumbersSection, FAQSection } from './components/sections';
 import GlobalLocationsSections from './components/sections/Global-Locations/GlobalLocationsSections';
 import FinalCTASection from './components/sections/FinalCTA/FinalCTASection';
 import Footer from './components/layout/Footer/Footer';
@@ -22,6 +22,11 @@ import AllJobsPage from './components/pages/All-jobs';
 import ContactUsPage from './components/pages/Contact-us';
 
 function HomePage(): ReactElement {
+  const HERO_ALIGNED_MIN_HEIGHT_CLASS_NAME = 'min-h-[500px] sm:min-h-[560px] xl:min-h-[620px]';
+  const SATELLITE_TOP_SPACING_CLASS_NAME = 'pt-0 sm:pt-1 lg:pt-2';
+  const SATELLITE_BOTTOM_SPACING_CLASS_NAME = 'pb-8 md:pb-10 lg:pb-12';
+  const OBJECTIVES_SECTION_SPACING_CLASS_NAME = 'pt-8 pb-0 sm:pt-10 sm:pb-0';
+
   return (
     <main>
       <Header
@@ -46,7 +51,13 @@ function HomePage(): ReactElement {
           { id: 'contact-sales', label: 'Contact Sales', href: '#contact', variant: 'secondary' },
         ]}
       />
+      <SatelliteStaffingSection
+        sectionTopSpacingClassName={SATELLITE_TOP_SPACING_CLASS_NAME}
+        sectionBottomSpacingClassName={SATELLITE_BOTTOM_SPACING_CLASS_NAME}
+        contentMinHeightClassName={HERO_ALIGNED_MIN_HEIGHT_CLASS_NAME}
+      />
       <ObjectivesSection
+        sectionSpacingClassName={OBJECTIVES_SECTION_SPACING_CLASS_NAME}
         blocks={[
           {
             id: 'delivery-model',
