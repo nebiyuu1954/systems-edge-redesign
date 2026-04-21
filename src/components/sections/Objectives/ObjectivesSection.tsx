@@ -16,9 +16,16 @@ export interface ObjectiveBlock {
 export interface ObjectivesSectionProps {
   blocks: ObjectiveBlock[];
   sectionId?: string;
+  sectionSpacingClassName?: string;
 }
 
-const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSectionProps): ReactElement => {
+const DEFAULT_SECTION_SPACING_CLASS_NAME = 'py-[72px] sm:py-[100px]';
+
+const ObjectivesSection = ({
+  blocks,
+  sectionId = 'objectives',
+  sectionSpacingClassName = DEFAULT_SECTION_SPACING_CLASS_NAME,
+}: ObjectivesSectionProps): ReactElement => {
   // Change this value to increase/decrease the gap between
   // the first and second line of the title (line-height).
   // Example: '1.0' = tight, '1.25' = more space.
@@ -35,7 +42,7 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
   };
 
   return (
-    <section id={sectionId} className="w-full py-[72px] sm:py-[100px] dark:bg-backgroundDark" aria-label="Objectives section">
+    <section id={sectionId} className={`w-full dark:bg-backgroundDarkOne ${sectionSpacingClassName}`.trim()} aria-label="Objectives section">
       <div className="relative w-full">
         <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
           <FadeInOnScroll>
@@ -53,13 +60,14 @@ const ObjectivesSection = ({ blocks, sectionId = 'objectives' }: ObjectivesSecti
         {blocks.map((block, index) => {
           const isExpanded = Boolean(expandedById[block.id]);
           const detailsId = `${block.id}-details`;
+          const blockBottomSpacingClassName = index === blocks.length - 1 ? 'mb-0' : 'mb-8 lg:mb-0';
           return (
             <section
               key={block.id}
               id={block.id}
               className={`relative isolate ${isExpanded ? 'h-auto' : 'h-[560px]'} w-full ${
                 isExpanded ? '' : 'overflow-hidden'
-              } bg-black md:h-[640px] lg:sticky lg:top-0 lg:h-screen lg:min-h-[600px] py-8 md:py-12 lg:py-0 mb-8 lg:mb-0`}
+              } bg-black md:h-[640px] lg:sticky lg:top-0 lg:h-screen lg:min-h-[600px] py-8 md:py-12 lg:py-0 ${blockBottomSpacingClassName}`}
               style={{ zIndex: index + 1 }}
               data-purpose={block.dataPurpose}
               aria-labelledby={`${block.id}-heading`}
