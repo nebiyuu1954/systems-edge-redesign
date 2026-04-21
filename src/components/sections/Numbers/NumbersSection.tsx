@@ -142,7 +142,7 @@ const NumbersSection = (_props: NumbersSectionProps): ReactElement => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 md:px-12 bg-backgroundOne dark:bg-backgroundDarkOne " data-purpose="impact-numbers-section" aria-labelledby="numbers-heading">
+    <section ref={sectionRef} className="py-24 px-6 md:px-12 bg-background dark:bg-backgroundDark " data-purpose="impact-numbers-section" aria-labelledby="numbers-heading">
       <div className="max-w-7xl mx-auto">
         <header className="flex flex-col items-center mb-20 text-center">
           <FadeInOnScroll>
