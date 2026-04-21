@@ -152,7 +152,7 @@ const OurPartnersSection = (): ReactElement => {
   };
 
   return (
-    <section id="partners" className="w-full bg-backgroundOne dark:bg-backgroundDark flex flex-col items-center justify-center py-12" aria-labelledby="partners-heading">
+    <section id="partners" className="w-full bg-backgroundOne dark:bg-backgroundDarkOne flex flex-col items-center justify-center py-12" aria-labelledby="partners-heading">
       <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
         <FadeInOnScroll>
           <h1 id="partners-heading" className="h2-settings mb-6 text-center text-primary dark:text-white md:text-5xl">
