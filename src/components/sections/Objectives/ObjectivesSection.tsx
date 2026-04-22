@@ -42,7 +42,7 @@ const ObjectivesSection = ({
   };
 
   return (
-    <section id={sectionId} className={`w-full dark:bg-backgroundDarkOne ${sectionSpacingClassName}`.trim()} aria-label="Objectives section">
+    <section id={sectionId} className={`w-full bg-backgroundOne dark:bg-backgroundDark  ${sectionSpacingClassName}`.trim()} aria-label="Objectives section">
       <div className="relative w-full">
         <div className="mx-auto mb-12 max-w-7xl px-6 text-center lg:px-12">
           <FadeInOnScroll>
