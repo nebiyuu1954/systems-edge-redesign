@@ -40,10 +40,11 @@ export interface SatelliteStaffingSectionProps {
 }
 
 const DEFAULT_DIFFERENTIATORS: string[] = [
+  'Strategic partnership with NTT DATA – Enterprise-grade ERP implementation with global best practices',
+  'Quality‑first delivery: rigorous testing, continuous improvement, and measurable excellence at every stage.',
   'Years of hands‑on experience in ERP, cloud, and enterprise software',
   'Deep knowledge of global delivery models and local regulatory requirements',
   '24/7 managed services and real‑time support',
-  'Transparent engagement from discovery to post‑go‑live',
   'Long‑term partnerships focused on measurable business outcomes',
 ];
 
@@ -51,25 +52,25 @@ const DEFAULT_ORBIT_IMAGES: SatelliteOrbitImage[] = [
   {
     id: 'orbit-global-connectivity',
     imageSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDTHv9QLOAAXjWYz2zmDGwK6cssNMa0dPnssHDERm8a8nfhTy3PFJXcjhd7Q9Fy1d2IP6fYXOvSAXibSyfOY0aZvdwcDTQyaU5T3UjrdmyH9XOEIjM2MY30DLE9zavMHnum1FwbGv8BXBGSJ9EwgYULGEbjFoh9wS2RegchU_fAkJeARgBvLQadr1JJzkxxBBg29vuHu-YEdaYsnpBsz0x5tlXcm_k_3ov8o_Y_cweTC6vzgCqYb0WdHFuu-bQLGNOuC-E1MzcctcI8',
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuC60FGq1INhcVNEHjYCWkR4BNE4Qzs3dBtp0_41_wsoshxjjaMb5T8-jEXzHB2Khf0lUKIaLu2_KOCUmWCZMO1EFMDxkd1CGw1IWjMI3waPTAOQMhkH5UkcRcizfkpUlhOZJrFzcPQ_In_K2p_XQ5tLTImhSASr9JOJJDa1XehpokSqLEC-IQjRm0jJAMPV8Cu2Qhrd-uBqtRCqIZkUp5-SHqtfHwoNI6xD8Qh8WM3zh6Xo_dEM5GVlE2SKG-6KHsaZsNDyjJvbXvew',
     imageAlt: '3D abstract rendering of a glowing wireframe globe representing global connectivity',
   },
   {
     id: 'orbit-connectivity-nodes',
     imageSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCiQUllcZjL-kuZ63EQ4eYAfrfNIqHTav9ZXo50ipF5RusJHvZwKgCF_x18XJ1H-iPNS-Zdpxtckg35-yLNELJv4CPd93ZF62WHc1HsM7twBKHnez4QLfhP7xFqoajov6CL0-4virXbC0GMSsL36UAIUd0jHAID0wwVht5MfjHViPQ6jj4I79-nYy1mCGjEYGHKmCx7JQDcdNY9LBs1sPxB30q_nHC5FVuIuYWWj42jPMO28NFE64477TegGxagKpe84TVschYfIgAv',
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCqGFtS2MTQQAKDL1hNZ-ZEdr85QG89D9pYbNq0lrYyZoj_qFpt2YpNKMibwLlm1jFomJwyHA3qfqf15gTifxEhhjHzLy-1uuEkFGtlxRYocISXBrX9gf_QwRjUPLzoxbpwVbNN4s1GUqxUbc7KcnJaASg3NaYgWepABx6p5Jm1Vw4Kmf-hyrphxvUDb01Dwsiqv1ry6UgwFl4DgxodAQrsZzwkk9ScjzOC6YBYbwh73otkhG-TNElUYd_UdM8xiTZapOFTv65Czve7',
     imageAlt: '3D rendering of sophisticated blue and gold connectivity nodes and data lines',
   },
   {
     id: 'orbit-signal-pulses',
     imageSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDpM4peB20c5O51Tqr9tUiccggdfic-XM7_CvhQU56ndEuvvD08EPgtlXwjt7m3oFtx5KOn5Ryx_FzkRHR4F7amEdhH5RE4aQX5uG38iuvS9a3BIjr0EGMTGtMEXvaJOyvSSwrEFWNPEpUyexBB_wBXqCYj1muBzyr-fueWLH3ZzFVQ271EyAt7406_KN_8-ddA8VKuIL-oXXV4Fsy3HhLnnM55PO6wSD90oth7x6tn_QP_dQfNEYIA4N9SokF1rMdCG82hJ0MW_IlP',
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAKeLITBsJ-emGISI5macHa7-fvSzyhrutnox16AZ37LwFDLnoBH3VAjieN_qgkbbgp1z5FmSATk5twG656gyidJoa9bCqThOvbrFZZaoAdeZLhVHG49xDLPz_jorCDOG2pQdUM3aCQflcVzVAbVn7CN91iBh0KnSljjb8x2dP7ZDEfHwy_2ewsUcQkM7FxxketMXxwL4uXvBhAsgIebBu-SMZVQH8mH5RXusFZJeKFU5YcLPWS7N1Qr2YjaMk7E4HK-z_eljrwecpe',
     imageAlt: 'Abstract 3D digital signal waves and communication pulses',
   },
   {
     id: 'orbit-operations-gears',
     imageSrc:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCrGotj6d56saZp1WahhPGGPULGHg6F0G_g98FBt0eMci7mFaGWohZVhqTYUN8LAfMZsj6_yb85onPJZzJEmw9eem1L-ikA-3B3j9QNEREjXcoZ-I1Wo7Ou57j9P3VwvLw3jiyH77IZMJ3v9pfQftfVGJeUoJpm_MI_dFXqrwrDgS7yWqRW_edR9se09RKNoL8Dah0SVWqRepPsSM_Jq8ApKl3ijckepustDThxK06bBhGtOnJSs9r5LogX78gLua11RbUu2hA3NZut',
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBquephsLuOlmiIpR4oOT4DlSv4Av0fCRYNVY9Z3p_MD72WRravemcM8jk-NIs2aHoYq4OobpQTyjxUUdqTIXe1EXT8uPNxPqaABCZ5lepUSF5a0wezNaJhEQlK_OFOczh9cKydyqUm0WiW16VOK1cgYMSLzNCtFizXzivsogstPgORmvDG-oD1iK8eiUm6nRKJpWmQSt3mSM_6eR6tqPGuoqiJg4_L0USyiBwrXRdoARGzkvgo4g4pfocFohq9QO4ZCgzw_6O_Ohpv',
     imageAlt: 'Macro view of stylized golden gears representing complex team structures and operational infrastructure',
   },
   {
@@ -80,12 +81,12 @@ const DEFAULT_ORBIT_IMAGES: SatelliteOrbitImage[] = [
   },
   {
     id: 'orbit-poessa',
-    imageSrc: poessaImage,
+    imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBz4nPPnx9x05AAs83257oTy0jjaA_kKi3QOBvrFj8QgMDgfqg3tmeL5iwbP634cNQp6nk9VAvFWFs1VUfXkRQOIXKeheBlagI4NYYIQYn_CbUpi9-Aojv9--60uLAHIrFoYcrVrMRApmSrIWubiwRIpLlq-MFK9h-dMngafUe3qJQ2xf3UsKVUW6Ngj4RZ0rfLUe419dl1GHbN3h87x1-pbmQZQjIh-bNvoIgkVmApY1Ib_kyAIlywXsyfO7t6NvHWZ9Jy8_orIDt4',
     imageAlt: 'POESSA circular logo representing a trusted partner',
   },
   {
     id: 'orbit-pssa',
-    imageSrc: pssaImage,
+    imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5JSDM-TW1ZLGEu7ayLYXUI61F0uuW4LAzEsKLYqWB8Z2Jnu8q-KzWAqppYP87j1w5Re3CCyIdy7pVy3v2unEHsornvUiNltqQCkaW3dxt8U1aH4FZH_K8ZL_9a5ajaDlF_NtQWYvY59Q4kmpEMnh5fCjZRwUGEfPv-aKYUMT0HvAzlkPDge0MMUt4O5Gl4ZvlfvCOe6jdxHYFUfnfMrsBCTvLawEfWYh_LHxWzD5osAY4ZatjnlbwGc2HDlER9qiFeHDjj9lYRjuy',
     imageAlt: 'PSSA circular logo representing a trusted partner',
   },
 ];
