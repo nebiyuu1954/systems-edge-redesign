@@ -1,6 +1,4 @@
 import type { ReactElement } from 'react';
-import poessaImage from '../../../assets/logos/Poessa.webp';
-import pssaImage from '../../../assets/logos/pssa.webp';
 
 export interface SatelliteOrbitImage {
   id: string;
