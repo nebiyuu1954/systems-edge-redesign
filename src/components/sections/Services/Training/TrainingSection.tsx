@@ -2,6 +2,7 @@ import type { ReactElement, SVGProps } from 'react';
 import { Link } from 'react-router-dom';
 import FadeInOnScroll from '../../../common/FadeInOnScroll';
 import SectionHeading from '../../../common/SectionHeading';
+import ServicesDescriptionCard from '../components/ServicesDescriptionCard';
 
 export interface TrainingSectionProps {
   ctaLabel?: string;
@@ -11,6 +12,7 @@ interface TrainingCapability {
   id: string;
   title: string;
   description: string;
+  imageSrc: string;
   Icon: (props: SVGProps<SVGSVGElement>) => ReactElement;
 }
 
@@ -113,36 +115,48 @@ const capabilities: TrainingCapability[] = [
     id: 'cloud-architecture',
     title: 'Cloud Architecture',
     description: 'Advanced systems design for scalable enterprise infrastructure and global-ready deployment models.',
+    imageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDwc72JpDcpd-H1G1AO6YEO9oiExRHQpWCXpMph2g4I6FJzytAW7BNDhK7b4a_1lq20cP930Mh5h-lgMinVtj7bpOqYh6phzj2Fc46bS8iBZD5F4mfrjsfcSqTK_7amWr8twNi_myicBRNzWsJFQ6Q6gcNb9I9M9uT_rRFFFwuRgzcjfwYq_MRuRvqo12C10yGg_IH9BIUORWOXtsVRhJQXOQzl0OphFcReah3HNuItpZkR_dnEJnbvb2peLTdpbuSGNMQke3O1yTgk',
     Icon: CloudIcon,
   },
   {
     id: 'cyber-defense',
     title: 'Cyber Defense',
     description: 'Practical security training focused on modern threats, prevention workflows, and rapid incident response.',
+    imageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuD4KOl0j7BLZfn1ujPE61aCi0AAxhh_LqoQzRRDiaKHPCI4wIvVm1Rzjq4wdzGuTRgdSbGX696fz1TgOoqZjPlUQgmmF3cauVAgM09V3kavBnEM5zqBGWQ9oB86PLFswYBrTbvygJ6Wx2wkNRr6Mt31yoBkP1hOP92zcfm4lFEQbx8raYrHV7XlVlfjWOqFse78zVf8nJnhQVHJhUvnbm7OARcQ8GS4i5QO_MZoPSd2ZZITKmmBOrof-ll72SgHWkhLXUwRkjsxPz81',
     Icon: ShieldIcon,
   },
   {
     id: 'data-mastery',
     title: 'Data Mastery',
     description: 'From BI foundations to applied AI, we help teams turn complex datasets into strategic decisions.',
+    imageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDwc72JpDcpd-H1G1AO6YEO9oiExRHQpWCXpMph2g4I6FJzytAW7BNDhK7b4a_1lq20cP930Mh5h-lgMinVtj7bpOqYh6phzj2Fc46bS8iBZD5F4mfrjsfcSqTK_7amWr8twNi_myicBRNzWsJFQ6Q6gcNb9I9M9uT_rRFFFwuRgzcjfwYq_MRuRvqo12C10yGg_IH9BIUORWOXtsVRhJQXOQzl0OphFcReah3HNuItpZkR_dnEJnbvb2peLTdpbuSGNMQke3O1yTgk',
     Icon: AnalyticsIcon,
   },
   {
     id: 'network-resilience',
     title: 'Network Resilience',
     description: 'Robust connectivity and reliability patterns for mission-critical systems with high availability demands.',
+    imageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDOgcaPT1nUTGecwEjxnSQPN7QmoI4hVNIfM9sYxUkr0sLCzLdWP9nYJwk6mb5cEhfbRRqFeq9YxOUgtwEClp1biS5pl4wNygGp1_EhwBGk-NgEwS_npIIIzY0bTI-ykFKmE6_ydFyhJSWYRyhmHe0I8reATAzrWUalDjNfVv_PWUMS8pJVLm6lbILx2fN1YGSxce55fxZdXFRT9fMSM_mC92f2TnN02lVZN253motsHlCPEp9hQ56LURcIt_8lXgNq8f4ki7kSi4wO',
     Icon: NetworkIcon,
   },
   {
     id: 'devops-mastery',
     title: 'DevOps Mastery',
     description: 'CI/CD automation, observability, and release engineering practices that shorten delivery cycles.',
+    imageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBvS-Lga_Rh2WDRxZrnCvxoRcuQgNgUFqYRIyVo6RHCymDxbEw4iJR_pnpSqW8AUJTo77diwbjQYdM6NuFUfmgkNf3qotF1S2TRTxkffDJ4pBgUeM7aj6L5fykHzHNVh0DEepcHQSbQsAjmZmZK5sk2AzPVlkuRhPjsFeSuAhqyC44hou1fjv34BV0tH7ZhHdVN9qHzYOejIk4o3yP7nrvoHj6qoA81JiMex-iEGdWhn3rLxO2s9V_j4Md8RcvC6mRhg7sEBsqy4DXX',
     Icon: DevOpsIcon,
   },
   {
     id: 'agile-leadership',
     title: 'Agile Leadership',
     description: 'Leadership playbooks that build adaptive teams, improve execution speed, and sustain quality at scale.',
+    imageSrc:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAz8R5586cHHHMkItk2sEPi93CO4ZdgaH0_FwtD9836N1usaqqutrEIEkxFkygRxxKkAbCENMafQP6y1Ij765d_j7HhoRiU5IoxSSrJetPG0IMyFbzTbTVPWe_vDkN0X7SOfIxrrYfasMavTQCH6YxDmZ-7i8RhRqTwoHexLSKXMsQj3J78J4Ze0OPLVLSiweWcaS7eVJ4fE5LUPCMcK4hH2a8XoFOq-YIK1kRc9k43SSlWZ2BfFpilZ0-eQzEnxKcktKyojSdzF3-A',
     Icon: AgileIcon,
   },
 ];
@@ -238,40 +252,26 @@ const TrainingSection = ({
 
       <section className="bg-backgroundOne px-6 py-24 dark:bg-backgroundDarkOne">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <SectionHeading
-                id="training-capabilities"
-                heading="Strategic Capabilities"
-                description="Precision-engineered curricula designed for the modern technical workforce."
-                headingClassName="h1-settings md:text-left"
-                descriptionClassName="h3-settings max-w-xl !mb-4 md:mx-0 md:text-left"
-              />
-              <div className="h-1.5 w-20 rounded-full bg-secondary mx-auto md:mx-0" />
-            </div>
-
-            <div className="hidden text-right md:block">
-              <span className="block text-6xl font-bold leading-none text-primary dark:text-white">06</span>
-              <span className="h4-settings mt-2 block uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">Core Disciplines</span>
-            </div>
+          <div className="mb-12 md:mb-16 text-center">
+            <SectionHeading
+              id="training-capabilities"
+              heading="Strategic Capabilities"
+              description="Precision-engineered curricula designed for the modern technical workforce."
+              headingClassName="h2-settings"
+              descriptionClassName="h3-settings max-w-xl !mb-4 mx-auto"
+            />
+            <div className="h-1.5 w-20 rounded-full bg-secondary mx-auto" />
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {capabilities.map((capability, index) => (
               <FadeInOnScroll key={capability.id} delayMs={index * 80}>
-                <article className="group h-full rounded-2xl border border-outline-variant/40 bg-surface-container-lowest p-8 transition-colors duration-500 hover:bg-primary dark:border-slate-700 dark:bg-slate-900">
-                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/15 text-secondary transition-colors duration-500 group-hover:bg-white/15 group-hover:text-secondary-fixed">
-                    <capability.Icon className="h-6 w-6" />
-                  </div>
-
-                  <h3 className="card-1-title-settings mb-4 text-primary transition-colors duration-500 group-hover:text-white">
-                    {capability.title}
-                  </h3>
-
-                  <p className="card-1-description-settings leading-relaxed text-slate-600 transition-colors duration-500 group-hover:text-blue-100 dark:text-slate-300">
-                    {capability.description}
-                  </p>
-                </article>
+                <ServicesDescriptionCard
+                  title={capability.title}
+                  description={capability.description}
+                  imageSrc={capability.imageSrc}
+                  Icon={capability.Icon}
+                />
               </FadeInOnScroll>
             ))}
           </div>
