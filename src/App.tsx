@@ -12,6 +12,7 @@ import SupportedSection from './components/sections/Services/Supported/Supported
 import SoftwareDevelopmentSection from './components/sections/Services/Software-Development/SoftwareDevelopmentSection';
 import { TestingSection } from './components/sections/Services/Testing';
 import IdentitySection from './components/sections/Services/Identity';
+import AISection from './components/sections/Services/AI';
 import { TrainingSection } from './components/sections/Services/Training';
 import UIUXSection from './components/sections/Services/ui-ux/UIUXSection';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -197,7 +198,17 @@ function HomePage(): ReactElement {
             title: 'Identity & Access Management',
             description:
               'Secure your enterprise perimeter with advanced IAM solutions. We implement multi-factor authentication, single sign-on, and rigorous access control policies to protect your digital assets.',
-            learnMoreHref: '/services/identity',
+            learnMoreHref: '/services/ai',
+          },
+          {
+            id: 'service-ai-automation',
+            imageSrc:
+              'https://lh3.googleusercontent.com/aida-public/AB6AXuCDTgt1Px3ZfZdUfAAYtTvVUjF9ADhLJkPx43mOpTNSXR1for1nHylF2K9lcCmqDo37x_722gVVwq-TJiiPEPIRBQui83Pydhv89-XmKy7Wp3ECrzxV1IIcI3YdT_TDqfp1Yeza6oVkCaIk5hF895RpQQ8iHUzbiiWX_HVy4AjmkYniZOJYjLMBOz1vMD_9aVJ9GShjIWCdLE5SKF7hm3arshDGfvIBtDuZLhDFg1fASM3X79KEDJ_wvYWg2cc8IqvZ85FqJ2MrWKYx',
+            imageAlt: 'Enterprise office setting for AI-powered automation',
+            title: 'AI-Powered Automation',
+            description:
+              'Secure, maintainable automation that connects legacy systems with leading AI platforms to enable autonomous enterprise workflows at scale.',
+            learnMoreHref: '/services/ai',
           },
         ]}
       />
@@ -332,6 +343,16 @@ function IdentityPage(): ReactElement {
   );
 }
 
+function AIPage(): ReactElement {
+  return (
+    <main>
+      <ServicesHeader />
+      <AISection />
+      <Footer />
+    </main>
+  );
+}
+
 function App(): ReactElement {
   return (
     <>
@@ -346,6 +367,7 @@ function App(): ReactElement {
       <Route path="/services/testing" element={<TestingPage />} />
       <Route path="/services/training" element={<TrainingPage />} />
       <Route path="/services/identity" element={<IdentityPage />} />
+      <Route path="/services/ai" element={<AIPage />} />
       <Route path="/services/supported" element={<SupportedPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/careers" element={<CareersPage />} />
