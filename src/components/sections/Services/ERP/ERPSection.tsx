@@ -133,7 +133,7 @@ const capabilities: ERPCapability[] = [
     id: 'system-design',
     title: 'System Design\n& Architecture',
     description:
-      'Scaling infrastructure with precision blueprints that align technology with your specific business goals. We produce integration-ready architectures, module-level specifications, and API contracts to keep future development predictable and maintainable. Architecture reviews, capacity planning and CI/CD readiness are part of our standard deliverables.',
+      'Scalable infrastructure blueprints aligning technology with business goals. We deliver integration-ready architectures, API contracts, and CI/CD readiness to ensure predictable, maintainable development.',
     bgIconLabel: 'architecture',
     Icon: ArchitectureIcon,
   },
@@ -141,7 +141,7 @@ const capabilities: ERPCapability[] = [
     id: 'migration-integration',
     title: 'Data Migration\n& Integration',
     description:
-      'Seamlessly transition legacy data and connect siloed systems into a unified source of truth. We design ETL pipelines, validation routines and reconciliations to ensure data fidelity during cutover, and build secure connectors to common ERP, CRM, and financial systems. Post-migration verification and monitoring are included to reduce risk.',
+      'Seamlessly unify legacy data and siloed systems. We build secure ETL pipelines and connectors for ERP/CRM platforms, including validation routines to ensure data fidelity and reduce transition risk.',
     bgIconLabel: 'sync_alt',
     Icon: SyncIcon,
   },
@@ -149,7 +149,7 @@ const capabilities: ERPCapability[] = [
     id: 'change-management',
     title: 'Change Management\n& Training',
     description:
-      'Ensuring organizational adoption through tailored training programs and ongoing technical support. We craft role-based curricula, hands-on workshops, and documentation to accelerate user proficiency, plus metrics to measure adoption and targeted remediation where needed. Ongoing support and knowledge transfer are embedded in our delivery model.',
+      'Drive adoption through role-based curricula and workshops. We provide technical documentation and performance metrics to accelerate user proficiency and ensure long-term knowledge transfer.',
     bgIconLabel: 'groups',
     Icon: GroupsIcon,
   },
@@ -157,7 +157,7 @@ const capabilities: ERPCapability[] = [
     id: 'security-compliance',
     title: 'Security\n& Compliance',
     description:
-      'Hardening your enterprise infrastructure with robust protocols and ensuring alignment with industry regulatory standards. We perform security assessments, threat modelling, and implement controls such as encryption-at-rest/in-transit, RBAC/IAM, and audit logging. Our teams help map controls to standards like ISO, SOC2 or sector-specific regulations as required.',
+      'Hardening infrastructure with encryption, RBAC, and threat modeling. Our team implements robust audit logging and helps map technical controls to standards like ISO, SOC2, or local regulations.',
     bgIconLabel: 'admin_panel_settings',
     Icon: ShieldIcon,
   },
@@ -165,7 +165,7 @@ const capabilities: ERPCapability[] = [
     id: 'optimization',
     title: 'Performance\nOptimization',
     description:
-      'Enhancing system speed and resource allocation through advanced analytics and continuous database fine-tuning. We profile bottlenecks, recommend indexing and caching strategies, and tune query plans and infrastructure to meet SLAs. Observability and automated alerts help keep performance stable as usage grows.',
+      'Boost system speed through database fine-tuning and advanced analytics. We eliminate bottlenecks using caching and indexing strategies, backed by observability tools to maintain stable SLAs.',
     bgIconLabel: 'speed',
     Icon: SpeedIcon,
   },
@@ -173,7 +173,7 @@ const capabilities: ERPCapability[] = [
     id: 'custom-development',
     title: 'Custom Software\nDevelopment',
     description:
-      'Building bespoke modules and features that bridge the gap between standard ERP functionality and your unique processes. We deliver well-tested, API-first components, automated test suites, and CI/CD pipelines so customizations remain maintainable. Modular design keeps upgrades easier while preserving critical business logic.',
+      'Bespoke modules tailored to your unique processes. We deliver API-first, well-tested components and CI/CD pipelines, ensuring customizations remain maintainable and compatible with future upgrades.',
     bgIconLabel: 'terminal',
     Icon: TerminalIcon,
   },
