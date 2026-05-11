@@ -8,3 +8,5 @@ export { TrainingSection } from './Training';
 export type { TrainingSectionProps } from './Training';
 export { default as IdentitySection } from './Identity';
 export type { IdentitySectionProps } from './Identity';
+export { default as AISection } from './AI';
+export type { AISectionProps, AICapability, AIMethodologyStep } from './AI';
