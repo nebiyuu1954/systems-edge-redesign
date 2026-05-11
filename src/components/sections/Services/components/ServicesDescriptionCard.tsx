@@ -25,44 +25,49 @@ export default function ServicesDescriptionCard({
   const baseDelay = delayMs ?? 0;
 
   const altText = typeof title === 'string' ? title : undefined;
+  const titleNode = (() => {
+    if (typeof title !== 'string') return title;
+
+    const titleWords = title.trim().split(/\s+/);
+    if (titleWords.length !== 2) return title;
+
+    return (
+      <>
+        <span className="block">{titleWords[0]}</span>
+        <span className="block">{titleWords[1]}</span>
+      </>
+    );
+  })();
 
   const card = (
-    <article className="relative overflow-hidden bg-background dark:bg-servicesCardDark rounded-2xl shadow-xl shadow-primary/5 dark:shadow-black/40 border border-slate-100 dark:border-slate-700 text-left hover:shadow-md transition-shadow">
-      {imageSrc ? <img alt={altText} className="w-full h-48 object-cover" src={imageSrc} /> : null}
-      <div className="p-10 pt-6">
-        {Icon ? (
-              <div className="mb-6">
-            <div className="flex items-start gap-4">
-              <div className="relative z-10 w-14 h-14 bg-backgroundOne dark:bg-backgroundDarkOne text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                <Icon className="w-8 h-8 dark:text-white text-black " />
-              </div>
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/60 bg-white text-left shadow-[0px_12px_32px_rgba(40,41,115,0.04)] transition-transform hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900">
+      <div className="absolute bottom-0 left-0 top-0 z-20 h-0 w-1 bg-secondary transition-all duration-500 ease-out group-hover:h-full" />
+      {imageSrc ? (
+        <div className="overflow-hidden">
+          <img alt={altText} className="h-48 w-full object-cover transition-transform duration-700 group-hover:scale-105" src={imageSrc} />
+        </div>
+      ) : null}
 
-              <div className="flex-1">
-                <FadeInOnScroll delayMs={baseDelay + 120} className="block">
-                  <h3 className={`card-1-title-settings relative z-10 mb-0 whitespace-pre-line ${titleClassName ?? 'text-black dark:text-white'}`}>{title}</h3>
-                </FadeInOnScroll>
-              </div>
+      <div className="flex flex-1 flex-col gap-6 p-8">
+        <div className="flex items-start gap-4">
+          {Icon ? (
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#f7f3ee] dark:bg-slate-800">
+              <Icon className="h-8 w-8 text-secondary" />
             </div>
+          ) : null}
 
-            <div className="mt-4">
-              <FadeInOnScroll delayMs={baseDelay + 260} className="block">
-                <p className={`card-1-description-settings relative z-10 leading-relaxed ${descriptionClassName ?? 'text-slate-600 dark:text-slate-300'}`}>{description}</p>
-              </FadeInOnScroll>
-            </div>
-          </div>
-        ) : (
-          <>
+          <div className="min-w-0 flex-1">
             <FadeInOnScroll delayMs={baseDelay + 120} className="block">
-              <h3 className={`card-1-title-settings relative z-10 mb-4 whitespace-pre-line ${titleClassName ?? 'text-primary dark:text-white'}`}>{title}</h3>
+              <h3 className={`whitespace-pre-line text-xl font-bold text-primary dark:text-white ${titleClassName ?? ''}`.trim()}>{titleNode}</h3>
             </FadeInOnScroll>
+          </div>
+        </div>
 
-            <FadeInOnScroll delayMs={baseDelay + 260} className="block">
-              <p className={`card-1-description-settings relative z-10 leading-relaxed ${descriptionClassName ?? 'text-slate-600 dark:text-slate-300'}`}>{description}</p>
-            </FadeInOnScroll>
+        <FadeInOnScroll delayMs={baseDelay + 260} className="block">
+          <p className={`text-base leading-relaxed text-slate-600 dark:text-slate-300 ${descriptionClassName ?? ''}`.trim()}>{description}</p>
+        </FadeInOnScroll>
 
-            {children ? <div className="relative z-10 mt-6">{children}</div> : null}
-          </>
-        )}
+        {children ? <div className="mt-6">{children}</div> : null}
       </div>
     </article>
   );
